@@ -146,8 +146,7 @@
 
   // === Auto-redirect based on saved preference ===
   function autoRedirect() {
-    var pref = localStorage.getItem('myst-lang');
-    if (!pref) return;
+    var pref = localStorage.getItem('myst-lang') || 'fr';
     var onFr = isOnFrench();
     if (pref === 'fr' && !onFr) {
       switchTo('fr');
