@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
-"""Inject GTranslate EN/FR widget into all built HTML files.
-
-Places the widget in a fixed bar just below the navbar, outside the React root,
-so React hydration cannot remove it.
-"""
+"""Inject GTranslate EN/FR widget into all built HTML files."""
 
 import glob
 import os
 
-# Complete snippet injected right after </head><body...> opening tag area
-# We inject right before </body> but the widget is position:fixed so it
-# sits visually in the navbar area
 SNIPPET = """
-<!-- GTranslate EN/FR Widget (outside React root) -->
-<div id="gtranslate-widget" style="position:fixed; bottom:20px; right:20px; z-index:99999; display:flex; gap:5px; background:rgba(255,255,255,0.95); border-radius:8px; padding:6px 10px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
-  <a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a>
-  <a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag" style="background-position:-200px -100px; margin-left:4px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a>
-</div>
-<div id="google_translate_element2" style="display:none!important;"></div>
+<!-- GTranslate EN/FR Widget - injected after React hydration -->
 <style>
-  a.gflag { vertical-align: middle; font-size: 24px; padding: 1px 0; background-repeat: no-repeat; background-image: url(//gtranslate.net/flags/24.png); cursor: pointer; display: inline-block; }
+  #gtranslate-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    gap: 5px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 6px;
+    padding: 4px 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+  a.gflag { vertical-align: middle; font-size: 24px; padding: 1px 0; background-repeat: no-repeat; background-image: url(//gtranslate.net/flags/24.png); cursor: pointer; }
   a.gflag img { border: 0; }
   a.gflag:hover { background-image: url(//gtranslate.net/flags/24a.png); }
   #goog-gt-tt { display: none !important; }
@@ -27,16 +27,57 @@ SNIPPET = """
   .goog-te-menu-value:hover { text-decoration: none !important; }
   .skiptranslate { display: none !important; }
   body { top: 0 !important; }
+  #google_translate_element2 { display: none !important; }
 </style>
 <script>
-  function googleTranslateElementInit2() {
-    new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
+(function() {
+  // Wait for React hydration to finish, then inject the widget
+  function injectGTranslate() {
+    if (document.getElementById('gtranslate-widget')) return;
+
+    // Create the widget container
+    var widget = document.createElement('div');
+    widget.id = 'gtranslate-widget';
+    widget.innerHTML = '<a href="#" onclick="doGTranslate(\\'en|en\\');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a>' +
+      '<a href="#" onclick="doGTranslate(\\'en|fr\\');return false;" title="French" class="gflag" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a>';
+    document.body.appendChild(widget);
+
+    // Create hidden translate element
+    var te = document.createElement('div');
+    te.id = 'google_translate_element2';
+    document.body.appendChild(te);
+
+    // Load Google Translate
+    window.googleTranslateElementInit2 = function() {
+      new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
+    };
+    var s = document.createElement('script');
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
+    document.body.appendChild(s);
   }
-</script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
-<script>
-  function GTranslateFireEvent(a,b){try{if(document.createEvent){var c=document.createEvent("HTMLEvents");c.initEvent(b,true,true);a.dispatchEvent(c)}else{var c=document.createEventObject();a.fireEvent("on"+b,c)}}catch(e){}}
-  function doGTranslate(a){if(a.value)a=a.value;if(a=="")return;var b=a.split("|")[1];var c;var d=document.getElementsByTagName("select");for(var i=0;i<d.length;i++)if(d[i].className=="goog-te-combo")c=d[i];if(document.getElementById("google_translate_element2")==null||document.getElementById("google_translate_element2").innerHTML.length==0||c.length==0||c.innerHTML.length==0){setTimeout(function(){doGTranslate(a)},500)}else{c.value=b;GTranslateFireEvent(c,"change");GTranslateFireEvent(c,"change")}}
+
+  // GTranslate helper functions
+  window.GTranslateFireEvent = function(a,b){try{if(document.createEvent){var c=document.createEvent("HTMLEvents");c.initEvent(b,true,true);a.dispatchEvent(c)}else{var c=document.createEventObject();a.fireEvent("on"+b,c)}}catch(e){}};
+  window.doGTranslate = function(a){if(a.value)a=a.value;if(a=="")return;var b=a.split("|")[1];var c;var d=document.getElementsByTagName("select");for(var i=0;i<d.length;i++)if(d[i].className=="goog-te-combo")c=d[i];if(document.getElementById("google_translate_element2")==null||document.getElementById("google_translate_element2").innerHTML.length==0||c.length==0||c.innerHTML.length==0){setTimeout(function(){doGTranslate(a)},500)}else{c.value=b;GTranslateFireEvent(c,"change");GTranslateFireEvent(c,"change")}};
+
+  // Use MutationObserver to re-inject if React removes the widget
+  var observer = new MutationObserver(function() {
+    if (!document.getElementById('gtranslate-widget')) {
+      injectGTranslate();
+    }
+  });
+
+  // Start observing once DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(injectGTranslate, 500);
+      observer.observe(document.body, { childList: true, subtree: true });
+    });
+  } else {
+    setTimeout(injectGTranslate, 500);
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+})();
 </script>
 <!-- End GTranslate Widget -->
 """
@@ -53,7 +94,6 @@ def inject():
         if "gtranslate-widget" in content:
             continue
         if "</body>" in content:
-            # Inject right before </body>, outside the React-managed DOM tree
             content = content.replace("</body>", SNIPPET + "\n</body>")
             with open(path, "w", encoding="utf-8") as f:
                 f.write(content)
