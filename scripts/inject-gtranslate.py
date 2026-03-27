@@ -13,7 +13,7 @@ import os
 # sits visually in the navbar area
 SNIPPET = """
 <!-- GTranslate EN/FR Widget (outside React root) -->
-<div id="gtranslate-widget" style="position:fixed; top:0; left:50%; transform:translateX(-130%); z-index:99999; height:60px; display:flex; align-items:center;">
+<div id="gtranslate-widget" style="position:fixed; bottom:20px; right:20px; z-index:99999; display:flex; gap:5px; background:rgba(255,255,255,0.95); border-radius:8px; padding:6px 10px; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
   <a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a>
   <a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag" style="background-position:-200px -100px; margin-left:4px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a>
 </div>
