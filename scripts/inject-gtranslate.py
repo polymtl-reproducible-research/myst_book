@@ -39,7 +39,7 @@ SNIPPET = """
     var widget = document.createElement('div');
     widget.id = 'gtranslate-widget';
     widget.innerHTML = '<a href="#" onclick="doGTranslate(\\'en|en\\');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a>' +
-      '<a href="#" onclick="doGTranslate(\\'en|fr\\');return false;" title="French" class="gflag" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a>';
+      '<a href="#" onclick="doGTranslate(\\'en|fr\\');return false;" title="Français" style="cursor:pointer;display:inline-block;line-height:0;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" style="border-radius:2px;"><rect width="24" height="16" fill="#003DA5"/><rect x="10" y="0" width="4" height="16" fill="#fff"/><rect x="0" y="6" width="24" height="4" fill="#fff"/><text x="5" y="5.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text><text x="15" y="5.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text><text x="5" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text><text x="15" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text></svg></a>';
     document.body.appendChild(widget);
 
     // Create hidden translate element
