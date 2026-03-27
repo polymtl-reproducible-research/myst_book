@@ -20,13 +20,13 @@
     '<text x="15" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text>' +
     '</svg>';
 
-  // Persistent state survives re-injection
+  // Persistent state (survives re-injection and SPA navigation)
   var activeLang = getTranslateCookie() || 'en';
   var gtApiLoaded = false;
+  var lastUrl = location.href;
 
-  // === Widget injection (called repeatedly to survive React hydration) ===
+  // === Widget injection ===
   function ensureWidget() {
-    // Ensure Google Translate hidden element exists
     if (!document.getElementById('google_translate_element')) {
       var gtel = document.createElement('div');
       gtel.id = 'google_translate_element';
@@ -34,7 +34,6 @@
       document.body.appendChild(gtel);
     }
 
-    // Ensure visible widget exists
     if (document.getElementById('gtranslate-fixed-widget')) return;
 
     var widget = document.createElement('div');
@@ -45,20 +44,14 @@
     enLink.title = 'English';
     enLink.setAttribute('data-lang', 'en');
     if (activeLang === 'en') enLink.className = 'active';
-    enLink.onclick = function (e) {
-      e.preventDefault();
-      doTranslate('en');
-    };
+    enLink.onclick = function (e) { e.preventDefault(); doTranslate('en'); };
 
     var frLink = document.createElement('a');
     frLink.innerHTML = qcFlag;
     frLink.title = 'Français';
     frLink.setAttribute('data-lang', 'fr');
     if (activeLang === 'fr') frLink.className = 'active';
-    frLink.onclick = function (e) {
-      e.preventDefault();
-      doTranslate('fr');
-    };
+    frLink.onclick = function (e) { e.preventDefault(); doTranslate('fr'); };
 
     widget.appendChild(enLink);
     widget.appendChild(frLink);
@@ -87,6 +80,7 @@
   // === Translation ===
   function doTranslate(lang) {
     activeLang = lang;
+    updateFlags(lang);
     var combo = document.querySelector('.goog-te-combo');
     if (!combo) {
       var attempts = 0;
@@ -96,7 +90,7 @@
         if (combo) {
           clearInterval(iv);
           applyTranslation(combo, lang);
-        } else if (attempts >= 6) {
+        } else if (attempts >= 10) {
           clearInterval(iv);
         }
       }, 500);
@@ -144,22 +138,52 @@
     }
   }
 
-  // === Cookie check ===
+  // === Cookie ===
   function getTranslateCookie() {
     var m = document.cookie.match(/googtrans=\/en\/(\w+)/);
     return m ? m[1] : null;
   }
 
+  // === SPA navigation detection ===
+  // Remix uses pushState/replaceState for client-side navigation.
+  // When URL changes and French is active, re-trigger translation on new content.
+  function onNavigation() {
+    ensureWidget();
+    ensureGoogleTranslateApi();
+    if (activeLang !== 'en') {
+      // Small delay to let React finish rendering new page content
+      setTimeout(function () { doTranslate(activeLang); }, 800);
+    }
+  }
+
+  // Monkey-patch pushState/replaceState to detect SPA navigations
+  var origPushState = history.pushState;
+  history.pushState = function () {
+    origPushState.apply(this, arguments);
+    onNavigation();
+  };
+  var origReplaceState = history.replaceState;
+  history.replaceState = function () {
+    origReplaceState.apply(this, arguments);
+    onNavigation();
+  };
+  window.addEventListener('popstate', onNavigation);
+
   // === Heartbeat: re-inject widget if React removes it ===
-  // Runs every 500ms. Lightweight: just two getElementById checks.
   setInterval(function () {
-    if (document.body) {
-      ensureWidget();
-      ensureGoogleTranslateApi();
+    if (!document.body) return;
+    ensureWidget();
+    ensureGoogleTranslateApi();
+    // Also detect URL changes as a fallback
+    if (location.href !== lastUrl) {
+      lastUrl = location.href;
+      if (activeLang !== 'en') {
+        setTimeout(function () { doTranslate(activeLang); }, 800);
+      }
     }
   }, 500);
 
-  // Also run immediately once DOM is ready
+  // Initial setup
   if (document.body) {
     ensureWidget();
     ensureGoogleTranslateApi();
