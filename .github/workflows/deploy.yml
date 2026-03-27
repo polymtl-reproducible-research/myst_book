@@ -1,8 +1,6 @@
 name: MyST GitHub Pages Deploy
 on:
   push:
-    branches:
-      - main
 env:
   BASE_URL: /${{ github.event.repository.name }}
 
@@ -30,8 +28,14 @@ jobs:
           node-version: 22.x
       - name: Install MyST Markdown
         run: npm install -g mystmd
+      - name: Install Python dependencies
+        run: pip install deep-translator pyyaml
       - name: Build HTML Assets
         run: myst build --html
+      - name: Translate and build French site
+        run: python3 scripts/build-french.py
+      - name: Inject Language Switcher
+        run: python3 scripts/inject-language-switcher.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,6 +1,9 @@
 # MyST build output
 _build/
 
+# Translated source files (generated at build time)
+_translated/
+
 # OS files
 .DS_Store
 
@@ -214,3 +217,4 @@ __marimo__/
 
 #
 mooc
+claude
