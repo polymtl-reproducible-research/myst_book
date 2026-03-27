@@ -5,21 +5,15 @@ import glob
 import os
 
 SNIPPET = """
-<!-- GTranslate EN/FR Widget - injected after React hydration -->
+<!-- GTranslate EN/FR Widget - injected into navbar after React hydration -->
 <style>
   #gtranslate-widget {
-    position: fixed;
-    top: 68px;
-    right: 20px;
-    z-index: 10000;
     display: flex;
-    gap: 5px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 6px;
-    padding: 4px 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
   }
-  a.gflag { vertical-align: middle; font-size: 24px; padding: 1px 0; background-repeat: no-repeat; background-image: url(//gtranslate.net/flags/24.png); cursor: pointer; }
+  a.gflag { vertical-align: middle; font-size: 24px; padding: 1px 0; background-repeat: no-repeat; background-image: url(//gtranslate.net/flags/24.png); cursor: pointer; display: inline-block; }
   a.gflag img { border: 0; }
   a.gflag:hover { background-image: url(//gtranslate.net/flags/24a.png); }
   #goog-gt-tt { display: none !important; }
@@ -31,29 +25,36 @@ SNIPPET = """
 </style>
 <script>
 (function() {
-  // Wait for React hydration to finish, then inject the widget
   function injectGTranslate() {
     if (document.getElementById('gtranslate-widget')) return;
 
-    // Create the widget container
+    // Find the navbar — look for the GitHub button's parent container
+    var navbar = document.querySelector('.myst-top-nav-bar');
+    if (!navbar) return;
+
+    // Create the widget
     var widget = document.createElement('div');
     widget.id = 'gtranslate-widget';
     widget.innerHTML = '<a href="#" onclick="doGTranslate(\\'en|en\\');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a>' +
       '<a href="#" onclick="doGTranslate(\\'en|fr\\');return false;" title="French" class="gflag" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a>';
-    document.body.appendChild(widget);
+
+    // Insert at the end of the navbar (after GitHub button)
+    navbar.appendChild(widget);
 
     // Create hidden translate element
-    var te = document.createElement('div');
-    te.id = 'google_translate_element2';
-    document.body.appendChild(te);
+    if (!document.getElementById('google_translate_element2')) {
+      var te = document.createElement('div');
+      te.id = 'google_translate_element2';
+      document.body.appendChild(te);
 
-    // Load Google Translate
-    window.googleTranslateElementInit2 = function() {
-      new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
-    };
-    var s = document.createElement('script');
-    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
-    document.body.appendChild(s);
+      // Load Google Translate
+      window.googleTranslateElementInit2 = function() {
+        new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
+      };
+      var s = document.createElement('script');
+      s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
+      document.body.appendChild(s);
+    }
   }
 
   // GTranslate helper functions
@@ -67,7 +68,6 @@ SNIPPET = """
     }
   });
 
-  // Start observing once DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(injectGTranslate, 500);
