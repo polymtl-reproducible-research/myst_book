@@ -1,8 +1,6 @@
 name: MyST GitHub Pages Deploy
 on:
   push:
-    branches:
-      - main
 env:
   BASE_URL: /${{ github.event.repository.name }}
 
@@ -32,6 +30,8 @@ jobs:
         run: npm install -g mystmd
       - name: Build HTML Assets
         run: myst build --html
+      - name: Inject GTranslate Widget
+        run: python3 scripts/inject-gtranslate.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
