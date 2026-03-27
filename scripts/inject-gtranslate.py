@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
-"""Inject GTranslate EN/FR widget into all built HTML files."""
+"""Inject GTranslate EN/FR widget into the navbar of all built HTML files."""
 
 import glob
 import os
 
-SNIPPET = """
-<!-- GTranslate EN/FR Widget - injected into navbar after React hydration -->
+# Widget HTML to insert into the navbar, right after the GitHub button
+WIDGET_HTML = '''<div id="gtranslate-widget" class="hidden sm:flex items-center gap-1 ml-2"><a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a></div>'''
+
+# Styles and scripts injected before </head>
+HEAD_SNIPPET = """
+<!-- GTranslate Styles -->
 <style>
-  #gtranslate-widget {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-left: 8px;
-  }
   a.gflag { vertical-align: middle; font-size: 24px; padding: 1px 0; background-repeat: no-repeat; background-image: url(//gtranslate.net/flags/24.png); cursor: pointer; display: inline-block; }
   a.gflag img { border: 0; }
   a.gflag:hover { background-image: url(//gtranslate.net/flags/24a.png); }
@@ -23,63 +21,22 @@ SNIPPET = """
   body { top: 0 !important; }
   #google_translate_element2 { display: none !important; }
 </style>
+"""
+
+# Scripts injected before </body>
+BODY_SNIPPET = """
+<!-- GTranslate Scripts -->
+<div id="google_translate_element2"></div>
 <script>
-(function() {
-  function injectGTranslate() {
-    if (document.getElementById('gtranslate-widget')) return;
-
-    // Find the navbar — look for the GitHub button's parent container
-    var navbar = document.querySelector('.myst-top-nav-bar');
-    if (!navbar) return;
-
-    // Create the widget
-    var widget = document.createElement('div');
-    widget.id = 'gtranslate-widget';
-    widget.innerHTML = '<a href="#" onclick="doGTranslate(\\'en|en\\');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a>' +
-      '<a href="#" onclick="doGTranslate(\\'en|fr\\');return false;" title="French" class="gflag" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a>';
-
-    // Insert at the end of the navbar (after GitHub button)
-    navbar.appendChild(widget);
-
-    // Create hidden translate element
-    if (!document.getElementById('google_translate_element2')) {
-      var te = document.createElement('div');
-      te.id = 'google_translate_element2';
-      document.body.appendChild(te);
-
-      // Load Google Translate
-      window.googleTranslateElementInit2 = function() {
-        new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
-      };
-      var s = document.createElement('script');
-      s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
-      document.body.appendChild(s);
-    }
+  function googleTranslateElementInit2() {
+    new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
   }
-
-  // GTranslate helper functions
-  window.GTranslateFireEvent = function(a,b){try{if(document.createEvent){var c=document.createEvent("HTMLEvents");c.initEvent(b,true,true);a.dispatchEvent(c)}else{var c=document.createEventObject();a.fireEvent("on"+b,c)}}catch(e){}};
-  window.doGTranslate = function(a){if(a.value)a=a.value;if(a=="")return;var b=a.split("|")[1];var c;var d=document.getElementsByTagName("select");for(var i=0;i<d.length;i++)if(d[i].className=="goog-te-combo")c=d[i];if(document.getElementById("google_translate_element2")==null||document.getElementById("google_translate_element2").innerHTML.length==0||c.length==0||c.innerHTML.length==0){setTimeout(function(){doGTranslate(a)},500)}else{c.value=b;GTranslateFireEvent(c,"change");GTranslateFireEvent(c,"change")}};
-
-  // Use MutationObserver to re-inject if React removes the widget
-  var observer = new MutationObserver(function() {
-    if (!document.getElementById('gtranslate-widget')) {
-      injectGTranslate();
-    }
-  });
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(injectGTranslate, 500);
-      observer.observe(document.body, { childList: true, subtree: true });
-    });
-  } else {
-    setTimeout(injectGTranslate, 500);
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
-})();
 </script>
-<!-- End GTranslate Widget -->
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+<script>
+  function GTranslateFireEvent(a,b){try{if(document.createEvent){var c=document.createEvent("HTMLEvents");c.initEvent(b,true,true);a.dispatchEvent(c)}else{var c=document.createEventObject();a.fireEvent("on"+b,c)}}catch(e){}}
+  function doGTranslate(a){if(a.value)a=a.value;if(a=="")return;var b=a.split("|")[1];var c;var d=document.getElementsByTagName("select");for(var i=0;i<d.length;i++)if(d[i].className=="goog-te-combo")c=d[i];if(document.getElementById("google_translate_element2")==null||document.getElementById("google_translate_element2").innerHTML.length==0||c.length==0||c.innerHTML.length==0){setTimeout(function(){doGTranslate(a)},500)}else{c.value=b;GTranslateFireEvent(c,"change");GTranslateFireEvent(c,"change")}}
+</script>
 """
 
 BUILD_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "_build", "html")
@@ -93,8 +50,20 @@ def inject():
             content = f.read()
         if "gtranslate-widget" in content:
             continue
-        if "</body>" in content:
-            content = content.replace("</body>", SNIPPET + "\n</body>")
+
+        # Find the GitHub button's parent div and insert widget after it
+        # The pattern: <div class="hidden sm:block"><a href="...">GitHub</a></div>
+        github_marker = '>GitHub</a></div></div></nav></div>'
+        if github_marker in content:
+            content = content.replace(
+                github_marker,
+                '>GitHub</a></div>' + WIDGET_HTML + '</div></nav></div>'
+            )
+            # Inject styles into <head>
+            content = content.replace('</head>', HEAD_SNIPPET + '</head>')
+            # Inject scripts before </body>
+            content = content.replace('</body>', BODY_SNIPPET + '</body>')
+
             with open(path, "w", encoding="utf-8") as f:
                 f.write(content)
             count += 1
