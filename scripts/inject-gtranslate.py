@@ -1,15 +1,23 @@
 #!/usr/bin/env python3
-"""Inject GTranslate EN/FR widget into the navbar of all built HTML files."""
+"""Inject GTranslate EN/FR widget into all built HTML files.
+
+Places the widget in a fixed bar just below the navbar, outside the React root,
+so React hydration cannot remove it.
+"""
 
 import glob
 import os
 
-# Widget HTML to insert into the navbar, right after the GitHub button
-WIDGET_HTML = '''<div id="gtranslate-widget" class="hidden sm:flex items-center gap-1 ml-2"><a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a></div>'''
-
-# Styles and scripts injected before </head>
-HEAD_SNIPPET = """
-<!-- GTranslate Styles -->
+# Complete snippet injected right after </head><body...> opening tag area
+# We inject right before </body> but the widget is position:fixed so it
+# sits visually in the navbar area
+SNIPPET = """
+<!-- GTranslate EN/FR Widget (outside React root) -->
+<div id="gtranslate-widget" style="position:fixed; top:0; right:0; z-index:99999; height:60px; display:flex; align-items:center; padding-right:12px;">
+  <a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="gflag" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a>
+  <a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag" style="background-position:-200px -100px; margin-left:4px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a>
+</div>
+<div id="google_translate_element2" style="display:none!important;"></div>
 <style>
   a.gflag { vertical-align: middle; font-size: 24px; padding: 1px 0; background-repeat: no-repeat; background-image: url(//gtranslate.net/flags/24.png); cursor: pointer; display: inline-block; }
   a.gflag img { border: 0; }
@@ -19,14 +27,7 @@ HEAD_SNIPPET = """
   .goog-te-menu-value:hover { text-decoration: none !important; }
   .skiptranslate { display: none !important; }
   body { top: 0 !important; }
-  #google_translate_element2 { display: none !important; }
 </style>
-"""
-
-# Scripts injected before </body>
-BODY_SNIPPET = """
-<!-- GTranslate Scripts -->
-<div id="google_translate_element2"></div>
 <script>
   function googleTranslateElementInit2() {
     new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
@@ -37,6 +38,7 @@ BODY_SNIPPET = """
   function GTranslateFireEvent(a,b){try{if(document.createEvent){var c=document.createEvent("HTMLEvents");c.initEvent(b,true,true);a.dispatchEvent(c)}else{var c=document.createEventObject();a.fireEvent("on"+b,c)}}catch(e){}}
   function doGTranslate(a){if(a.value)a=a.value;if(a=="")return;var b=a.split("|")[1];var c;var d=document.getElementsByTagName("select");for(var i=0;i<d.length;i++)if(d[i].className=="goog-te-combo")c=d[i];if(document.getElementById("google_translate_element2")==null||document.getElementById("google_translate_element2").innerHTML.length==0||c.length==0||c.innerHTML.length==0){setTimeout(function(){doGTranslate(a)},500)}else{c.value=b;GTranslateFireEvent(c,"change");GTranslateFireEvent(c,"change")}}
 </script>
+<!-- End GTranslate Widget -->
 """
 
 BUILD_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "_build", "html")
@@ -50,20 +52,9 @@ def inject():
             content = f.read()
         if "gtranslate-widget" in content:
             continue
-
-        # Find the GitHub button's parent div and insert widget after it
-        # The pattern: <div class="hidden sm:block"><a href="...">GitHub</a></div>
-        github_marker = '>GitHub</a></div></div></nav></div>'
-        if github_marker in content:
-            content = content.replace(
-                github_marker,
-                '>GitHub</a></div>' + WIDGET_HTML + '</div></nav></div>'
-            )
-            # Inject styles into <head>
-            content = content.replace('</head>', HEAD_SNIPPET + '</head>')
-            # Inject scripts before </body>
-            content = content.replace('</body>', BODY_SNIPPET + '</body>')
-
+        if "</body>" in content:
+            # Inject right before </body>, outside the React-managed DOM tree
+            content = content.replace("</body>", SNIPPET + "\n</body>")
             with open(path, "w", encoding="utf-8") as f:
                 f.write(content)
             count += 1
