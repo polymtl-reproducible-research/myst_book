@@ -8,16 +8,10 @@ SNIPPET = """
 <!-- GTranslate EN/FR Widget - injected after React hydration -->
 <style>
   #gtranslate-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10000;
     display: flex;
-    gap: 5px;
-    background: rgba(255,255,255,0.9);
-    border-radius: 6px;
-    padding: 4px 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    gap: 8px;
+    padding: 8px 12px;
+    margin: 0 12px 8px 12px;
   }
   a.gflag { vertical-align: middle; font-size: 24px; padding: 1px 0; background-repeat: no-repeat; background-image: url(//gtranslate.net/flags/24.png); cursor: pointer; }
   a.gflag img { border: 0; }
@@ -43,20 +37,30 @@ SNIPPET = """
     var qcFlag = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" style="border-radius:2px;"><rect width="24" height="16" fill="#003DA5"/><rect x="10" y="0" width="4" height="16" fill="#fff"/><rect x="0" y="6" width="24" height="4" fill="#fff"/><text x="5" y="5.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text><text x="15" y="5.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text><text x="5" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text><text x="15" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text></svg>';
     widget.innerHTML = '<a href="#" onclick="doGTranslate(\\'en|en\\');return false;" title="English" style="' + flagStyle + '">' + ukFlag + '</a>' +
       '<a href="#" onclick="doGTranslate(\\'en|fr\\');return false;" title="Français" style="' + flagStyle + '">' + qcFlag + '</a>';
-    document.body.appendChild(widget);
+    // Insert at the top of the left sidebar TOC
+    var sidebar = document.querySelector('.myst-toc');
+    if (sidebar) {
+      sidebar.insertBefore(widget, sidebar.firstChild);
+    } else {
+      // Fallback: append to body as fixed element
+      widget.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:10000;display:flex;gap:5px;background:rgba(255,255,255,0.9);border-radius:6px;padding:4px 8px;box-shadow:0 1px 4px rgba(0,0,0,0.15);';
+      document.body.appendChild(widget);
+    }
 
-    // Create hidden translate element
-    var te = document.createElement('div');
-    te.id = 'google_translate_element2';
-    document.body.appendChild(te);
+    // Create hidden translate element (only once)
+    if (!document.getElementById('google_translate_element2')) {
+      var te = document.createElement('div');
+      te.id = 'google_translate_element2';
+      document.body.appendChild(te);
 
-    // Load Google Translate
-    window.googleTranslateElementInit2 = function() {
-      new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
-    };
-    var s = document.createElement('script');
-    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
-    document.body.appendChild(s);
+      // Load Google Translate
+      window.googleTranslateElementInit2 = function() {
+        new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element2');
+      };
+      var s = document.createElement('script');
+      s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2';
+      document.body.appendChild(s);
+    }
   }
 
   // GTranslate helper functions
