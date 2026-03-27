@@ -20,7 +20,7 @@
     '<text x="15" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text>' +
     '</svg>';
 
-  // Detect BASE_URL from a meta tag or script attribute
+  // Detect BASE_URL from a meta tag
   var baseUrl = '';
   var metaBase = document.querySelector('meta[name="base-url"]');
   if (metaBase) {
@@ -29,7 +29,6 @@
 
   function isOnFrench() {
     var path = window.location.pathname;
-    // Check if current path is under /fr/ (accounting for base URL)
     var frPrefix = baseUrl + '/fr';
     return path === frPrefix || path.startsWith(frPrefix + '/');
   }
@@ -37,11 +36,9 @@
   function getPageSlug() {
     var path = window.location.pathname;
     if (isOnFrench()) {
-      // Remove base URL and /fr prefix
       var frPrefix = baseUrl + '/fr';
       return path.slice(frPrefix.length) || '/';
     }
-    // Remove base URL prefix
     return path.slice(baseUrl.length) || '/';
   }
 
@@ -57,9 +54,8 @@
     window.location.href = newPath;
   }
 
-  function createWidget() {
-    if (document.getElementById('lang-switcher-widget')) return;
-
+  // Build the widget element (without inserting it)
+  function buildWidget() {
     var currentLang = isOnFrench() ? 'fr' : 'en';
 
     var widget = document.createElement('div');
@@ -89,9 +85,29 @@
 
     widget.appendChild(enLink);
     widget.appendChild(frLink);
-    // Append to <html> element, not <body>, so React/Remix can't remove it
-    document.documentElement.appendChild(widget);
+    return widget;
   }
+
+  function ensureWidget() {
+    if (!document.body) return;
+    if (document.getElementById('lang-switcher-widget')) return;
+    document.body.appendChild(buildWidget());
+  }
+
+  // MutationObserver: fires synchronously before next paint when React
+  // removes our widget, so we can re-append it with zero visible flicker.
+  var observer = new MutationObserver(function () {
+    if (!document.getElementById('lang-switcher-widget')) {
+      ensureWidget();
+    }
+  });
+
+  function startObserver() {
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  // Backup interval in case MutationObserver misses an edge case
+  setInterval(ensureWidget, 500);
 
   // Auto-redirect based on saved preference (only on first page load)
   function autoRedirect() {
@@ -105,20 +121,15 @@
     }
   }
 
-  // Re-inject widget if React removes it (SPA navigation)
-  setInterval(function () {
-    if (document.body && !document.getElementById('lang-switcher-widget')) {
-      createWidget();
-    }
-  }, 500);
-
   // Initialize
   if (document.body) {
-    createWidget();
+    ensureWidget();
+    startObserver();
     autoRedirect();
   } else {
     document.addEventListener('DOMContentLoaded', function () {
-      createWidget();
+      ensureWidget();
+      startObserver();
       autoRedirect();
     });
   }
