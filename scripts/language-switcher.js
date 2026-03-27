@@ -89,7 +89,8 @@
 
     widget.appendChild(enLink);
     widget.appendChild(frLink);
-    document.body.appendChild(widget);
+    // Append to <html> element, not <body>, so React/Remix can't remove it
+    document.documentElement.appendChild(widget);
   }
 
   // Auto-redirect based on saved preference (only on first page load)
