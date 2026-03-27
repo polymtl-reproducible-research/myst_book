@@ -54,7 +54,7 @@ SNIPPET = r"""
         if (!n.textContent.trim()) return NodeFilter.FILTER_REJECT;
         var tag = n.parentElement.tagName;
         if (['SCRIPT','STYLE','CODE','PRE','KBD','SVG','MATH'].indexOf(tag) >= 0) return NodeFilter.FILTER_REJECT;
-        if (n.parentElement.closest('svg, math, .katex, code, pre, script, style, #translate-widget')) return NodeFilter.FILTER_REJECT;
+        if (n.parentElement.closest('svg, math, .katex, code, pre, script, style, #translate-widget, #translate-spinner')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }}
     );
