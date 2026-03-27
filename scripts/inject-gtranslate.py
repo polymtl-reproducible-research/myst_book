@@ -19,7 +19,8 @@ SNIPPET = r"""
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <style>
   #gtranslate-flags {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
     gap: 8px;
     padding: 8px 12px;
     margin: 0 12px 8px 12px;
@@ -54,6 +55,31 @@ SNIPPET = r"""
     combo.value = lang;
     combo.dispatchEvent(new Event('change'));
     updateFlags(lang);
+    if (lang === 'fr') {
+      setTimeout(applyCorrections, 1500);
+      setTimeout(applyCorrections, 3000);
+    }
+  }
+
+  // Dictionary of translation corrections: wrong -> correct
+  var corrections = {
+    'Chapitres': 'Chapitres',
+    'Cahiers': 'Carnets',
+    // Add more corrections here, e.g.:
+    // 'wrong translation': 'correct translation',
+  };
+
+  function applyCorrections() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      var node = walker.currentNode;
+      var text = node.textContent;
+      for (var wrong in corrections) {
+        if (text.indexOf(wrong) !== -1) {
+          node.textContent = text.replace(new RegExp(wrong, 'g'), corrections[wrong]);
+        }
+      }
+    }
   }
 
   function updateFlags(lang) {
