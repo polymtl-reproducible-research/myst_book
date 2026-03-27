@@ -39,7 +39,7 @@ SNIPPET = r"""
 </style>
 <script>
 (function() {
-  var LIBRE_API = 'https://libretranslate.com';
+  var LIBRE_API = 'https://translate.fedilab.app';
   var currentLang = 'en';
   var originalTexts = new Map();
 
