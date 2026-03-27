@@ -95,6 +95,7 @@ SNIPPET = r"""
 
     var container = document.createElement('div');
     container.id = 'gtranslate-flags';
+    container.style.cssText = 'display:flex!important;flex-direction:row!important;gap:8px;padding:8px 12px;margin:0 12px 8px 12px;align-items:center;';
 
     var enLink = document.createElement('a');
     enLink.innerHTML = ukFlag;
