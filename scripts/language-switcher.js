@@ -104,6 +104,13 @@
     }
   }
 
+  // Re-inject widget if React removes it (SPA navigation)
+  setInterval(function () {
+    if (document.body && !document.getElementById('lang-switcher-widget')) {
+      createWidget();
+    }
+  }, 500);
+
   // Initialize
   if (document.body) {
     createWidget();
