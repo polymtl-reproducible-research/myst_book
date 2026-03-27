@@ -40,7 +40,7 @@ SNIPPET = r"""
 <script>
 (function() {
   var LIBRE_API = 'https://translate.fedilab.app';
-  var currentLang = 'en';
+  var currentLang = 'fr';
   var originalTexts = new Map();
 
   var ukFlag = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 60 40" style="border-radius:2px;"><rect width="60" height="40" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 L60,40" stroke="#C8102E" stroke-width="4" clip-path="polygon(0 0,30 20,60 0,60 40,30 20,0 40)"/><path d="M60,0 L0,40" stroke="#C8102E" stroke-width="4" clip-path="polygon(0 0,30 20,0 40,60 40,30 20,60 0)"/><path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/></svg>';
@@ -65,7 +65,7 @@ SNIPPET = r"""
   function translatePage(targetLang) {
     if (targetLang === currentLang) return;
 
-    var article = document.querySelector('article') || document.querySelector('main') || document.body;
+    var article = document.body;
     var spinner = document.getElementById('translate-spinner');
 
     if (targetLang === 'en') {
@@ -147,7 +147,7 @@ SNIPPET = r"""
     enLink.innerHTML = ukFlag;
     enLink.title = 'English';
     enLink.dataset.lang = 'en';
-    enLink.className = 'active';
+    enLink.className = '';
     enLink.onclick = function(e) { e.preventDefault(); translatePage('en'); };
 
     var frLink = document.createElement('a');
@@ -172,20 +172,29 @@ SNIPPET = r"""
     }
   }
 
+  function injectAndTranslate() {
+    injectWidget();
+    // Auto-translate to French on load
+    if (currentLang === 'fr') {
+      currentLang = 'en'; // Reset so translatePage('fr') actually runs
+      translatePage('fr');
+    }
+  }
+
   // MutationObserver to re-inject after React navigation
   var observer = new MutationObserver(function() {
     if (!document.getElementById('translate-widget')) {
-      injectWidget();
+      injectAndTranslate();
     }
   });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(injectWidget, 500);
+      setTimeout(injectAndTranslate, 500);
       observer.observe(document.body, { childList: true, subtree: true });
     });
   } else {
-    setTimeout(injectWidget, 500);
+    setTimeout(injectAndTranslate, 500);
     observer.observe(document.body, { childList: true, subtree: true });
   }
 })();
