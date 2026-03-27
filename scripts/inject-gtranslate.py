@@ -67,15 +67,31 @@ SNIPPET = """
   window.GTranslateFireEvent = function(a,b){try{if(document.createEvent){var c=document.createEvent("HTMLEvents");c.initEvent(b,true,true);a.dispatchEvent(c)}else{var c=document.createEventObject();a.fireEvent("on"+b,c)}}catch(e){}};
   window.doGTranslate = function(a){if(a.value)a=a.value;if(a=="")return;var b=a.split("|")[1];var c;var d=document.getElementsByTagName("select");for(var i=0;i<d.length;i++)if(d[i].className=="goog-te-combo")c=d[i];if(document.getElementById("google_translate_element2")==null||document.getElementById("google_translate_element2").innerHTML.length==0||c.length==0||c.innerHTML.length==0){setTimeout(function(){doGTranslate(a)},500)}else{c.value=b;GTranslateFireEvent(c,"change");GTranslateFireEvent(c,"change")}};
 
-  // Hide Google Translate chrome that keeps reappearing
+  // Aggressively hide Google Translate chrome (iframe bar + banner)
   function hideGoogleTranslateBar() {
-    document.querySelectorAll('.goog-te-banner-frame, .skiptranslate, #goog-gt-tt').forEach(function(el) {
+    document.querySelectorAll('.goog-te-banner-frame, #goog-gt-tt').forEach(function(el) {
       el.style.setProperty('display', 'none', 'important');
     });
+    // The .skiptranslate div wraps the banner - hide it but keep translate functional
+    document.querySelectorAll('.skiptranslate').forEach(function(el) {
+      if (el.tagName !== 'SELECT') {
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('height', '0', 'important');
+        el.style.setProperty('overflow', 'hidden', 'important');
+      }
+    });
+    // Google Translate pushes body down with top style
     document.body.style.setProperty('top', '0', 'important');
+    // Also hide any iframes Google injects
+    document.querySelectorAll('iframe.goog-te-banner-frame, iframe.skiptranslate').forEach(function(el) {
+      el.style.setProperty('display', 'none', 'important');
+    });
   }
 
-  // Use MutationObserver to re-inject widget and re-hide translate bar
+  // Run hideGoogleTranslateBar on a fast interval to catch reappearances
+  setInterval(hideGoogleTranslateBar, 200);
+
+  // Use MutationObserver to re-inject widget
   var observer = new MutationObserver(function() {
     hideGoogleTranslateBar();
     if (!document.getElementById('gtranslate-widget')) {
