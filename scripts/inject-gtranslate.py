@@ -67,8 +67,17 @@ SNIPPET = """
   window.GTranslateFireEvent = function(a,b){try{if(document.createEvent){var c=document.createEvent("HTMLEvents");c.initEvent(b,true,true);a.dispatchEvent(c)}else{var c=document.createEventObject();a.fireEvent("on"+b,c)}}catch(e){}};
   window.doGTranslate = function(a){if(a.value)a=a.value;if(a=="")return;var b=a.split("|")[1];var c;var d=document.getElementsByTagName("select");for(var i=0;i<d.length;i++)if(d[i].className=="goog-te-combo")c=d[i];if(document.getElementById("google_translate_element2")==null||document.getElementById("google_translate_element2").innerHTML.length==0||c.length==0||c.innerHTML.length==0){setTimeout(function(){doGTranslate(a)},500)}else{c.value=b;GTranslateFireEvent(c,"change");GTranslateFireEvent(c,"change")}};
 
-  // Use MutationObserver to re-inject if React removes the widget
+  // Hide Google Translate chrome that keeps reappearing
+  function hideGoogleTranslateBar() {
+    document.querySelectorAll('.goog-te-banner-frame, .skiptranslate, #goog-gt-tt').forEach(function(el) {
+      el.style.setProperty('display', 'none', 'important');
+    });
+    document.body.style.setProperty('top', '0', 'important');
+  }
+
+  // Use MutationObserver to re-inject widget and re-hide translate bar
   var observer = new MutationObserver(function() {
+    hideGoogleTranslateBar();
     if (!document.getElementById('gtranslate-widget')) {
       injectGTranslate();
     }
