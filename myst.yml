@@ -1,0 +1,46 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+
+project:
+  title: My Book Title
+  subtitle: A short description of this book
+  copyright: '2026'
+  keywords:
+    - keyword1
+    - keyword2
+  github: https://github.com/polymtl-reproducible-research/myst_book
+  subject: Book
+  numbering:
+    headings: true
+  open_access: true
+  license: MIT
+  date: 2026-03-27
+  exports:
+    - format: pdf
+  abbreviations:
+    # Add abbreviations here, e.g.:
+    # MRI: Magnetic resonance imaging
+  exclude:
+    - README.md
+    - LICENSE
+    - mooc/**
+  bibliography:
+    - bibliography/references.bib
+  toc:
+    - file: index.md
+    - title: Chapters
+      children:
+        - file: chapters/01-introduction.md
+        - file: chapters/02-methods.md
+        - file: chapters/03-results.md
+    - title: Notebooks
+      children:
+        - file: notebooks/example-notebook.ipynb
+
+site:
+  template: book-theme
+  options:
+    logo_text: My Book
+  actions:
+    - title: GitHub
+      url: https://github.com/polymtl-reproducible-research/myst_book
