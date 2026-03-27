@@ -1,7 +1,4 @@
 (function () {
-  // Guard: don't double-initialize
-  if (document.getElementById('gtranslate-fixed-widget')) return;
-
   var ukFlag =
     '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 60 40" style="border-radius:2px;">' +
     '<rect width="60" height="40" fill="#012169"/>' +
@@ -23,70 +20,84 @@
     '<text x="15" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text>' +
     '</svg>';
 
-  // 1. Create hidden Google Translate element on <body>
-  var gtel = document.createElement('div');
-  gtel.id = 'google_translate_element';
-  gtel.style.display = 'none';
-  document.body.appendChild(gtel);
+  // Persistent state survives re-injection
+  var activeLang = getTranslateCookie() || 'en';
+  var gtApiLoaded = false;
 
-  // 2. Create fixed widget on <html> (outside React and Google Translate scope)
-  var widget = document.createElement('div');
-  widget.id = 'gtranslate-fixed-widget';
+  // === Widget injection (called repeatedly to survive React hydration) ===
+  function ensureWidget() {
+    // Ensure Google Translate hidden element exists
+    if (!document.getElementById('google_translate_element')) {
+      var gtel = document.createElement('div');
+      gtel.id = 'google_translate_element';
+      gtel.style.display = 'none';
+      document.body.appendChild(gtel);
+    }
 
-  var enLink = document.createElement('a');
-  enLink.innerHTML = ukFlag;
-  enLink.title = 'English';
-  enLink.dataset.lang = 'en';
-  enLink.className = 'active';
-  enLink.onclick = function (e) {
-    e.preventDefault();
-    doTranslate('en');
-  };
+    // Ensure visible widget exists
+    if (document.getElementById('gtranslate-fixed-widget')) return;
 
-  var frLink = document.createElement('a');
-  frLink.innerHTML = qcFlag;
-  frLink.title = 'Français';
-  frLink.dataset.lang = 'fr';
-  frLink.onclick = function (e) {
-    e.preventDefault();
-    doTranslate('fr');
-  };
+    var widget = document.createElement('div');
+    widget.id = 'gtranslate-fixed-widget';
 
-  widget.appendChild(enLink);
-  widget.appendChild(frLink);
-  document.documentElement.appendChild(widget);
+    var enLink = document.createElement('a');
+    enLink.innerHTML = ukFlag;
+    enLink.title = 'English';
+    enLink.setAttribute('data-lang', 'en');
+    if (activeLang === 'en') enLink.className = 'active';
+    enLink.onclick = function (e) {
+      e.preventDefault();
+      doTranslate('en');
+    };
 
-  // 3. Load Google Translate API
-  window.googleTranslateElementInit = function () {
-    new google.translate.TranslateElement(
-      {
-        pageLanguage: 'en',
-        includedLanguages: 'en,fr',
-        autoDisplay: false,
-      },
-      'google_translate_element'
-    );
-  };
+    var frLink = document.createElement('a');
+    frLink.innerHTML = qcFlag;
+    frLink.title = 'Français';
+    frLink.setAttribute('data-lang', 'fr');
+    if (activeLang === 'fr') frLink.className = 'active';
+    frLink.onclick = function (e) {
+      e.preventDefault();
+      doTranslate('fr');
+    };
 
-  var script = document.createElement('script');
-  script.src =
-    'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-  document.head.appendChild(script);
+    widget.appendChild(enLink);
+    widget.appendChild(frLink);
+    document.body.appendChild(widget);
+  }
 
-  // 4. Translation functions
+  // === Google Translate API ===
+  function ensureGoogleTranslateApi() {
+    if (gtApiLoaded) return;
+    if (document.querySelector('script[src*="translate.google.com"]')) {
+      gtApiLoaded = true;
+      return;
+    }
+    window.googleTranslateElementInit = function () {
+      new google.translate.TranslateElement(
+        { pageLanguage: 'en', includedLanguages: 'en,fr', autoDisplay: false },
+        'google_translate_element'
+      );
+    };
+    var s = document.createElement('script');
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(s);
+    gtApiLoaded = true;
+  }
+
+  // === Translation ===
   function doTranslate(lang) {
+    activeLang = lang;
     var combo = document.querySelector('.goog-te-combo');
     if (!combo) {
-      // Bounded retry: wait for Google Translate API to load
       var attempts = 0;
-      var interval = setInterval(function () {
+      var iv = setInterval(function () {
         combo = document.querySelector('.goog-te-combo');
         attempts++;
         if (combo) {
-          clearInterval(interval);
+          clearInterval(iv);
           applyTranslation(combo, lang);
         } else if (attempts >= 6) {
-          clearInterval(interval);
+          clearInterval(iv);
         }
       }, 500);
       return;
@@ -105,50 +116,57 @@
   }
 
   function updateFlags(lang) {
-    var flags = document.getElementById('gtranslate-fixed-widget');
-    if (!flags) return;
-    var links = flags.querySelectorAll('a');
+    var w = document.getElementById('gtranslate-fixed-widget');
+    if (!w) return;
+    var links = w.querySelectorAll('a');
     for (var i = 0; i < links.length; i++) {
-      if (links[i].dataset.lang === lang) {
-        links[i].classList.add('active');
+      if (links[i].getAttribute('data-lang') === lang) {
+        links[i].className = 'active';
       } else {
-        links[i].classList.remove('active');
+        links[i].className = '';
       }
     }
   }
 
-  // 5. Translation corrections dictionary
-  var corrections = {
-    Cahiers: 'Carnets',
-  };
+  // === Corrections ===
+  var corrections = { Cahiers: 'Carnets' };
 
   function applyCorrections() {
-    var walker = document.createTreeWalker(
-      document.body,
-      NodeFilter.SHOW_TEXT
-    );
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     while (walker.nextNode()) {
       var node = walker.currentNode;
       var text = node.textContent;
       for (var wrong in corrections) {
         if (text.indexOf(wrong) !== -1) {
-          node.textContent = text.replace(
-            new RegExp(wrong, 'g'),
-            corrections[wrong]
-          );
+          node.textContent = text.replace(new RegExp(wrong, 'g'), corrections[wrong]);
         }
       }
     }
   }
 
-  // 6. Check cookie for existing translation state
+  // === Cookie check ===
   function getTranslateCookie() {
-    var match = document.cookie.match(/googtrans=\/en\/(\w+)/);
-    return match ? match[1] : 'en';
+    var m = document.cookie.match(/googtrans=\/en\/(\w+)/);
+    return m ? m[1] : null;
   }
 
-  var currentLang = getTranslateCookie();
-  if (currentLang !== 'en') {
-    updateFlags(currentLang);
+  // === Heartbeat: re-inject widget if React removes it ===
+  // Runs every 500ms. Lightweight: just two getElementById checks.
+  setInterval(function () {
+    if (document.body) {
+      ensureWidget();
+      ensureGoogleTranslateApi();
+    }
+  }, 500);
+
+  // Also run immediately once DOM is ready
+  if (document.body) {
+    ensureWidget();
+    ensureGoogleTranslateApi();
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+      ensureWidget();
+      ensureGoogleTranslateApi();
+    });
   }
 })();
