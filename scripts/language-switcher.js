@@ -1,32 +1,109 @@
 (function () {
-  var ukFlag =
-    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 60 40" style="border-radius:2px;">' +
-    '<rect width="60" height="40" fill="#012169"/>' +
-    '<path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="8"/>' +
-    '<path d="M0,0 L60,40" stroke="#C8102E" stroke-width="4" clip-path="polygon(0 0,30 20,60 0,60 40,30 20,0 40)"/>' +
-    '<path d="M60,0 L0,40" stroke="#C8102E" stroke-width="4" clip-path="polygon(0 0,30 20,0 40,60 40,30 20,60 0)"/>' +
-    '<path d="M30,0 V40 M0,20 H60" stroke="#fff" stroke-width="12"/>' +
-    '<path d="M30,0 V40 M0,20 H60" stroke="#C8102E" stroke-width="6"/>' +
-    '</svg>';
+  'use strict';
 
-  var qcFlag =
-    '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" style="border-radius:2px;">' +
-    '<rect width="24" height="16" fill="#003DA5"/>' +
-    '<rect x="10" y="0" width="4" height="16" fill="#fff"/>' +
-    '<rect x="0" y="6" width="24" height="4" fill="#fff"/>' +
-    '<text x="5" y="5.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text>' +
-    '<text x="15" y="5.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text>' +
-    '<text x="5" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text>' +
-    '<text x="15" y="13.5" font-size="5" fill="#fff" font-family="serif">&#9884;</text>' +
+  // === Flag SVGs as data URIs ===
+  var ukSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 60 40">' +
+    '<rect width="60" height="40" fill="%23012169"/>' +
+    '<path d="M0,0 L60,40 M60,0 L0,40" stroke="%23fff" stroke-width="8"/>' +
+    '<path d="M0,0 L60,40" stroke="%23C8102E" stroke-width="4" clip-path="polygon(0 0,30 20,60 0,60 40,30 20,0 40)"/>' +
+    '<path d="M60,0 L0,40" stroke="%23C8102E" stroke-width="4" clip-path="polygon(0 0,30 20,0 40,60 40,30 20,60 0)"/>' +
+    '<path d="M30,0 V40 M0,20 H60" stroke="%23fff" stroke-width="12"/>' +
+    '<path d="M30,0 V40 M0,20 H60" stroke="%23C8102E" stroke-width="6"/>' +
     '</svg>';
+  var ukUri = 'data:image/svg+xml,' + ukSvg;
 
-  // Detect BASE_URL from a meta tag
+  var qcSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16">' +
+    '<rect width="24" height="16" fill="%23003DA5"/>' +
+    '<rect x="10" y="0" width="4" height="16" fill="%23fff"/>' +
+    '<rect x="0" y="6" width="24" height="4" fill="%23fff"/>' +
+    '<text x="5" y="5.5" font-size="5" fill="%23fff" font-family="serif">⚜</text>' +
+    '<text x="15" y="5.5" font-size="5" fill="%23fff" font-family="serif">⚜</text>' +
+    '<text x="5" y="13.5" font-size="5" fill="%23fff" font-family="serif">⚜</text>' +
+    '<text x="15" y="13.5" font-size="5" fill="%23fff" font-family="serif">⚜</text>' +
+    '</svg>';
+  var qcUri = 'data:image/svg+xml,' + qcSvg;
+
+  // === Widget dimensions (must match CSS below) ===
+  var W = 80;    // total width
+  var H = 32;    // total height
+  var PAD_BOTTOM = 20;
+  var PAD_RIGHT = 20;
+  var PAD_BOTTOM_MOBILE = 10;
+  var PAD_RIGHT_MOBILE = 10;
+  var MOBILE_BREAKPOINT = 640;
+
+  // === CSS for the widget (body::after pseudo-element) ===
+  var css = [
+    'body::after {',
+    '  content: "";',
+    '  position: fixed;',
+    '  bottom: ' + PAD_BOTTOM + 'px;',
+    '  right: ' + PAD_RIGHT + 'px;',
+    '  z-index: 2147483647;',
+    '  display: block;',
+    '  width: ' + W + 'px;',
+    '  height: ' + H + 'px;',
+    '  background-color: rgba(255, 255, 255, 0.95);',
+    '  background-image: url("' + ukUri + '"), url("' + qcUri + '");',
+    '  background-repeat: no-repeat, no-repeat;',
+    '  background-position: 8px center, 48px center;',
+    '  background-size: 24px 16px, 24px 16px;',
+    '  border-radius: 8px;',
+    '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);',
+    '  cursor: pointer;',
+    '  pointer-events: auto;',
+    '}',
+    '.dark body::after, html.dark body::after {',
+    '  background-color: rgba(30, 30, 30, 0.95);',
+    '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);',
+    '}',
+    '@media (max-width: ' + MOBILE_BREAKPOINT + 'px) {',
+    '  body::after {',
+    '    bottom: ' + PAD_BOTTOM_MOBILE + 'px;',
+    '    right: ' + PAD_RIGHT_MOBILE + 'px;',
+    '  }',
+    '}',
+  ].join('\n');
+
+  // === Attach CSS via adoptedStyleSheets (React-proof) ===
+  var sheet = null;
+
+  function applyStyles() {
+    if (typeof CSSStyleSheet === 'function' && 'adoptedStyleSheets' in document) {
+      // Modern browsers: attach stylesheet to Document object (not a DOM node)
+      if (!sheet) {
+        sheet = new CSSStyleSheet();
+        sheet.replaceSync(css);
+      }
+      var existing = Array.prototype.slice.call(document.adoptedStyleSheets);
+      if (existing.indexOf(sheet) === -1) {
+        document.adoptedStyleSheets = existing.concat([sheet]);
+      }
+    } else {
+      // Fallback: create <style> element
+      if (!document.getElementById('lang-switcher-style')) {
+        var style = document.createElement('style');
+        style.id = 'lang-switcher-style';
+        style.textContent = css;
+        document.head.appendChild(style);
+      }
+    }
+  }
+
+  // Belt-and-suspenders: re-apply styles every frame in case anything clears them
+  function styleLoop() {
+    applyStyles();
+    requestAnimationFrame(styleLoop);
+  }
+
+  // === BASE_URL detection ===
   var baseUrl = '';
   var metaBase = document.querySelector('meta[name="base-url"]');
   if (metaBase) {
     baseUrl = metaBase.getAttribute('content').replace(/\/$/, '');
   }
 
+  // === Language detection and navigation ===
   function isOnFrench() {
     var path = window.location.pathname;
     var frPrefix = baseUrl + '/fr';
@@ -36,80 +113,50 @@
   function getPageSlug() {
     var path = window.location.pathname;
     if (isOnFrench()) {
-      var frPrefix = baseUrl + '/fr';
-      return path.slice(frPrefix.length) || '/';
+      return path.slice((baseUrl + '/fr').length) || '/';
     }
     return path.slice(baseUrl.length) || '/';
   }
 
   function switchTo(lang) {
     var slug = getPageSlug();
-    var newPath;
-    if (lang === 'fr') {
-      newPath = baseUrl + '/fr' + slug;
-    } else {
-      newPath = baseUrl + slug;
-    }
+    var newPath = lang === 'fr'
+      ? baseUrl + '/fr' + slug
+      : baseUrl + slug;
     localStorage.setItem('myst-lang', lang);
     window.location.href = newPath;
   }
 
-  // Build the widget element (without inserting it)
-  function buildWidget() {
-    var currentLang = isOnFrench() ? 'fr' : 'en';
-
-    var widget = document.createElement('div');
-    widget.id = 'lang-switcher-widget';
-
-    var enLink = document.createElement('a');
-    enLink.innerHTML = ukFlag;
-    enLink.title = 'English';
-    enLink.setAttribute('role', 'button');
-    enLink.setAttribute('aria-label', 'Switch to English');
-    if (currentLang === 'en') enLink.className = 'active';
-    enLink.onclick = function (e) {
-      e.preventDefault();
-      if (currentLang !== 'en') switchTo('en');
+  // === Click handling via document listener (React-proof) ===
+  function getWidgetBounds() {
+    var isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+    var padR = isMobile ? PAD_RIGHT_MOBILE : PAD_RIGHT;
+    var padB = isMobile ? PAD_BOTTOM_MOBILE : PAD_BOTTOM;
+    return {
+      right: window.innerWidth - padR,
+      bottom: window.innerHeight - padB,
+      left: window.innerWidth - padR - W,
+      top: window.innerHeight - padB - H,
     };
-
-    var frLink = document.createElement('a');
-    frLink.innerHTML = qcFlag;
-    frLink.title = 'Français';
-    frLink.setAttribute('role', 'button');
-    frLink.setAttribute('aria-label', 'Passer au français');
-    if (currentLang === 'fr') frLink.className = 'active';
-    frLink.onclick = function (e) {
-      e.preventDefault();
-      if (currentLang !== 'fr') switchTo('fr');
-    };
-
-    widget.appendChild(enLink);
-    widget.appendChild(frLink);
-    return widget;
   }
 
-  function ensureWidget() {
-    if (!document.body) return;
-    if (document.getElementById('lang-switcher-widget')) return;
-    document.body.appendChild(buildWidget());
-  }
-
-  // MutationObserver: fires synchronously before next paint when React
-  // removes our widget, so we can re-append it with zero visible flicker.
-  var observer = new MutationObserver(function () {
-    if (!document.getElementById('lang-switcher-widget')) {
-      ensureWidget();
+  document.addEventListener('click', function (e) {
+    var b = getWidgetBounds();
+    if (e.clientX >= b.left && e.clientX <= b.right &&
+        e.clientY >= b.top && e.clientY <= b.bottom) {
+      e.preventDefault();
+      e.stopPropagation();
+      // Left half = EN flag, right half = FR flag
+      var mid = b.left + W / 2;
+      if (e.clientX < mid) {
+        switchTo('en');
+      } else {
+        switchTo('fr');
+      }
     }
-  });
+  }, true); // capture phase — fires before React
 
-  function startObserver() {
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
-
-  // Backup interval in case MutationObserver misses an edge case
-  setInterval(ensureWidget, 500);
-
-  // Auto-redirect based on saved preference (only on first page load)
+  // === Auto-redirect based on saved preference ===
   function autoRedirect() {
     var pref = localStorage.getItem('myst-lang');
     if (!pref) return;
@@ -121,16 +168,8 @@
     }
   }
 
-  // Initialize
-  if (document.body) {
-    ensureWidget();
-    startObserver();
-    autoRedirect();
-  } else {
-    document.addEventListener('DOMContentLoaded', function () {
-      ensureWidget();
-      startObserver();
-      autoRedirect();
-    });
-  }
+  // === Initialize ===
+  applyStyles();
+  requestAnimationFrame(styleLoop);
+  autoRedirect();
 })();
