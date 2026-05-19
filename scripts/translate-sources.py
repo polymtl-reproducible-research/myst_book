@@ -401,6 +401,30 @@ def create_french_myst_yml():
     print(f"  Created {os.path.relpath(dst, ROOT_DIR)}")
 
 
+def copy_site_option_assets(config):
+    """Copy any file referenced as a relative path in site.options.
+
+    Handles template-provided assets like favicon, logo, logo_dark, style.
+    URLs and non-existent paths are skipped.
+    """
+    options = config.get("site", {}).get("options", {}) or {}
+    for key, value in options.items():
+        if not isinstance(value, str):
+            continue
+        rel = value[2:] if value.startswith("./") else value
+        if rel.startswith(("http://", "https://", "/", "data:")):
+            continue
+        src = os.path.join(ROOT_DIR, rel)
+        if not os.path.isfile(src):
+            continue
+        dst = os.path.join(TRANSLATED_DIR, rel)
+        parent = os.path.dirname(dst)
+        if parent:
+            os.makedirs(parent, exist_ok=True)
+        shutil.copy2(src, dst)
+        print(f"  Copied {rel} (site.options.{key})")
+
+
 def main():
     print("=== Translating MyST sources to French ===")
 
@@ -446,6 +470,9 @@ def main():
     if os.path.exists(bib_src):
         shutil.copytree(bib_src, bib_dst, dirs_exist_ok=True)
         print("  Copied bibliography/")
+
+    # Copy any file referenced from site.options (favicon, logo, style, ...)
+    copy_site_option_assets(config)
 
     # Create French myst.yml
     create_french_myst_yml()
