@@ -29,7 +29,7 @@ myst start
 
 This work was supported by Unique.
 
-:::{figure} ./images/unique-logo.png
+:::{figure} images/unique-logo.png
 :alt: Unique
 :width: 200px
 :align: center
