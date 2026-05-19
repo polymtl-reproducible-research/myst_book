@@ -464,6 +464,13 @@ def main():
         shutil.copytree(figures_src, figures_dst, dirs_exist_ok=True)
         print("  Copied figures/")
 
+    # Copy images directory (content figures, template logos, ...)
+    images_src = os.path.join(ROOT_DIR, "images")
+    images_dst = os.path.join(TRANSLATED_DIR, "images")
+    if os.path.exists(images_src):
+        shutil.copytree(images_src, images_dst, dirs_exist_ok=True)
+        print("  Copied images/")
+
     # Copy bibliography
     bib_src = os.path.join(ROOT_DIR, "bibliography")
     bib_dst = os.path.join(TRANSLATED_DIR, "bibliography")
