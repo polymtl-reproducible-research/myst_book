@@ -40,6 +40,10 @@ project:
 site:
   template: book-theme
   options:
+    favicon: favicon.ico
+    logo: ./images/site_logo.png
+    logo_dark: ./images/site_logo_dark.png
+    style: poly.css
     logo_text: My Book
   actions:
     - title: GitHub
