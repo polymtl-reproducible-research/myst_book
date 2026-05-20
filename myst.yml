@@ -33,6 +33,9 @@ project:
         - file: chapters/01-introduction.md
         - file: chapters/02-methods.md
         - file: chapters/03-results.md
+    - title: Labs
+      children:
+        - file: labs/lab1.md
     - title: Notebooks
       children:
         - file: notebooks/example-notebook.ipynb
