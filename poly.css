@@ -1,0 +1,27 @@
+.backdrop-blur {
+    border-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAAKAgMAAAAoQKtlAAAADFBMVEUB6lNQu+bTAS//YAVa3/anAAAANUlEQVRYhe3RAQ0AMAgDsJm8SUxyGUtIa6GZki1JySuJYMGCBQsWLFiwYMGCBQsWLFjwleAPcnpXKIlXngwAAAAASUVORK5CYII=) 30;
+    border-bottom-width: 5px;
+    border-top-width: 0px;
+}
+
+.hover\:bg-slate-300\/30:hover {
+    background-color: #f1f1f1;
+    border-radius: 0;
+    color: black;
+}
+
+.bg-blue-300\/30 {
+    color: #ff6005;
+    background-color: transparent;
+    border-color: transparent transparent #ff6005;
+    border-width: 1px;
+    border-radius: 0;
+}
+
+.outline-blue-200 {
+    outline-color: transparent transparent transparent #ff6005;
+}
+
+.focus\:outline:focus {
+    outline-style: none;
+}

@@ -4,6 +4,9 @@ _build/
 # Translated source files (generated at build time)
 _translated/
 
+# Portable translation kit (workspace only)
+myst-translation-kit/
+
 # OS files
 .DS_Store
 
@@ -218,3 +221,4 @@ __marimo__/
 #
 mooc
 claude
+external/
