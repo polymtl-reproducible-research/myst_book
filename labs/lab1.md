@@ -1,9 +1,9 @@
 ---
 title: Lab 1 — Reproducibility and Replicability
-date: 2026-03-27
+date: 2026-05-13
 label: lab1
 numbering:
-  heading_2: true
+  heading_2: false
 ---
 
 # Introduction
@@ -19,6 +19,8 @@ The laboratory culminates in two complementary activities:
 
 1. reproducing an existing computational result using the original environment and methodology;
 2. replicating the experiment under modified conditions or environments.
+
+---
 
 # Laboratory Procedure
 
@@ -37,6 +39,8 @@ This account is required in order to grant your team access to a dedicated repos
 ### Borealis
 
 Create an account on [Borealis](https://borealisdata.ca/loginpage.xhtml) using your institutional email address.
+
+---
 
 ## Local Setup
 
@@ -58,9 +62,13 @@ Miniforge is a lightweight Conda distribution used to create and manage reproduc
 
 *To be determined.*
 
+---
+
 ## Organizational Setup
 
 Accept the invitation to the GitHub organization that will be sent to the email address associated with your GitHub account.
+
+---
 
 ## Onboarding with Github
 
@@ -77,6 +85,8 @@ Select the option **Create a new branch and start a pull request**.
 
 ### Merge the pull request
 *Screenshot to add*
+
+---
 
 ## Reproducibility
 
@@ -165,6 +175,7 @@ The person who did not create the PR must merge the PR
 ### Delete the branch
 Once the PR is merged, delete the branch it was sourced from (not the main)
 
+---
 
 ## Replicability
 
@@ -252,6 +263,8 @@ Once the review is approved, merge the pull request into `main`.
 ### Delete the Branch
 
 After the merge is completed, delete the source branch (not `main`).
+
+---
 
 # Evaluation
 *To be determined*
