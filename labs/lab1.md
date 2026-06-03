@@ -3,7 +3,7 @@ title: Lab 1 — Reproducibility and Replicability
 date: 2026-03-27
 label: lab1
 numbering:
-  heading_2: true
+  heading_2: false
 ---
 
 # Introduction
