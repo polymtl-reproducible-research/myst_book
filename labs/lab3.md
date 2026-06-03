@@ -19,10 +19,14 @@ Template here : [Worldbank README template](https://github.com/worldbank/wb-repr
 ## Add a license to your repository
 
 ## Add a Code of Conduct
-TODO : Find a template
+TODO : Find a template <br>
+Students will find it <br>
+Github template could be used
 
 ## Add Contribution file
-TODO : Find a template
+TODO : Find a template <br>
+Students will find it <br>
+Github template could be used
 
 ## Add files to your repo
 
@@ -109,6 +113,7 @@ Source form worldbank : [Isolating programming environments for Python using Con
 ## Change the README.md file
 
 ## Create a gitignore file
+You can use the Github gitgnore template
 
 ## Follow the appropriate workflow 
 branches, commit, PR, merge
@@ -125,7 +130,6 @@ Possible examples include:
 - Verify that the Conda environment can be created successfully.
 - Execute the preprocessing and analysis scripts.
 - Generate the notebook automatically from scripts.
-- Validate that the notebook executes from start to finish without errors.
 - Check that required repository files are present (README, LICENSE, CONTRIBUTING, etc.).
 
 ## Requirements
