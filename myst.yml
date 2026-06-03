@@ -36,6 +36,8 @@ project:
     - title: Labs
       children:
         - file: labs/lab1.md
+        - file: labs/lab2.md
+        - file: labs/lab3.md 
     - title: Notebooks
       children:
         - file: notebooks/example-notebook.ipynb
