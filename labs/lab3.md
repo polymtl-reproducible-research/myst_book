@@ -65,9 +65,9 @@ project-root/ <br>
 ├── figures/ <br>
 └── results/ <br>
 
-## Create a Virtual environment
+## Create a virtual environment
 
-## Create a sript to download the data
+## Create a script to download the data
 - load data from borealis
 
 ## Create a script to preprocess the data 
@@ -79,14 +79,14 @@ filtering rows (basic criteria)
 
 ## Create a script to analyse your data
 
-Usage of pandas, numpy and matplotlib are recommended libraries
+Usage of pandas, NumPy and matplotlib are recommended libraries
 
-### compute 2–3 metrics 
+### Compute 2–3 metrics 
 - mean
 - correlation 
-- grouped stat
+- grouped statistics
 
-### produce 1–2 visualizations
+### Produce 1–2 visualizations
 
 A visualization must:
 
@@ -102,7 +102,7 @@ Examples:
 
 ### Comment your code
 
-## Create a Notebook to record the results
+## Create a notebook to record the results
 
 Figures should be presented and explained in the notebook
 
@@ -113,7 +113,7 @@ Source form worldbank : [Isolating programming environments for Python using Con
 ## Change the README.md file
 
 ## Create a gitignore file
-You can use the Github gitgnore template
+You can use the GitHub gitgnore template
 
 ## Follow the appropriate workflow 
 branches, commit, PR, merge
