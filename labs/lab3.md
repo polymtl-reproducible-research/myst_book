@@ -9,7 +9,7 @@ numbering:
 # Introduction
 source: https://book.the-turing-way.org/
 
-# Github Environment
+# GitHub Environment
 
 ## Create a repository
 
