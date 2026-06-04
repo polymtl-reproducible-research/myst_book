@@ -62,7 +62,7 @@ Miniforge is a lightweight Conda distribution used to create and manage reproduc
 
 Accept the invitation to the GitHub organization that will be sent to the email address associated with your GitHub account.
 
-## Onboarding with Github
+## Onboarding with GitHub
 
 ### Modify a File from the GitHub Interface
 
@@ -91,7 +91,7 @@ git clone https://github.com/johndoe/notarealrepo.git
 :::
 
 :::{hint}
-Use git status to take a look at what is going on
+Use git status to take a look at what is going on.
 :::
 
 ### Clone the Repository
