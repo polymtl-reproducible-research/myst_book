@@ -157,13 +157,13 @@ git push --set-upstream origin <branch-name>
 ```
 
 ### Create a pull request
-Use GitHub interface to create the pull request. 
+Use the GitHub interface to create the pull request (PR). 
 
 ### Merge the pull request
 The person who did not create the PR must merge the PR
 
 ### Delete the branch
-Once the PR is merged, delete the branch it was sourced from (not the main)
+Once the PR is merged, delete the source branch (not `main`).
 
 
 ## Replicability
