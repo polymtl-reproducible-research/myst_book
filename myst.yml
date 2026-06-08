@@ -38,8 +38,6 @@ project:
         - file: chapters/03-results.md
     - title: Labs
       children:
-        - file: labs/lab1.md
-        - file: labs/lab2.md
         - file: labs/lab3.md 
     - title: Notebooks
       children:
