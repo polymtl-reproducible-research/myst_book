@@ -3,7 +3,7 @@ title: Lab 1 — Reproducibility and Replicability
 date: 2026-03-27
 label: lab1
 numbering:
-  heading_2: true
+  heading_2: false
 ---
 
 # Introduction
@@ -20,13 +20,13 @@ The laboratory culminates in two complementary activities:
 1. reproducing an existing computational result using the original environment and methodology;
 2. replicating the experiment under modified conditions or environments.
 
-# Laboratory Procedure
+# Laboratory procedure
 
 :::{important}
 Before starting the laboratory, ensure that you have selected a team on the course Moodle page and identified a teammate.
 :::
 
-## Account Creation
+## Account creation
 
 ### GitHub
 
@@ -34,11 +34,7 @@ Create a [GitHub](https://github.com/signup) account and provide both your usern
 
 This account is required in order to grant your team access to a dedicated repository, which will be used throughout the laboratory activities and for the organizational setup phase.
 
-### Borealis
-
-Create an account on [Borealis](https://borealisdata.ca/loginpage.xhtml) using your institutional email address.
-
-## Local Setup
+## Local setup
 
 ### Visual Studio Code
 
@@ -54,29 +50,62 @@ Install [Miniforge](https://conda-forge.org/download/).
 
 Miniforge is a lightweight Conda distribution used to create and manage reproducible Python environments. It is configured by default to use the community-maintained `conda-forge` package repository, which is widely adopted in scientific and research environments.
 
-### GitHub Desktop
-
-*To be determined.*
-
-## Organizational Setup
+## Organizational setup
 
 Accept the invitation to the GitHub organization that will be sent to the email address associated with your GitHub account.
 
-## Onboarding with Github
+## Onboarding with GitHub
 
-### Modify a File from the GitHub Interface
+### Modify a file from the GitHub interface
 
-Modify the `README.md` file directly from the GitHub web interface.
+Modify the `README.md` file directly from the GitHub web interface [](#edit-readme-1). <br>
 
-*Screenshot to add*
 
-Select the option **Create a new branch and start a pull request**.
+```{figure} ..\images\images_lab1\edit_readme_1.png
+:label: edit-readme-1
+:alt: First step to edit the README.md file with the Github interface 
+:align: center
+```
 
-### Open the Pull Request
-*Screenshot to add*
+Add your group number [](#edit-readme-2).
+
+```{figure} ..\images\images_lab1\edit_readme_2.png
+:label: edit-readme-2
+:alt: Second step to edit the README.md file with the Github interface 
+:align: center
+```
+
+Select the option **Create a new branch and start a pull request** [](#edit-readme-3).
+
+```{figure} ..\images\images_lab1\edit_readme_3.png
+:label: edit-readme-3
+:alt: Third step to edit the README.md file with the Github interface 
+:align: center
+```
+
+### Open the pull request
+
+```{figure} ..\images\images_lab1\open_PR_1.png
+:label: open-PR-1
+:alt: First step to open a pull request with the Github interface 
+:align: center
+```
 
 ### Merge the pull request
-*Screenshot to add*
+
+```{figure} ..\images\images_lab1\merge_PR_1.png
+:label: merge-PR-1
+:alt: First step to merge a pull request with the Github interface 
+:align: center
+```
+
+### Delete the unused branch
+
+```{figure} ..\images\images_lab1\delete_branch_1.png
+:label: delete-branch-1
+:alt: Delete a branch after merge with the Github interface 
+:align: center
+```
 
 ## Reproducibility
 
@@ -91,16 +120,16 @@ git clone https://github.com/johndoe/notarealrepo.git
 :::
 
 :::{hint}
-Use git status to take a look at what is going on
+Use git status to take a look at what is going on.
 :::
 
-### Clone the Repository
+### Clone the repository
 
 ```bash
 git clone <repository-url>
 ```
 
-### Create a New Branch
+### Create a new branch
 
 ```bash
 git switch -c <branch-name>
@@ -110,15 +139,15 @@ git switch -c <branch-name>
 The `-c` option creates a new branch. Use a meaningful and descriptive branch name.
 :::
 
-### Create the Virtual Environment
+### Create the virtual environment
 
 Follow the instructions provided in the `README.md` file.
 
-### Data Analysis
+### Data analysis
 
 Follow the instructions provided in the `README.md` file.
 
-### Add Modified Files to the Staging Area
+### Add modified files to the staging area
 
 Add the generated figure using:
 
@@ -134,7 +163,7 @@ git add .
 
 to stage all modified, added, or deleted files.
 
-### Create a Commit
+### Create a commit
 
 ```bash
 git commit -m "<commit-message>"
@@ -144,7 +173,7 @@ git commit -m "<commit-message>"
 Use a meaningful and descriptive commit message.
 :::
 
-### Push the Changes
+### Push the changes
 
 ```bash
 git push
@@ -157,30 +186,29 @@ git push --set-upstream origin <branch-name>
 ```
 
 ### Create a pull request
-Use GitHub interface to create the pull request. 
+Use the GitHub interface to create the pull request (PR). 
 
 ### Merge the pull request
 The person who did not create the PR must merge the PR
 
 ### Delete the branch
-Once the PR is merged, delete the branch it was sourced from (not the main)
-
+Once the PR is merged, delete the source branch (not `main`).
 
 ## Replicability
 
-### Return to the Main Branch
+### Return to the `main` branch
 
 ```bash
 git switch main
 ```
 
-### Pull the Latest Changes
+### Pull the latest changes
 
 ```bash
 git pull origin main
 ```
 
-### Create a New Branch
+### Create a new branch
 
 ```bash
 git switch -c <branch-name>
@@ -190,7 +218,7 @@ git switch -c <branch-name>
 Use a meaningful and descriptive branch name.
 :::
 
-### Modify the Analysis Parameters
+### Modify the analysis parameters
 
 Open the `analysis.py` file and change the values of:
 
@@ -201,11 +229,11 @@ END_YEAR = ...
 
 This modification represents a new experimental configuration, which is part of the concept of replicability.
 
-### Run the Analysis Again
+### Run the analysis again
 
 Execute the analysis using the instructions provided in the `README.md` file.
 
-### Create a Commit
+### Create a commit
 
 Use the VS Code Source Control interface to create your commit.
 
@@ -213,15 +241,15 @@ Use the VS Code Source Control interface to create your commit.
 Use a meaningful and descriptive commit message.
 :::
 
-### Push the Branch
+### Push the branch
 
 Use the VS Code Source Control interface to synchronize the changes.
 
-### Create a Pull Request
+### Create a pull tequest
 
 Use the GitHub interface to create a pull request for the new branch.
 
-### Review the Pull Request
+### Review the pull request
 A pull request review differs from a simple comment.  
 When starting a review, GitHub groups comments together and allows the reviewer to formally approve the changes or request modifications.
 
@@ -229,11 +257,11 @@ The other teammate must:
 - start a review on GitHub
 - leave a comment requesting a modification to the selected year range
 
-### Apply the Requested Changes
+### Apply the requested changes
 
 Modify the `START_YEAR` and/or `END_YEAR` values again according to the review comments.
 
-### Resolve the Review
+### Resolve the review
 
 After applying the requested changes:
 
@@ -245,11 +273,11 @@ git push
 
 Then resolve the review conversation on GitHub.
 
-### Merge the Pull Request
+### Merge the pull request
 
 Once the review is approved, merge the pull request into `main`.
 
-### Delete the Branch
+### Delete the branch
 
 After the merge is completed, delete the source branch (not `main`).
 
