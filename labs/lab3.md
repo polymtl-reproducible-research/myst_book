@@ -143,3 +143,19 @@ Possible examples include:
 ---
 
 # Evaluation 
+
+| Task | Description | Points | Explanation |
+| ---- | ----------- | ------ | ---------------------------------- |
+| README.md | All required sections are complete and clearly documented | 15 | -2 if a section is incomplete. -3 if a section is missing. |
+| License | An appropriate open-source license is provided for the repository | 5 | -5 if the license is missing or inappropriate. |
+| Code of Conduct | A complete Code of Conduct is present in the repository | 5 | -2.5 if the Code of Conduct is incomplete. -5 if it is missing. |
+| CONTRIBUTING.md | A complete CONTRIBUTING.md file is present in the repository | 5 | -2.5 if CONTRIBUTING.md is incomplete. -5 if it is missing. |
+| Branch Protection Rules | Required branch protection rules are configured correctly | 3 | -1 for each missing or incorrectly configured rule. |
+| Issues | Repository issues follow the assignment requirements | 6 | -2 for each missing issue. -1 for each unmet requirement. |
+| Folder Structure | Repository follows the required project structure | 3 | -0.5 for each missing or incorrectly placed file/folder. |
+| Virtual Environment | A working Conda environment is provided and documented | 3 | -1 if environment.yml is missing. -1 if the environment cannot be created. -1 if setup instructions are missing or unclear. |
+| Scripts | Download, preprocessing, and analysis scripts are present and functional | 15 | 5 points per script. -1 per code smell (unused code, duplicated code, hard-coded paths, unclear variable names, etc.). |
+| Notebook | Notebook clearly presents and explains the analysis results | 10 | -2 for each missing required section. -1 for each figure quality issue. (title, explanation, unit, etc.)|
+| .gitignore | Appropriate files and directories are excluded from version control | 5 | -1 for each major omission (environment files, raw data, temporary files, caches, etc.). |
+| Workflow | Git workflow demonstrates appropriate use of branches, commits, pull requests, and reviews | 20 | -5 if branches are not used appropriately. -5 if pull requests are missing. -5 if reviews are missing. -5 if commit history does not demonstrate regular project progression. |
+| AI_Prompts | AI usage is properly documented and attributed | 5 | -2.5 if AI usage is partially documented. -5 if AI usage is not documented. |
