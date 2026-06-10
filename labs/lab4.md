@@ -34,21 +34,21 @@ You can include equations using LaTeX syntax:
 
 $$
 E = mc^2
-$$ (eq-energy)
+$$ (lab-4-eq-energy)
 
-Reference it as [](#eq-energy).
+Reference it as [](#lab-4-eq-energy).
 
 You can include figures using this syntax:
 
 ```{figure} ../images/site_logo.png
-:label: fig-placeholder
+:label: lab-4-fig-placeholder
 :alt: A placeholder figure
 :align: center
 
 A placeholder figure. Replace with your own image.
 ```
 
-Reference it as [](#fig-placeholder).
+Reference it as [](#lab-4-fig-placeholder).
 
 You can include tables using this syntax:
 
