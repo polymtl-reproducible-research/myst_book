@@ -61,7 +61,7 @@ Accept the invitation to the GitHub organization that will be sent to the email 
 Modify the `README.md` file directly from the GitHub web interface [](#edit-readme-1). <br>
 
 
-```{figure} ..\images\images_lab1\edit_readme_1.png
+```{figure} ..\images\lab1\edit_readme_1.png
 :label: edit-readme-1
 :alt: First step to edit the README.md file with the Github interface 
 :align: center
@@ -69,7 +69,7 @@ Modify the `README.md` file directly from the GitHub web interface [](#edit-read
 
 Add your group number [](#edit-readme-2).
 
-```{figure} ..\images\images_lab1\edit_readme_2.png
+```{figure} ..\images\lab1\edit_readme_2.png
 :label: edit-readme-2
 :alt: Second step to edit the README.md file with the Github interface 
 :align: center
@@ -77,7 +77,7 @@ Add your group number [](#edit-readme-2).
 
 Select the option **Create a new branch and start a pull request** [](#edit-readme-3).
 
-```{figure} ..\images\images_lab1\edit_readme_3.png
+```{figure} ..\images\lab1\edit_readme_3.png
 :label: edit-readme-3
 :alt: Third step to edit the README.md file with the Github interface 
 :align: center
@@ -85,7 +85,7 @@ Select the option **Create a new branch and start a pull request** [](#edit-read
 
 ### Open the pull request
 
-```{figure} ..\images\images_lab1\open_PR_1.png
+```{figure} ..\images\lab1\open_PR_1.png
 :label: open-PR-1
 :alt: First step to open a pull request with the Github interface 
 :align: center
@@ -93,7 +93,7 @@ Select the option **Create a new branch and start a pull request** [](#edit-read
 
 ### Merge the pull request
 
-```{figure} ..\images\images_lab1\merge_PR_1.png
+```{figure} ..\images\lab1\merge_PR_1.png
 :label: merge-PR-1
 :alt: First step to merge a pull request with the Github interface 
 :align: center
@@ -101,7 +101,7 @@ Select the option **Create a new branch and start a pull request** [](#edit-read
 
 ### Delete the unused branch
 
-```{figure} ..\images\images_lab1\delete_branch_1.png
+```{figure} ..\images\lab1\delete_branch_1.png
 :label: delete-branch-1
 :alt: Delete a branch after merge with the Github interface 
 :align: center
