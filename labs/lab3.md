@@ -9,42 +9,39 @@ numbering:
 # Introduction
 source: https://book.the-turing-way.org/
 
+:::{attention}
+TODO : Write the introduction part
+:::
+---
+
 # GitHub Environment
 
 ## Create a repository
 
-## Edit the README.md file
+## Add and edit the README.md file
 Template here : [Worldbank README template](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/README_Template.md)
 
 ## Add a license to your repository
+Source : [Licensing a repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
 
 ## Add a Code of Conduct
-TODO : Find a template <br>
-Students will find it <br>
-Github template could be used
+Source : [Adding a code of conduct to your project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project)
 
-## Add Contribution file
-TODO : Find a template <br>
-Students will find it <br>
-Github template could be used
+## Add CONTRIBUTING.md file
+Source : [Adding a CONTRIBUTING.md file](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors)
 
-## Add files to your repo
-
-## Add rules 
+## Add branch protection rules 
+Source : [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches)
 ### Protect main 
 ### PR required with one review at least
 ### Branch naming convention
-
-## Explore the insight features
-TODO : looks if pertinent
-
-## Explore the Projects features on Github
 
 ## Add issues
 - at least 3 issues,
 - at least one assigned to each member,
 - at least one closed via PR.
 
+---
 # Code environment
 
 ## Create a folder structure
@@ -104,7 +101,10 @@ Examples:
 
 ## Create a notebook to record the results
 
-Figures should be presented and explained in the notebook
+Figures should be presented and explained in the notebook.
+:::{attention}
+TODO : Explain further the notebook part
+:::
 
 ## Export the virtual environment using Conda
 
@@ -117,6 +117,8 @@ You can use the GitHub gitgnore template
 
 ## Follow the appropriate workflow 
 branches, commit, PR, merge
+
+---
 
 # Bonus — Continuous Integration (CI)
 
@@ -137,5 +139,7 @@ Possible examples include:
 - Create at least one GitHub Actions workflow in `.github/workflows/`.
 - Document the workflow in the README.
 - The workflow must execute automatically when a Pull Request is opened or updated.
+
+---
 
 # Evaluation 
