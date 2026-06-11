@@ -77,18 +77,8 @@ Topics to address:
 - Scientific Collaboration
 - External Review and Feedback
 - Sustainability of a Reproducible Project
+- Cost of reproductibility
 - Benefits and Limitations
-
-### Cost of reproductibility
-Reflect on the effort required to develop a reproducible project.
-
-Topics to address:
-
-- Additional effort required
-- Documentation burden
-- Repository maintenance
-- Technical and documentation debt
-- Trade-offs between speed and reproducibility
 
 ### Conclusion
 
