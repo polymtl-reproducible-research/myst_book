@@ -29,6 +29,10 @@ The built site will be in `_build/html/`.
 
 This repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages on push to `main`. Enable GitHub Pages in your repository settings (Settings > Pages > Source: GitHub Actions).
 
+## Contributing
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project, including branch naming conventions, workflow, and development setup.
+
 ## Project Structure
 
 ```
