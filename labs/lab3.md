@@ -155,7 +155,7 @@ Possible examples include:
 | Folder Structure | Repository follows the required project structure | 3 | -0.5 for each missing or incorrectly placed file/folder. |
 | Virtual Environment | A working Conda environment is provided and documented | 3 | -1 if environment.yml is missing. -1 if the environment cannot be created. -1 if setup instructions are missing or unclear. |
 | Scripts | Download, preprocessing, and analysis scripts are present and functional | 15 | 5 points per script. -1 per code smell (unused code, duplicated code, hard-coded paths, unclear variable names, etc.). |
-| Notebook | Notebook clearly presents and explains the analysis results | 10 | -2 for each missing required section. -1 for each figure quality issue. (title, explanation, unit, etc.)|
+| Report | Report clearly presents and explains the analysis results | 10 | -2 for each missing required section. -1 for each figure quality issue. (title, explanation, unit, etc.)|
 | .gitignore | Appropriate files and directories are excluded from version control | 5 | -1 for each major omission (environment files, raw data, temporary files, caches, etc.). |
 | Workflow | Git workflow demonstrates appropriate use of branches, commits, pull requests, and reviews | 20 | -5 if branches are not used appropriately. -5 if pull requests are missing. -5 if reviews are missing. -5 if commit history does not demonstrate regular project progression. |
 | AI_Prompts | AI usage is properly documented and attributed | 5 | -2.5 if AI usage is partially documented. -5 if AI usage is not documented. |
