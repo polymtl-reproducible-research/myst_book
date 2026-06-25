@@ -22,9 +22,9 @@ This exercise simulates real-world scientific software and open-source developme
 
 Teams will be paired together. During the first phase of the laboratory, each team will evaluate the repository of another team.
 
-The evaluation team will:
+The reviewer team will:
 
-1. Fork and inspect the assigned repository.
+1. **Fork** and inspect the assigned repository.
 2. Attempt to reproduce the project's results.
 3. Evaluate the repository using the reviewer checklist provided with the lab.
 4. Identify reproducibility issues, documentation problems, workflow deficiencies, or software defects.
@@ -49,7 +49,7 @@ This ensures that every team experiences both perspectives of collaborative open
 
 ## Repository Evaluation
 
-TODO : a custom checklist inspired by JOSS checklist.
+A review checklist is provided with the laboratory materials. The reviewers must complete the checklist and submit it through a Pull Request to the repository under review.  
 
 ## Reproducibility Attempt
 
@@ -66,7 +66,11 @@ If reproduction is not successful, reviewers should clearly identify the blockin
 
 ## Reporting Issues
 
-When a reproducibility problem, documentation gap, or software defect is identified, the evaluation team must create a GitHub Issue in the repository of the evaluated team.
+When a reproducibility problem, documentation gap, or software defect is identified, the reviewers must create a GitHub Issue in the repository of the evaluated team.
+
+:::{important}
+If no problem, gap or defect is identified. The reviewers must use the issue to ask for a new feature.
+:::
 
 <!-- A high-quality issue should:
 
@@ -76,13 +80,14 @@ When a reproducibility problem, documentation gap, or software defect is identif
 - Provide logs, screenshots, or other relevant evidence.
 - Propose possible directions for resolution. -->
 
-Communication between the reviewer and maintainer teams should be timely and professional. Responses to project-related communications should be provided within 48 hours.
+Communication between the reviewers and maintainers should be timely and professional. Responses to project-related communications should be provided within 48 hours.
 
 ## Contributing Fixes
 
-The evaluation team should attempt to resolve identified issues via a fork and a Pull Request.
+The reviewers should attempt to resolve identified issues via a [fork and a Pull Reques](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
 
 An adequate workflow is expected and will be evaluated.
+
 <!-- The expected workflow is:
 
 1. Fork the repository.
