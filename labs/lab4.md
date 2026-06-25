@@ -34,7 +34,7 @@ The evaluation team will:
 The team being evaluated will act as repository maintainers. Their responsibilities include:
 
 1. Responding to issues opened by the reviewers.
-2. Discussing potential solutions and ficing issues.
+2. Discussing potential solutions and fixing issues.
 3. Reviewing incoming pull requests.
 4. Integrating accepted contributions following an appropriate development workflow.
 
