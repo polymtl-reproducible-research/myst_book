@@ -133,9 +133,9 @@ The assessment will consider:
 
 | Criterion | Description |
 |------------|-------------|
-| Repository Evaluation | Thoroughness and quality of the reproducibility review |
+| Repository Evaluation | Thoroughness of the reproducibility review |
 | Issue Reporting | Clarity, professionalism, and usefulness of GitHub Issues |
-| Pull Request Quality | Technical quality and justification of proposed changes |
+| Pull Request | Technical appropriatness and justification of proposed changes |
 | Pull Request Review | Constructiveness and rigor of code and documentation reviews |
 | Development Workflow | Appropriate use of branches, commits, Pull Requests, and repository maintenance practices |
 | Communication | Professional interactions between reviewers and maintainers throughout the process |
