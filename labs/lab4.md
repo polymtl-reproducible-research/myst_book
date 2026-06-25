@@ -141,12 +141,3 @@ The assessment will consider:
 | Communication | Professional interactions between reviewers and maintainers throughout the process. Communications are timely. |
 
 The emphasis of this laboratory is not solely on identifying defects, but on demonstrating effective open science practices and collaborative maintenance workflows.
-
-# Question (will be removed)
-- How do we evaluate the checklist? Do we (chargés de lab) use the same checklist that the team will be provided in the lab3 and looks if the students checklist match what we have in lab3?
-- Both team should try to fix the bug to encourage discussion or only one?
-- How much info do we want to give them for the standards? Do uncomment the commented lines or not?
-- If there is no problem? We will give them a repo with bugs but how will we evaluate the maintainer role?
-  - 2 options :
-    1. During the evaluation of TP3, we will see if it is a "perfect repo" with no bugs, so we could make a copy of their repo and introduce bugs and code with no bugs (they could do a diff to see the problem otherwise)
-    2. We could provide students with a repository created by the teaching team (for example, the Lab 1 repository) that intentionally contains bugs. Students would act as maintainers of this repository, requiring them to work with a codebase they did not originally develop.
