@@ -136,13 +136,13 @@ Teams will be evaluated on both their reviewer and maintainer roles.
 
 The assessment will consider:
 
-| Criterion | Description |
-|------------|-------------|
-| Repository Evaluation | Thoroughness of the reproducibility review |
-| Issue Reporting | Clarity, professionalism, and usefulness of GitHub Issues |
-| Pull Request | Technical appropriatness and justification of proposed changes |
-| Pull Request Review | Constructiveness and rigor of code and documentation reviews |
-| Development Workflow | Appropriate use of branches, commits, Pull Requests, and repository maintenance practices |
-| Communication | Professional interactions between reviewers and maintainers throughout the process. Communications are timely. |
+| Criterion | Weight | Description |
+|------------|--------|-------------|
+| Repository Evaluation | 10% | Thoroughness of the reproducibility review and quality assessment of the repository |
+| Issue Reporting | 20% | Clarity, professionalism, and usefulness of GitHub Issues |
+| Pull Request | 20% | Technical appropriateness and justification of proposed changes |
+| Pull Request Review | 20% | Constructiveness and rigor of code and documentation reviews |
+| Development Workflow | 15% | Appropriate use of branches, commits, Pull Requests, and repository maintenance practices |
+| Communication | 15% | Professional interactions between reviewers and maintainers, including timeliness |
 
 The emphasis of this laboratory is not solely on identifying defects, but on demonstrating effective open science practices and collaborative maintenance workflows.

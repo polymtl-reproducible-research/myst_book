@@ -36,7 +36,13 @@
 
 ### Documentation
 
-- [ ] **Installation instructions:** Is there a clearly-stated list of dependencies? Ideally these should be handled with an automated package management solution.
+<!-- - [ ] **Installation instructions:** Is there a clearly-stated list of dependencies? Ideally these should be handled with an automated package management solution. -->
 - [ ] **Example usage:** Do the authors include examples of how to use the software (ideally to solve real-world analysis problems).
 - [ ] **Functionality documentation:** Is the core functionality of the software documented to a satisfactory level (e.g., API method documentation)?
 - [ ] **Community guidelines:** Are there clear guidelines for third parties wishing to 1. Contribute to the software 2. Report issues or problems with the software 3. Seek support
+
+### Reproductibility
+- [ ]
+
+### TO ADD:
+- How to cite?
