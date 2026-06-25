@@ -76,7 +76,7 @@ When a reproducibility problem, documentation gap, or software defect is identif
 - Provide logs, screenshots, or other relevant evidence.
 - Propose possible directions for resolution. -->
 
-Communication should remain professional, constructive, and focused on improving the project.
+Communication between the reviewer and maintainer teams should be timely and professional. Responses to project-related communications should be provided within 48 hours.
 
 ## Contributing Fixes
 
@@ -138,7 +138,7 @@ The assessment will consider:
 | Pull Request | Technical appropriatness and justification of proposed changes |
 | Pull Request Review | Constructiveness and rigor of code and documentation reviews |
 | Development Workflow | Appropriate use of branches, commits, Pull Requests, and repository maintenance practices |
-| Communication | Professional interactions between reviewers and maintainers throughout the process |
+| Communication | Professional interactions between reviewers and maintainers throughout the process. Communications are timely. |
 
 The emphasis of this laboratory is not solely on identifying defects, but on demonstrating effective open science practices and collaborative maintenance workflows.
 
