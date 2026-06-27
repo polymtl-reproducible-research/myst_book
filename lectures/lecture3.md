@@ -1,57 +1,56 @@
 ---
-title: Lecture 3 — Subject
+title: Code management with version control
 date: 2026-06-10
 label: lecture3
 ---
 
-# Heading 1
+# Introduction
 
-Some references for MyST formatting:
+**Paragraph 1**: 
+* Lorem ipsum
 
-* [60 seconds cheatsheet](https://commonmark.org/help/).
-* [MyST "get started"](https://mystmd.org/guide/quickstart-myst-markdown).
-* [MyST overview of "directives" and "roles"](https://mystmd.org/guide/syntax-overview).
-* [MyST reference for "directives"](https://mystmd.org/guide/directives).
-* [MyST reference for "roles"](https://mystmd.org/guide/roles).
 
-## Heading 2
+**Paragraph 2**: 
+* Lorem ipsum
 
-This horizontal rule is exactly 80 characters long:
---------------------------------------------------------------------------------
 
-:::{admonition} Note
-:class: note
-This is a placeholder admonition. Replace with your own content.
-:::
+# Code management
 
-To cite another page of the MyST book, you can use the `label` defined at the
-top of the file, with this syntax: see [](#lecture1).
+**Paragraph 1**: 
+* Lorem ipsum
 
-To cite a bibtex reference, use the syntax {cite:p}`sample2026` and make sure
-it appears in `bibliography/references.bib`.
 
-You can include equations using LaTeX syntax:
+**Paragraph 2**: 
+* Lorem ipsum
 
-$$
-E = mc^2
-$$ (lec-3-eq-energy)
+# Version control
 
-Reference it as [](#lec-3-eq-energy).
+**Paragraph 1**: 
+* Lorem ipsum
 
-You can include figures using this syntax:
 
-```{figure} ../images/site_logo.png
-:label: lec-3-fig-placeholder
-:alt: A placeholder figure
-:align: center
+**Paragraph 2**: 
+* Lorem ipsum
 
-A placeholder figure. Replace with your own image.
-```
+# Software distribution
 
-Reference it as [](#lec-3-fig-placeholder).
+**Paragraph 1**: 
+* Lorem ipsum
 
-You can include tables using this syntax:
 
-| Parameter | Value | Unit |
-|-----------|-------|------|
-| Example   | 42    | --   |
+**Paragraph 2**: 
+* Lorem ipsum
+
+# Applications in research
+
+**Paragraph 1**: 
+* Lorem ipsum
+
+
+**Paragraph 2**: 
+* Lorem ipsum
+
+# Resources
+
+Semantic versioning: https://semver.org/
+
