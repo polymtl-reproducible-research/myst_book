@@ -6,6 +6,14 @@ label: lecture3
 
 # Introduction
 
+```{figure} http://www.phdcomics.com/comics/archive/phd052810s.gif
+:alt: PhD comic about versionning via filenames
+:width: 700px
+:align: center
+PHD Comics - Jorge Cham ([website](https://phdcomics.com/comics/archive.php?comicid=1323))
+
+```
+
 **Paragraph 1**: 
 * Lorem ipsum
 
@@ -14,7 +22,7 @@ label: lecture3
 * Lorem ipsum
 
 
-# Code management
+# Code managementy
 
 **Paragraph 1**: 
 * Lorem ipsum
@@ -28,9 +36,13 @@ label: lecture3
 **Paragraph 1**: 
 * Lorem ipsum
 
-
 **Paragraph 2**: 
 * Lorem ipsum
+
+```{iframe} /public/git-branch-workflow.html
+:width: 100%
+:height: 560
+```
 
 # Software distribution
 

@@ -25,3 +25,17 @@
 .focus\:outline:focus {
     outline-style: none;
 }
+
+.myst-iframe,
+[class*="iframe"] {
+  position: relative;
+  padding-bottom: 0 !important;
+  height: auto !important;
+}
+
+.myst-iframe iframe,
+[class*="iframe"] iframe {
+  position: static !important;
+  width: 100%;
+  height: 480px !important;
+}

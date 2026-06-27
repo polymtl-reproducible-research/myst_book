@@ -20,6 +20,8 @@ project:
   abbreviations:
     # Add abbreviations here, e.g.:
     # MRI: Magnetic resonance imaging
+  static_files:
+    - public  
   exclude:
     - README.md
     - LICENSE
@@ -54,3 +56,6 @@ site:
   actions:
     - title: GitHub
       url: https://github.com/polymtl-reproducible-research/myst_book
+  parts:
+    head: |
+      <script src="/public/iframe-resize.js" defer></script>
