@@ -17,16 +17,24 @@ This laboratory introduces the principles of reproducible research through the d
 ## Create a repository
 
 ## Add and edit the README.md file
-Template here : [Worldbank README template](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/README_Template.md)
+
+The `README.md` file is the entry point to your project. It provides the information needed for others to understand your work, reproduce your results, and reuse your repository. 
+
+You may use the following template as a starting point:
+
+Template: [World Bank README template](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/README_Template.md)
 
 ## Add a license to your repository
-Source : [Licensing a repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
+
+A [license](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) defines how others are allowed to use, modify, and share your project. 
 
 ## Add a Code of Conduct
-Source : [Adding a code of conduct to your project](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project)
+
+A [Code of Conduct](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project) establishes clear expectations for respectful and inclusive collaboration within your project. 
 
 ## Add CONTRIBUTING.md file
-Source : [Adding a CONTRIBUTING.md file](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors)
+
+A [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) file explains how others can participate in your project. It defines clear guidelines for submitting changes, reporting issues, and following project conventions. 
 
 ## Add branch protection rules 
 Source : [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches)
