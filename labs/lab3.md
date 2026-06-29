@@ -7,11 +7,9 @@ numbering:
 ---
 
 # Introduction
-source: https://book.the-turing-way.org/
 
-:::{attention}
-TODO : Write the introduction part
-:::
+This laboratory introduces the principles of reproducible research through the development of a complete open science project. You will organize a repository following community best practices, manage a reproducible computational environment, and build a documented data analysis workflow using Git and GitHub.
+
 ---
 
 # GitHub Environment
