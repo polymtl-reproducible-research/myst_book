@@ -37,10 +37,20 @@ A [Code of Conduct](https://docs.github.com/en/communities/setting-up-your-proje
 A [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) file explains how others can participate in your project. It defines clear guidelines for submitting changes, reporting issues, and following project conventions. 
 
 ## Add branch protection rules 
-Source : [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches)
-### Protect main 
-### PR required with one review at least
+
+[Branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches) rules help maintain the integrity of your repository by preventing direct or unreviewed changes to critical branches. 
+
+### Protect `main`
+
+The `main` branch should always remain stable and represent a working version of the project. Direct pushes to this branch must be prevented so that all changes go through a controlled review process.
+
+### Pull requests required with at least one review
+
+All changes must be submitted through pull requests and reviewed by at least one other team member. This ensures that no one approves their own changes and promotes collaborative validation of the work.
+
 ### Branch naming convention
+
+A consistent branch naming convention must be followed to keep the project history clear and readable. This helps avoid confusion and makes it easier to understand the purpose of each branch.
 
 ## Add issues
 - at least 3 issues,
