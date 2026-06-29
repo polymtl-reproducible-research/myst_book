@@ -53,9 +53,13 @@ All changes must be submitted through pull requests and reviewed by at least one
 A consistent branch naming convention must be followed to keep the project history clear and readable. This helps avoid confusion and makes it easier to understand the purpose of each branch.
 
 ## Add issues
-- at least 3 issues,
-- at least one assigned to each member,
-- at least one closed via PR.
+
+You must use GitHub Issues to structure and track the work of your project. Each issue should represent a clear task or objective, and the work should be distributed across the team. 
+
+You need:
+- At least 3 issues,
+- At least one assigned to each member,
+- At least one closed via PR.
 
 ---
 # Code environment
