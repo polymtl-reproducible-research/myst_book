@@ -1,6 +1,6 @@
 ---
 title: Lab 2 — Research Data Management and Dissemination
-date: 2026-04-XX
+date: 2026-05-20
 label: lab2
 numbering:
   heading_2: false
@@ -10,77 +10,61 @@ numbering:
 
 :::{important}
 **Submission deadline:** *To be determined*  
-**Team formation:** This laboratory must be completed in teams of two students.
+**Team formation:** You must complete this laboratory in a team of two students.
 :::
 
-This laboratory introduces research data management practices in the context of open and reproducible science. Students will work through the complete lifecycle of a research dataset, from organization and documentation to publication and dissemination.
-
-The objectives are to:
-- structure and standardize research data;
-- document datasets using metadata and README files;
-- track dataset evolution using Git and changelogs;
-- apply appropriate licensing strategies;
-- publish datasets in a research data repository;
-- reflect on differences between data management systems and dissemination platforms.
+This laboratory introduces research data management practices in the context of open and reproducible science. You will work through the complete lifecycle of a research dataset, from organization and documentation to publication and dissemination.
 
 ---
 
 # Dataset Selection
 
-Students must choose one dataset among the following options.
+You must choose one dataset among the following options.
 
 ## Option 1 — Own Research Data (Recommended)
 
 Use unpublished research data from your own work or laboratory activities.
 
 :::{warning}
-Ensure that the dataset does not contain sensitive, confidential, or unauthorized information.
+Ensure that your dataset does not contain sensitive, confidential, or unauthorized information.
 :::
 
 ## Option 2 — Existing Public Dataset
 
 Select an existing published dataset that is not already hosted on Borealis.
 
-The dataset must be identified using OpenAlex:
+You must identify the dataset using OpenAlex:
 https://openalex.org/
 
 ---
 
 ### Finding a dataset using OpenAlex
 
-OpenAlex is a scholarly knowledge graph that can be used to identify research outputs, including datasets and dataset-associated publications.
+OpenAlex is a scholarly knowledge graph that you can use to identify research outputs, including datasets and dataset-associated publications.
 
-Students should:
+You should:
 
 1. Go to https://openalex.org/
-2. Use keywords related to their domain (e.g., “neuroimaging dataset”, “climate data”, “microscopy images”, etc.)
+2. Use keywords related to your domain (e.g., "neuroimaging dataset", "climate data", "microscopy images", etc.)
 3. Open a result that corresponds to a research publication or dataset-related output
-4. Inspect the “Works” page and associated links (DOI, publisher, repository links)
+4. Inspect the "Works" page and associated links (DOI, publisher, repository links)
 5. Identify whether the underlying data is accessible and reusable
-
-:::{important}
-Students must ensure that they are selecting the dataset itself (or a clearly identifiable data source), not only a paper describing unavailable data.
-:::
 
 ---
 
 ### License requirement (CC0 / CC-BY only)
 
-Only datasets released under one of the following licenses may be used:
+You may only use datasets released under one of the following licenses:
 
 - CC0 (public domain dedication)
 - CC-BY (Creative Commons Attribution)
 
 These licenses are commonly used in open research data publishing and ensure compatibility with redistribution in Borealis.
 
-Students must verify the license explicitly by checking:
+You must verify the license explicitly by checking:
 - the dataset repository page (preferred);
-- the publisher’s data availability statement;
+- the publisher's data availability statement;
 - or the associated DOI landing page.
-
-:::{warning}
-If the license is unclear, missing, or restrictive (e.g., CC-BY-NC, CC-BY-ND, proprietary licenses), the dataset must not be used.
-:::
 
 ---
 
@@ -88,7 +72,7 @@ If the license is unclear, missing, or restrictive (e.g., CC-BY-NC, CC-BY-ND, pr
 
 ## Community Standards
 
-You must identify whether a community standard applies to their data.
+You must identify whether a community standard applies to your data.
 
 Examples include:
 - BIDS (neuroimaging);
@@ -98,13 +82,13 @@ Examples include:
 
 ## Repository Structure
 
-The dataset must be organized in a reproducible structure such as:
+You must organize your dataset in a reproducible structure such as:
 
 - `data/`
 - `code/`
 - `docs/`
 
-All transformations, renaming, or preprocessing operations must be implemented in reproducible scripts stored under `code/`.
+You must implement all transformations, renaming, or preprocessing operations in reproducible scripts stored under `code/`.
 
 ---
 
@@ -112,7 +96,7 @@ All transformations, renaming, or preprocessing operations must be implemented i
 
 ## README File
 
-Each project must include a `README.md` containing:
+Your project must include a `README.md` containing:
 
 - dataset origin and provenance;
 - description of structure;
@@ -123,11 +107,11 @@ Each project must include a `README.md` containing:
 - usage instructions;
 - licensing and citation information.
 
-The README must be sufficient for another researcher to understand and reuse the dataset independently.
+Your README must be sufficient for another researcher to understand and reuse your dataset independently.
 
 ## Metadata
 
-Students must include appropriate metadata describing:
+You must include appropriate metadata describing:
 - authorship;
 - acquisition context;
 - data type and modality;
@@ -147,11 +131,11 @@ The workflow is divided into dataset publication first, followed later by code p
 
 ## Platform Access and Account Setup
 
-Students must create an account on the Borealis demo platform:
+You must create an account on the Borealis demo platform:
 
 - https://demo.borealisdata.ca/
 
-They must verify access to the Polytechnique Dataverse:
+You must verify access to the Polytechnique Dataverse:
 
 - https://demo.borealisdata.ca/dataverse/polytechnique
 
@@ -171,7 +155,7 @@ This serves as the parent container for all student submissions.
 
 ## Dataset Publication Workflow
 
-Each team must publish their dataset in Borealis following these steps:
+You must publish your dataset in Borealis following these steps:
 
 ### Create Dataset
 Inside `INGXXXX`, create a new dataset via **Add Data → New Dataset**.
@@ -196,16 +180,16 @@ Upload all dataset files ensuring:
 - minimal unnecessary compression.
 
 ### License Definition
-Assign a license appropriate to the dataset:
+Assign a license appropriate to your dataset:
 - ensure compatibility with reused data;
-- document justification in README.
+- document justification in your README.
 
 ### Submit for Review
-Submit dataset as a **draft (provisional version)** for instructor review before publication.
+Submit your dataset as a **draft (provisional version)** for instructor review before publication.
 
 ## Dataset Evolution, Versioning, and CHANGELOG
 
-After the initial upload to Borealis, students must perform controlled modifications to their dataset in order to generate a new version and document its evolution.
+After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution.
 
 This step is required to demonstrate dataset versioning practices commonly used in research data management systems.
 
@@ -213,7 +197,7 @@ This step is required to demonstrate dataset versioning practices commonly used 
 
 ### Dataset modifications
 
-Students must apply at least one modification to the dataset already uploaded on Borealis. Examples include:
+You must apply at least one modification to the dataset you already uploaded on Borealis. Examples include:
 
 - adding new data files;
 - removing incorrect or irrelevant data;
@@ -221,7 +205,7 @@ Students must apply at least one modification to the dataset already uploaded on
 - updating metadata or file structure;
 - modifying preprocessing decisions.
 
-The modification must be meaningful and reproducible.
+Your modification must be meaningful and reproducible.
 
 ---
 
@@ -229,19 +213,19 @@ The modification must be meaningful and reproducible.
 
 Each modification must correspond to a new dataset version.
 
-Students must assign a version tag following semantic versioning principles:
+You must assign a version tag following semantic versioning principles:
 
 - **patch**: small corrections (e.g., fixing errors, minor updates)
 - **minor**: addition of new data without breaking structure
 - **major**: structural or format changes that affect compatibility
 
-The chosen version type must be justified in the CHANGELOG.
+You must justify the chosen version type in your CHANGELOG.
 
 ---
 
 ### CHANGELOG.md
 
-Students must maintain a `CHANGELOG.md` file describing all dataset modifications.
+You must maintain a `CHANGELOG.md` file describing all dataset modifications.
 
 Each entry must include:
 - date of modification;
@@ -253,7 +237,7 @@ Each entry must include:
 
 ### Derivative data generation
 
-Students must process part of the dataset to generate derivative data.
+You must process part of your dataset to generate derivative data.
 
 Examples include:
 - filtered or cleaned subsets;
@@ -261,31 +245,31 @@ Examples include:
 - extracted features or summaries;
 - format conversions.
 
-Derivative data must be:
+Your derivative data must be:
 - reproducible from the original dataset;
-- generated using scripts stored in the repository.
+- generated using scripts stored in your repository.
 
 ---
 
 ### Storage of derivatives
 
-Derivative datasets must be stored separately from raw data using a clear structure, for example:
+You must store derivative datasets separately from raw data using a clear structure, for example:
 
 - raw data: original uploaded dataset
 - derivatives: processed or transformed outputs
 
-All processing steps must be implemented in scripts located in the `code/` directory.
+You must implement all processing steps in scripts located in the `code/` directory.
 
 ---
 
 ### Reproducibility across versions
 
-Students must verify that their processing pipeline can be re-executed on at least two dataset versions:
+You must verify that your processing pipeline can be re-executed on at least two dataset versions:
 
 - the original uploaded version;
 - the modified version after dataset evolution.
 
-They must observe and document:
+You must observe and document:
 - whether the pipeline runs without errors on both versions;
 - whether outputs remain comparable;
 - whether modifications affect reproducibility of results.
@@ -300,7 +284,7 @@ The goal is not only to modify the dataset, but to ensure that dataset evolution
 
 *work in progress*
 
-Students will explore automated dataset publishing using GitHub integration tools.
+You will explore automated dataset publishing using GitHub integration tools.
 
 ### Purpose
 This step demonstrates:
