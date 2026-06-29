@@ -282,4 +282,13 @@ Once the review is approved, merge the pull request into `main`.
 After the merge is completed, delete the source branch (not `main`).
 
 # Evaluation
-*To be determined*
+
+The evaluation is based on the following criteria:
+
+| Criterion | Weight | Description |
+|-----------|:------:|-------------|
+| Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branches, -5% for each poorly named commit messages, -10% for each incoherency in the flow|
+| Reproducibility | **25%** | The original analysis is successfully reproduced by following the provided instructions. |
+| Replicability | **25%** | The analysis is successfully replicated after modifying the experimental parameters. |
+| Pull request workflow | **15%** | Pull requests are correctly created, reviewed, and merged using the required workflow. Each Pull Request counts for 5%.|
+| Collaboration | **5%** | Both teammates follow the required collaborative workflow specified in the laboratory instructions. |
