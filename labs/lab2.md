@@ -80,7 +80,7 @@ Examples include:
 
 ---
 
-## Repository Structure
+<!-- ## Repository Structure
 
 You must organize your dataset in a reproducible structure such as:
 
@@ -90,7 +90,7 @@ You must organize your dataset in a reproducible structure such as:
 
 You must implement all transformations, renaming, or preprocessing operations in reproducible scripts stored under `code/`.
 
----
+--- -->
 
 # Documentation
 
@@ -131,9 +131,9 @@ The workflow is divided into dataset publication first, followed later by code p
 
 ## Platform Access and Account Setup
 
-You must create an account on the Borealis demo platform:
+<!-- You must create an account on the Borealis demo platform:
 
-- https://demo.borealisdata.ca/
+- https://demo.borealisdata.ca/ -->
 
 You must verify access to the Polytechnique Dataverse:
 
@@ -149,7 +149,7 @@ Report any access issues before proceeding with dataset submission.
 
 A shared Dataverse is created:
 
-- Name: `INGXXXX`
+- Name: `ING8100`
 
 This serves as the parent container for all student submissions.
 
@@ -158,16 +158,15 @@ This serves as the parent container for all student submissions.
 You must publish your dataset in Borealis following these steps:
 
 ### Create Dataset
-Inside `INGXXXX`, create a new dataset via **Add Data → New Dataset**.
+Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
 
 ### Metadata Entry
 Complete metadata fields including:
 - title;
-- authors and affiliations;
-- description;
+- authors;
+- identifier (optional);
+- point of contact;
 - keywords;
-- methodology;
-- experimental or acquisition context.
 
 :::{note}
 Metadata quality is an evaluation criterion. Poor metadata reduces dataset usability and reproducibility.
@@ -186,6 +185,16 @@ Assign a license appropriate to your dataset:
 
 ### Submit for Review
 Submit your dataset as a **draft (provisional version)** for instructor review before publication.
+
+TODO : Explication que ce sera accepté par nous puis les modifications pourront être faites pour avoir du versionage.
+
+---
+
+## Github integration
+
+TODO : Ajouter intégration GitHub
+
+---
 
 ## Dataset Evolution, Versioning, and CHANGELOG
 
@@ -211,7 +220,7 @@ Your modification must be meaningful and reproducible.
 
 ### Versioning and semantic tagging
 
-Each modification must correspond to a new dataset version.
+<!-- Each modification must correspond to a new dataset version.
 
 You must assign a version tag following semantic versioning principles:
 
@@ -219,12 +228,14 @@ You must assign a version tag following semantic versioning principles:
 - **minor**: addition of new data without breaking structure
 - **major**: structural or format changes that affect compatibility
 
-You must justify the chosen version type in your CHANGELOG.
+You must justify the chosen version type in your CHANGELOG. -->
+
+TODO : Explication version majeure et version mineure
 
 ---
 
 ### CHANGELOG.md
-
+<!--
 You must maintain a `CHANGELOG.md` file describing all dataset modifications.
 
 Each entry must include:
@@ -233,11 +244,13 @@ Each entry must include:
 - description of modification;
 - affected files or data components.
 
----
+--- -->
+
+TODO : demander au niveau du CHANGELOG.md à Julien
 
 ### Derivative data generation
 
-You must process part of your dataset to generate derivative data.
+<!-- You must process part of your dataset to generate derivative data.
 
 Examples include:
 - filtered or cleaned subsets;
@@ -247,18 +260,24 @@ Examples include:
 
 Your derivative data must be:
 - reproducible from the original dataset;
-- generated using scripts stored in your repository.
+- generated using scripts stored in your repository. -->
+
+TODO: Est-ce qu'on souhaite avoir les jeux de données brutes et les données traitées sur Boréalis?
+
+En général, il y a les données traitées et pas les données brutes sur Boréalis.
 
 ---
 
 ### Storage of derivatives
 
-You must store derivative datasets separately from raw data using a clear structure, for example:
+<!-- You must store derivative datasets separately from raw data using a clear structure, for example:
 
 - raw data: original uploaded dataset
 - derivatives: processed or transformed outputs
 
-You must implement all processing steps in scripts located in the `code/` directory.
+You must implement all processing steps in scripts located in the `code/` directory. -->
+
+TODO: voir encore une fois si on garde les raw et les derivatives.
 
 ---
 
@@ -274,11 +293,14 @@ You must observe and document:
 - whether outputs remain comparable;
 - whether modifications affect reproducibility of results.
 
+TODO : Voir pour le rapport pour les modifications, on veut voir le raisonnement au niveau des modifications qui ont été faites. 
+
 :::{note}
 The goal is not only to modify the dataset, but to ensure that dataset evolution remains traceable and computationally reproducible.
 :::
 
 ---
+
 
 ## GitHub Integration for Data Transfer
 
@@ -299,7 +321,7 @@ This step demonstrates:
 - Documentation:
   https://learn.scholarsportal.info/all-guides/borealis/files/#GitHub-Integration
 
----
+  ---
 
 # Evaluation
 *to be determined*
