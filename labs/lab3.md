@@ -1,7 +1,7 @@
 ---
-title: Lab 1 — Subject
+title: Lab 3 — Subject
 date: 2026-06-10
-label: lab1
+label: lab3
 ---
 
 # Heading 1
@@ -34,21 +34,21 @@ You can include equations using LaTeX syntax:
 
 $$
 E = mc^2
-$$ (lab-1-eq-energy)
+$$ (lab-3-eq-energy)
 
-Reference it as [](#lab-1-eq-energy).
+Reference it as [](#lab-3-eq-energy).
 
 You can include figures using this syntax:
 
 ```{figure} ../images/site_logo.png
-:label: lab-1-fig-placeholder
+:label: lab-3-fig-placeholder
 :alt: A placeholder figure
 :align: center
 
 A placeholder figure. Replace with your own image.
 ```
 
-Reference it as [](#lab-1-fig-placeholder).
+Reference it as [](#lab-3-fig-placeholder).
 
 You can include tables using this syntax:
 
