@@ -16,13 +16,15 @@ This laboratory introduces the principles of reproducible research through the d
 
 ## Create a repository
 
-## Add and edit the README.md file
+## Add and edit the `README.md` file
 
 The `README.md` file is the entry point to your project. It provides the information needed for others to understand your work, reproduce your results, and reuse your repository. 
 
 You may use the following template as a starting point:
 
 Template: [World Bank README template](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/README_Template.md)
+
+The `README.md` should be updated throughout the lab as you build your project.
 
 ## Add a license to your repository
 
@@ -34,7 +36,7 @@ A [Code of Conduct](https://docs.github.com/en/communities/setting-up-your-proje
 
 ## Add CONTRIBUTING.md file
 
-A [CONTRIBUTING.md](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) file explains how others can participate in your project. It defines clear guidelines for submitting changes, reporting issues, and following project conventions. 
+A [`CONTRIBUTING.md`](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) file explains how others can participate in your project. It defines clear guidelines for submitting changes, reporting issues, and following project conventions. 
 
 ## Add branch protection rules 
 
