@@ -14,9 +14,11 @@ This laboratory introduces the principles of reproducible research through the d
 
 # GitHub Environment
 
-## Create a repository
+## Repository
 
-## Add and edit the `README.md` file
+Create a repository in the ING8100 organization.
+
+## `README.md` file
 
 The `README.md` file is the entry point to your project. It provides the information needed for others to understand your work, reproduce your results, and reuse your repository. 
 
@@ -26,19 +28,27 @@ Template: [World Bank README template](https://github.com/worldbank/wb-reproduci
 
 The `README.md` should be updated throughout the lab as you build your project.
 
-## Add a license to your repository
+## License
 
 A [license](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) defines how others are allowed to use, modify, and share your project. 
 
-## Add a Code of Conduct
+## Code of Conduct
 
 A [Code of Conduct](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project) establishes clear expectations for respectful and inclusive collaboration within your project. 
 
-## Add CONTRIBUTING.md file
+## CONTRIBUTING.md file
 
 A [`CONTRIBUTING.md`](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) file explains how others can participate in your project. It defines clear guidelines for submitting changes, reporting issues, and following project conventions. 
 
-## Add branch protection rules 
+## AI_Prompts file
+
+## AI_Prompts file
+
+Create an `AI_Prompts.md` file that documents any prompts used during this assignment. Recording your prompts promotes transparency and allows others to better understand how AI was used throughout the project.
+
+When writing your prompts, pay particular attention to the **Description** component of the [4D Framework](https://www-cdn.anthropic.com/334975cdec18f744b4fa511dc8518bd8d119d29d.pdf), as providing clear context is essential for obtaining useful and reproducible results. To learn more about effective prompting, you are encouraged to explore Anthropic's free [AI Fluency Framework Foundations](https://anthropic.skilljar.com/ai-fluency-framework-foundations) course. 
+
+## Branch protection rules 
 
 [Branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches) rules help maintain the integrity of your repository by preventing direct or unreviewed changes to critical branches. 
 
@@ -54,7 +64,7 @@ All changes must be submitted through pull requests and reviewed by at least one
 
 A consistent branch naming convention must be followed to keep the project history clear and readable. This helps avoid confusion and makes it easier to understand the purpose of each branch.
 
-## Add issues
+## Issues
 
 You must use GitHub Issues to structure and track the work of your project. Each issue should represent a clear task or objective, and the work should be distributed across the team. 
 
@@ -66,7 +76,7 @@ You need:
 ---
 # Code environment
 
-## Create a folder structure
+## Folder structure
 
 A clear folder structure separates raw data, processed data, code, results, and documentation in a consistent way, making the workflow easier to understand and navigate. 
 
@@ -87,15 +97,15 @@ project-root/ <br>
 ├── figures/ <br>
 └── results/ <br>
 
-## Create a virtual environment
+## Virtual environment
 
 Create a virtual environment to isolate project dependencies and ensure a reproducible computational setup. This prevents conflicts with other projects and avoids polluting your global environment.
 
-## Create a script to download the data
+## Download the data
 
 Create a script that retrieves the dataset from Borealis. This step ensures that data acquisition is automated and reproducible, rather than performed manually.
 
-## Create a script to preprocess the data
+## Preprocess the data
 
 Create a preprocessing script to clean and standardize the raw data before analysis. This may include :
 - missing values handling
@@ -104,7 +114,7 @@ filtering rows (basic criteria)
 - simple type conversion (string → numeric/date)
 - removing obvious outliers if justified
 
-## Create a script to analyze your data
+## Analyze your data
 
 Create a script that performs the data analysis and generates the results. The script should compute summary metrics and produce visualizations that help answer your research question. The use of Pandas, NumPy, and Matplotlib is recommended.
 
@@ -134,24 +144,27 @@ Examples include:
 
 Write clear, readable code and include comments where they improve understanding. Comments should explain the purpose or reasoning behind the code rather than restating what individual statements do. Refer to the [MIT Communication Lab guidelines on coding and comment style](https://mitcommlab.mit.edu/broad/commkit/coding-and-comment-style/) for recommendations.
 
-## Create a notebook to record the results
+## Report
 
-Figures should be presented and explained in the notebook.
-:::{attention}
-TODO : Explain further the notebook part
-:::
+Create a report in Markdown (`.md`) format that presents your project and communicates the results of your analysis. The report should briefly introduce the research question, describe the dataset, summarize the methodology, and discuss the main findings.
 
-## Export the virtual environment using Conda
+Include the figures generated by your analysis and explain what they show. Each figure should be referenced in the text and accompanied by a short interpretation that relates it to your research question.
 
-Source form worldbank : [Isolating programming environments for Python using Conda](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/environment-instructions/python.md)
+## Virtual environment export
 
-## Change the README.md file
+Export your Conda environment to an `environment.yml` file. This file captures the project's dependencies and allows others to recreate the same computational environment, improving the reproducibility of your analysis.
 
-## Create a gitignore file
-You can use the GitHub gitgnore template
+Refer to [Isolating programming environments for Python using Conda](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/environment-instructions/python.md).
 
-## Follow the appropriate workflow 
-branches, commit, PR, merge
+## `.gitignore` file
+
+The `.gitignore` file specifies which files and directories should not be tracked by Git. It is commonly used to exclude temporary files, caches, virtual environments, and large or generated data files that should not be stored in the repository. Keeping these files out of version control helps maintain a clean and reproducible project.
+
+You may use the GitHub `.gitignore` template as a starting point. 
+
+## Collaborative Git workflow
+
+Follow the collaborative Git workflow introduced in the first lab. Develop your work on separate branches, write meaningful commit messages, and integrate changes through pull requests. This workflow improves traceability, facilitates code review, and helps maintain a stable project history.
 
 ---
 
