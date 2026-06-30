@@ -13,7 +13,7 @@ numbering:
 **Team formation:** You must complete this laboratory in a team of two students.
 :::
 
-This laboratory introduces research data management practices in the context of open and reproducible science. You will work through the complete lifecycle of a research dataset, from organization and documentation to publication and dissemination.
+This laboratory introduces research data management practices in the context of open and reproducible science. You will work through the final steps of the lifecycle of a research dataset, from organization and documentation to publication and dissemination.
 
 ---
 
@@ -40,15 +40,18 @@ https://openalex.org/
 
 ### Finding a dataset using OpenAlex
 
-OpenAlex is a scholarly knowledge graph that you can use to identify research outputs, including datasets and dataset-associated publications.
+OpenAlex is a database that you can use to identify research outputs, including datasets and dataset-associated publications.
 
 You should:
 
 1. Go to https://openalex.org/
-2. Use keywords related to your domain (e.g., "neuroimaging dataset", "climate data", "microscopy images", etc.)
-3. Open a result that corresponds to a research publication or dataset-related output
-4. Inspect the "Works" page and associated links (DOI, publisher, repository links)
-5. Identify whether the underlying data is accessible and reusable
+2. Use keywords related to your domain (e.g., "neuroimaging", "climate", "microscopy", etc.)
+3. In the "Type" field, select "Dataset"
+4. In the "License" field select "CC0" or "CC-BY".
+5. Use additional fields that you consider important.
+6. Open a result that corresponds to a research publication or dataset-related output
+7. Inspect the "Works" page and associated links (DOI, publisher, repository links)
+8. Identify whether the underlying data is accessible and reusable
 
 ---
 
@@ -63,7 +66,7 @@ These licenses are commonly used in open research data publishing and ensure com
 
 You must verify the license explicitly by checking:
 - the dataset repository page (preferred);
-- the publisher's data availability statement;
+- the authors' data availability statement;
 - or the associated DOI landing page.
 
 ---
@@ -161,15 +164,16 @@ You must publish your dataset in Borealis following these steps:
 Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
 
 ### Metadata Entry
-Complete metadata fields including:
+Complete obligatory metadata fields including:
 - title;
 - authors;
-- identifier (optional);
+- identifier;
 - point of contact;
 - keywords;
+- description;
 
 :::{note}
-Metadata quality is an evaluation criterion. Poor metadata reduces dataset usability and reproducibility.
+Metadata quality is an evaluation criterion. Poor metadata reduces dataset usability and reproducibility. Add additional information in the relevant metadata fields depending on disciplinary norms, community standards, your judgement, etc.
 :::
 
 ### Upload Data
