@@ -200,13 +200,16 @@ TODO : Ajouter intégration GitHub
 
 ---
 
-## Dataset Evolution, Versioning, and CHANGELOG
+## Dataset Evolution and Versioning
 
 After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution.
 
 This step is required to demonstrate dataset versioning practices commonly used in research data management systems.
 
 ---
+
+### Dataset file modification - Metadata
+TODO : Rajouter description pour ajout de metadonnées pour les fichiers
 
 ### Dataset modifications
 
@@ -285,7 +288,9 @@ TODO: voir encore une fois si on garde les raw et les derivatives.
 
 ---
 
-### Reproducibility across versions
+### Reproducibility across versions 
+
+TODO : voir si on garde tout dépendant de si on a des données traités ou pas.
 
 You must verify that your processing pipeline can be re-executed on at least two dataset versions:
 
@@ -329,3 +334,12 @@ This step demonstrates:
 
 # Evaluation
 *to be determined*
+
+- Notes de versionnement 
+- Structure des dossiers et fichiers dans Boréalis
+- README.me ++ 
+- Metadonnée ++
+- Rapport sur jeu de données (nom du répertoire où le jeux de données à été trouvé, auteur, article associé au jeu de donnée, pourquoi il a été choisi)
+- Intégration GitHub
+- License
+- Gestion des fichiers (fichier restreint, fichier en embargo, description des fichiers)
