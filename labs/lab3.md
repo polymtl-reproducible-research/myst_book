@@ -65,7 +65,10 @@ You need:
 # Code environment
 
 ## Create a folder structure
-example
+
+A clear folder structure separates raw data, processed data, code, results, and documentation in a consistent way, making the workflow easier to understand and navigate. 
+
+For example :
 
 project-root/ <br>
 │ <br>
@@ -84,40 +87,50 @@ project-root/ <br>
 
 ## Create a virtual environment
 
-## Create a script to download the data
-- load data from borealis
+Create a virtual environment to isolate project dependencies and ensure a reproducible computational setup. This prevents conflicts with other projects and avoids polluting your global environment.
 
-## Create a script to preprocess the data 
+## Create a script to download the data
+
+Create a script that retrieves the dataset from Borealis. This step ensures that data acquisition is automated and reproducible, rather than performed manually.
+
+## Create a script to preprocess the data
+
+Create a preprocessing script to clean and standardize the raw data before analysis. This may include :
 - missing values handling
 - renaming / formatting columns
 filtering rows (basic criteria)
 - simple type conversion (string → numeric/date)
 - removing obvious outliers if justified
 
-## Create a script to analyse your data
+## Create a script to analyze your data
 
-Usage of pandas, NumPy and matplotlib are recommended libraries
+Create a script that performs the data analysis and generates the results. The script should compute summary metrics and produce visualizations that help answer your research question. The use of Pandas, NumPy, and Matplotlib is recommended.
 
-### Compute 2–3 metrics 
-- mean
-- correlation 
-- grouped statistics
+### Compute 2–3 metrics
+
+Compute at least two or three meaningful metrics from your dataset. Typical examples include:
+
+- Mean
+- Correlation
+- Grouped statistics
 
 ### Produce 1–2 visualizations
 
-A visualization must:
+Produce one or two visualizations that communicate your results effectively. Each visualization must:
 
-- be tied to the research question OR a computed metric
-be interpretable without code
-- include labels + short explanation
+- Be directly related to the research question or a computed metric.
+- Be understandable without reading the source code.
+- Include appropriate axis labels, a title, and a short explanation.
 
-Examples:
+Examples include:
 
-- scatter plot + correlation
-- bar plot of grouped means
-- distribution plot + summary stats
+- Scatter plot with a correlation analysis.
+- Bar plot of grouped means.
+- Distribution plot with summary statistics.
 
 ### Comment your code
+
+Write clear, readable code and include comments where they improve understanding. Comments should explain the purpose or reasoning behind the code rather than restating what individual statements do. Refer to the [MIT Communication Lab guidelines on coding and comment style](https://mitcommlab.mit.edu/broad/commkit/coding-and-comment-style/) for recommendations.
 
 ## Create a notebook to record the results
 
