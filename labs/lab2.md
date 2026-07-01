@@ -108,9 +108,11 @@ Your project must include a `README.md` containing:
 - preprocessing steps;
 - software requirements;
 - usage instructions;
+- abbreviation descriptions;
+- associated publications;
 - licensing and citation information.
 
-Your README must be sufficient for another researcher to understand and reuse your dataset independently.
+Your README must be sufficient for another researcher to understand and reuse your dataset independently. Include any other information you judge pertinent to facilitate others' interpretation of the dataset.
 
 ## Metadata
 
@@ -128,7 +130,7 @@ You must include appropriate metadata describing:
 
 This section describes the publication workflow for research datasets using the Borealis Dataverse platform (demo environment). The dissemination process is a key component of FAIR data practices (Findable, Accessible, Interoperable, Reusable).
 
-The workflow is divided into dataset publication first, followed later by code publication.
+The workflow is divided into the data deposit first, followed later by code deposit, followed by the publication of the data and code.
 
 ---
 
@@ -138,9 +140,10 @@ The workflow is divided into dataset publication first, followed later by code p
 
 - https://demo.borealisdata.ca/ -->
 
-You must verify access to the Polytechnique Dataverse:
+You must verify access to the ING8100 Collection on Polytechnique Dataverse:
 
 - https://demo.borealisdata.ca/dataverse/polytechnique
+TODO : Update with link to ING8100 collection once published
 
 :::{important}
 Report any access issues before proceeding with dataset submission.
@@ -164,7 +167,7 @@ You must publish your dataset in Borealis following these steps:
 Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
 
 ### Metadata Entry
-Complete obligatory metadata fields including:
+Complete obligatory metadata fields including minimally:
 - title;
 - authors;
 - identifier;
@@ -182,15 +185,16 @@ Upload all dataset files ensuring:
 - consistent structure;
 - minimal unnecessary compression.
 
+:::{note} Borealis automatically unzips all .zip files. If you have a zipped file, double-zip the file.:::
+:::{note} Ensure that your files and folders are properly structured *before* uploading it into Borealis.:::
+
 ### License Definition
 Assign a license appropriate to your dataset:
 - ensure compatibility with reused data;
 - document justification in your README.
 
-### Submit for Review
-Submit your dataset as a **draft (provisional version)** for instructor review before publication.
-
-TODO : Explication que ce sera accepté par nous puis les modifications pourront être faites pour avoir du versionage.
+### Save Dataset
+Once you have completed the metadata, license and uploaded the data, select **Save Dataset** This will create a **draft (unpublished)** dataset. Make any further modifications to the dataset as necessary by choosing **Edit Dataset**
 
 ---
 
@@ -200,16 +204,24 @@ TODO : Ajouter intégration GitHub
 
 ---
 
+## File level editing
+Add embargoes, tags, file level descriptions or restrict access by choosing **Edit Files**
+
+---
+### Submit for Review
+Submit your dataset to change its status to **draft (in review)** for instructor review before publication.
+
+:::{note} Ensure that the dataset is all complete as possible before submitting it for review. Once the dataset is published, it can be edited, but cannot be removed. Borealis' linear versionning system ensures that all previous versions of a dataset remain accessible to all users.:::
+
+TODO : Explication que ce sera accepté par nous puis les modifications pourront être faites pour avoir du versionage.
+
 ## Dataset Evolution and Versioning
 
-After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution.
+After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution. When you edit your published dataset a new **draft (unpublished)** version of your dataset. You can then repeat the steps above before submitting it for review by the instructors again.
 
 This step is required to demonstrate dataset versioning practices commonly used in research data management systems.
 
 ---
-
-### Dataset file modification - Metadata
-TODO : Rajouter description pour ajout de metadonnées pour les fichiers
 
 ### Dataset modifications
 
@@ -232,8 +244,8 @@ Your modification must be meaningful and reproducible.
 You must assign a version tag following semantic versioning principles:
 
 - **patch**: small corrections (e.g., fixing errors, minor updates)
-- **minor**: addition of new data without breaking structure
-- **major**: structural or format changes that affect compatibility
+- **minor**: small corrections or changes to existing data, code and metadata (e.g. fixing errors, metadata modifications, etc.) Dataset will pass from v.1.0 → v.1.1)
+- **major**: major changes or updates to data or code (e.g. new data files, adding restricted access, etc.) Dataset will pass from v.1.0 → v.2.0)
 
 You must justify the chosen version type in your CHANGELOG. -->
 
