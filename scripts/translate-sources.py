@@ -457,13 +457,6 @@ def main():
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             shutil.copy2(src, dst)
 
-    # Copy figures directory
-    figures_src = os.path.join(ROOT_DIR, "figures")
-    figures_dst = os.path.join(TRANSLATED_DIR, "figures")
-    if os.path.exists(figures_src):
-        shutil.copytree(figures_src, figures_dst, dirs_exist_ok=True)
-        print("  Copied figures/")
-
     # Copy images directory (content figures, template logos, ...)
     images_src = os.path.join(ROOT_DIR, "images")
     images_dst = os.path.join(TRANSLATED_DIR, "images")
