@@ -39,7 +39,8 @@ Strong presentations will move beyond describing what was done and will instead 
 * How these experiences relate to reproducible and sustainable scientific research.
 :::
 
-### Introduction 
+### Introduction (1 min)
+
 Introduce your team and your research project. 
 
 Topics to address:
@@ -48,7 +49,8 @@ Topics to address:
 - What artifacts were produced (data, code, documentation, etc.)?
 - How did your understanding of reproducible research evolve throughout the course?
 
-### Project Experience
+### Project Experience (2-3 min)
+
 Critically analyze the project developed by your team.
 
 :::{hint}
@@ -57,14 +59,12 @@ Critically analyze the project developed by your team.
 
 Topics to address:
 
-- Good design choices
 - Challenges encountered during development
-- Problems discovered during evaluation
 - Repository organization and management
-- Collaboration workflow and branching strategy
 - What would you do differently if repeating the project?
 
-### Open Science in pratice
+### Collaboration in Open Science (3-4 min)
+
 Reflect on how the activities performed throughout the course relate to real-world scientific collaboration and reproducible research.
 
 :::{hint}
@@ -73,14 +73,20 @@ Focus: what your experience reveals about how research should be organized, shar
 
 Topics to address:
 
-- Dissemination of Research Artifacts
-- Scientific Collaboration
 - External Review and Feedback
-- Sustainability of a Reproducible Project
 - Cost of reproductibility
 - Benefits and Limitations
 
-### Conclusion
+### Selected thematic focus (1-2 min)
+
+Each presentation must integrate one of the following themes:
+
+- Dissemination of Research Artifacts with Borealis  
+- Collaboration workflow and branching strategy (challenges and benefits)  
+- Sustainability of a reproducible project  
+- Scientific collaboration in Open Science
+
+### Conclusion (1 min)
 
 Summarize your main takeaways from the course.
 
@@ -93,13 +99,20 @@ Topics to address:
 
 # Evaluation
 
-The presentation will be evaluated by both the teaching staff and your peers trough a Google Form.
+The presentation will be evaluated through a Google Form completed by both peers and the teaching staff.
 
-| Component                 | Weight |
-| ------------------------- | -----: |
-| Peer evaluation           |    50% |
-| Teaching staff evaluation |    50% |
+The final grade is composed equally of peer evaluation and instructor evaluation (50% each).
 
-:::{important}
-TODO : Evaluation to be determined.
-:::
+## Evaluation criteria
+
+## Evaluation criteria
+
+| Criterion | Weight | Description |
+|----------|------:|-------------|
+| Time management and structure | 10% | Respect of the allocated duration (8–10 minutes) and adherence to the required presentation structure. |
+| Introduction | 10% | Clear presentation of the team and research project and a brief reflection on the evolution of your understanding of reproducible research throughout the course. |
+| Project experience | 20% | Evidence of critical reflection on design choices, challenges encountered, and what would be done differently. |
+| Collaboration in Open Science | 30% | Clear identification and explanation of the cost of reproducibility, as well as the benefits and limitations of reproducible research. Critical reflection on external review, feedback processes, and the role of communication in Open Science practices. |
+| Selected thematic | 10% | Integration of one required thematic focus with a clear connection to the team’s own project experience. |
+| Conclusion | 10% | Synthesis of the main takeaways from the course, including at least one recommendation for future students and a reflection on which activity had the greatest impact on the team’s understanding of reproducible research. |
+| Oral communication and structure clarity | 10% | Logical sequencing of ideas across the presentation, clarity of explanations, and adequate visual support |
