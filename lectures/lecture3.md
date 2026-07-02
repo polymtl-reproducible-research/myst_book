@@ -42,13 +42,12 @@ PHD Comics - Jorge Cham ([website](https://phdcomics.com/comics/archive.php?comi
 * Going from solo-coding to collaborative coding, it's important to adopt certain practices that are intended to help this new situation. {cite:p}`Wilson2014,Wilson2017`
 * Clean code: variables/functions named for what they mean. no duplication ("DRY": don't repeat yourself). fewer comments -> cover downside of overly verbose. 
 
-:::{note} Clean code example
+:::{note} Clean code: bad example
 :class: dropdown
 :open: true
 
 ```{code} python
 :label: clean-code-bad
-:caption: Clean code: bad example
 
 # Import numpy
 import numpy as np
@@ -71,9 +70,14 @@ print(dd)
 
 ```
 
+:::
+
+:::{note} Clean code: good example
+:class: dropdown
+:open: true
+
 ```{code} python
 :label: clean-code-good
-:caption: Clean code: good example
 import numpy as np
 
 # All quantities in script use SI units
