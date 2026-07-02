@@ -53,7 +53,7 @@ PHD Comics - Jorge Cham ([website](https://phdcomics.com/comics/archive.php?comi
 **Paragraph 2**: 
 * Lorem ipsum
 
-```{iframe} /public/git-branch-workflow.html
+```{iframe} ..//public/git-branch-workflow.html
 :width: 100%
 :height: 560
 ```
