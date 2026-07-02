@@ -40,7 +40,60 @@ PHD Comics - Jorge Cham ([website](https://phdcomics.com/comics/archive.php?comi
 
 **Paragraph 1**: Broad overview of key concepts in collaborative development
 * Going from solo-coding to collaborative coding, it's important to adopt certain practices that are intended to help this new situation. {cite:p}`Wilson2014,Wilson2017`
-* Clean code: variables/functions named for what they mean. no duplication ("DRY": don't repeat yourself). less comments -> cover downside of overly verbose. 
+* Clean code: variables/functions named for what they mean. no duplication ("DRY": don't repeat yourself). fewer comments -> cover downside of overly verbose. 
+
+:::{note} Clean code example
+:class: dropdown
+:open: true
+
+```{code} python
+:label: clean-code-bad
+:caption: Clean code: bad example
+
+# Import numpy
+import numpy as np
+
+# Define variable aa to mean gravitational acceleration
+aa = 9.81
+# Note: meters/seconds squared units
+
+# The initial speed for this version of the code is 10 m/s
+bb = 10
+
+# compute the speed after 10 seconds
+cc = bb + aa * 10
+
+# compute the speed after 60 seconds
+dd = bb + aa * 60
+
+# print speed after one minute:
+print(dd)
+
+```
+
+```{code} python
+:label: clean-code-good
+:caption: Clean code: good example
+import numpy as np
+
+# All quantities in script use SI units
+GRAVITY_EARTH_ACCELERATION = 9.81
+
+def vertical_velocity(initial_velocity, duration):
+    """Velocity after free-falling for a duration, given an initial downward velocity."""
+    return initial_velocity + GRAVITY_EARTH_ACCELERATION * duration
+
+time_points = np.arange(0, 61)
+
+initial_velocity = 10
+
+fall_velocity = vertical_velocity(initial_velocity, time_points)
+
+print(f"The final velocity after 60 seconds is: {fall_velocity[60]:.1f} m/s")
+```
+
+:::
+
 * Code review:
 * Style guides:
 * Documentation:
@@ -60,7 +113,7 @@ PHD Comics - Jorge Cham ([website](https://phdcomics.com/comics/archive.php?comi
 **Paragraph 2**: 
 * Lorem ipsum
 
-```{iframe} ..//public/git-branch-workflow.html
+```{iframe} ../public/git-branch-workflow.html
 :width: 100%
 :height: 560
 ```
