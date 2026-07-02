@@ -464,6 +464,13 @@ def main():
         shutil.copytree(images_src, images_dst, dirs_exist_ok=True)
         print("  Copied images/")
 
+    # Copy public/ (iframes, standalone HTML widgets, ...)
+        public_src = os.path.join(ROOT_DIR, "public")
+        public_dst = os.path.join(TRANSLATED_DIR, "public")
+        if os.path.exists(public_src):
+            shutil.copytree(public_src, public_dst, dirs_exist_ok=True)
+            print("  Copied public/")
+
     # Copy bibliography
     bib_src = os.path.join(ROOT_DIR, "bibliography")
     bib_dst = os.path.join(TRANSLATED_DIR, "bibliography")
