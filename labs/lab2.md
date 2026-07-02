@@ -196,8 +196,13 @@ Upload all dataset files ensuring:
 - consistent structure;
 - minimal unnecessary compression.
 
-:::{note} Borealis automatically unzips all .zip files. If you have a zipped file, double-zip the file.:::
-:::{note} Ensure that your files and folders are properly structured *before* uploading it into Borealis.:::
+:::{note} 
+Borealis automatically unzips all .zip files. If you have a zipped file, double-zip the file.
+:::
+
+:::{note} 
+Ensure that your files and folders are properly structured *before* uploading it into Borealis.
+:::
 
 ### License Definition
 Assign a license appropriate to your dataset:
@@ -209,12 +214,6 @@ Once you have completed the metadata, license and uploaded the data, select **Sa
 
 ---
 
-## Github integration
-
-TODO : Ajouter intégration GitHub
-
----
-
 ## File level editing
 Add embargoes, tags, file level descriptions or restrict access by choosing **Edit Files**
 
@@ -222,7 +221,9 @@ Add embargoes, tags, file level descriptions or restrict access by choosing **Ed
 ### Submit for Review
 Submit your dataset to change its status to **draft (in review)** for instructor review before publication.
 
-:::{note} Ensure that the dataset is all complete as possible before submitting it for review. Once the dataset is published, it can be edited, but cannot be removed. Borealis' linear versionning system ensures that all previous versions of a dataset remain accessible to all users.:::
+:::{note} 
+Ensure that the dataset is all complete as possible before submitting it for review. Once the dataset is published, it can be edited, but cannot be removed. Borealis' linear versionning system ensures that all previous versions of a dataset remain accessible to all users.
+:::
 
 TODO : Explication que ce sera accepté par nous puis les modifications pourront être faites pour avoir du versionage.
 
@@ -245,22 +246,6 @@ You must apply at least one modification to the dataset you already uploaded on 
 - modifying preprocessing decisions.
 
 Your modification must be meaningful and reproducible.
-
----
-
-### Versioning and semantic tagging
-
-<!-- Each modification must correspond to a new dataset version.
-
-You must assign a version tag following semantic versioning principles:
-
-- **patch**: small corrections (e.g., fixing errors, minor updates)
-- **minor**: small corrections or changes to existing data, code and metadata (e.g. fixing errors, metadata modifications, etc.) Dataset will pass from v.1.0 → v.1.1)
-- **major**: major changes or updates to data or code (e.g. new data files, adding restricted access, etc.) Dataset will pass from v.1.0 → v.2.0)
-
-You must justify the chosen version type in your CHANGELOG. -->
-
-TODO : Explication version majeure et version mineure
 
 ---
 
@@ -336,7 +321,7 @@ The goal is not only to modify the dataset, but to ensure that dataset evolution
 
 ## GitHub Integration for Data Transfer
 
-*work in progress*
+TODO : Only if we have derivatives. The Github would be to tranfer the script (source code) used to change raw data to Borealis
 
 You will explore automated dataset publishing using GitHub integration tools.
 
