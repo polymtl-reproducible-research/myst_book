@@ -104,10 +104,19 @@ print(f"The final velocity after 60 seconds is: {fall_velocity[60]:.1f} m/s")
 * Testing/TDD:
 * Version control: 
 
+**Paragraph 2**: Intro to git
+* Git is most widely used tool for version control of code
+* It allows to keep your directory clean: e.g. one file that's visible to the user not multiple copies with updates
+    * See PhD comic at the top
+* The copies (or more precisely, the changes) exist - but they are hidden (.git)
+* You can feel confident in deleting code - no need to keep code blocks "commented out" in case you want to use it in the future
+* Additionally - there are features that allow for collaborative coding (called "branches")
 
+:::{iframe} https://www.youtube.com/embed/gY2JwRfin1M?si=i1IVWze7Ia6M-dVd
+:width: 100%
+Software Carpentry: intro to version control (episode 1)
+:::
 
-**Paragraph 2**: 
-* Lorem ipsum
 
 # Version control
 
