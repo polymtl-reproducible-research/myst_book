@@ -44,7 +44,7 @@ PHD Comics - Jorge Cham ([website](https://phdcomics.com/comics/archive.php?comi
 
 :::{note} Clean code: bad example
 :class: dropdown
-:open: true
+:open: false
 
 ```{code} python
 :label: clean-code-bad
@@ -74,7 +74,7 @@ print(dd)
 
 :::{note} Clean code: good example
 :class: dropdown
-:open: true
+:open: false
 
 ```{code} python
 :label: clean-code-good
