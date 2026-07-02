@@ -83,18 +83,6 @@ Examples include:
 
 ---
 
-<!-- ## Repository Structure
-
-You must organize your dataset in a reproducible structure such as:
-
-- `data/`
-- `code/`
-- `docs/`
-
-You must implement all transformations, renaming, or preprocessing operations in reproducible scripts stored under `code/`.
-
---- -->
-
 # Documentation
 
 ## README File
@@ -146,10 +134,6 @@ The workflow is divided into the data deposit first, followed later by code depo
 ---
 
 ## Platform Access and Account Setup
-
-<!-- You must create an account on the Borealis demo platform:
-
-- https://demo.borealisdata.ca/ -->
 
 You must verify access to the ING8100 Collection on Polytechnique Dataverse:
 
@@ -248,97 +232,6 @@ You must apply at least one modification to the dataset you already uploaded on 
 Your modification must be meaningful and reproducible.
 
 ---
-
-### CHANGELOG.md
-<!--
-You must maintain a `CHANGELOG.md` file describing all dataset modifications.
-
-Each entry must include:
-- date of modification;
-- type of change (patch/minor/major);
-- description of modification;
-- affected files or data components.
-
---- -->
-
-TODO : demander au niveau du CHANGELOG.md à Julien
-
-### Derivative data generation
-
-<!-- You must process part of your dataset to generate derivative data.
-
-Examples include:
-- filtered or cleaned subsets;
-- transformed or resampled data;
-- extracted features or summaries;
-- format conversions.
-
-Your derivative data must be:
-- reproducible from the original dataset;
-- generated using scripts stored in your repository. -->
-
-TODO: Est-ce qu'on souhaite avoir les jeux de données brutes et les données traitées sur Boréalis?
-
-En général, il y a les données traitées et pas les données brutes sur Boréalis.
-
----
-
-### Storage of derivatives
-
-<!-- You must store derivative datasets separately from raw data using a clear structure, for example:
-
-- raw data: original uploaded dataset
-- derivatives: processed or transformed outputs
-
-You must implement all processing steps in scripts located in the `code/` directory. -->
-
-TODO: voir encore une fois si on garde les raw et les derivatives.
-
----
-
-### Reproducibility across versions 
-
-TODO : voir si on garde tout dépendant de si on a des données traités ou pas.
-
-You must verify that your processing pipeline can be re-executed on at least two dataset versions:
-
-- the original uploaded version;
-- the modified version after dataset evolution.
-
-You must observe and document:
-- whether the pipeline runs without errors on both versions;
-- whether outputs remain comparable;
-- whether modifications affect reproducibility of results.
-
-TODO : Voir pour le rapport pour les modifications, on veut voir le raisonnement au niveau des modifications qui ont été faites. 
-
-:::{note}
-The goal is not only to modify the dataset, but to ensure that dataset evolution remains traceable and computationally reproducible.
-:::
-
----
-
-
-## GitHub Integration for Data Transfer
-
-TODO : Only if we have derivatives. The Github would be to tranfer the script (source code) used to change raw data to Borealis
-
-You will explore automated dataset publishing using GitHub integration tools.
-
-### Purpose
-This step demonstrates:
-- reproducible data publication from version-controlled repositories;
-- FAIR-aligned dissemination workflows;
-- integration between computation and archival storage.
-
-### Tooling
-- Dataverse GitHub uploader action:
-  https://github.com/marketplace/actions/dataverse-uploader-action
-
-- Documentation:
-  https://learn.scholarsportal.info/all-guides/borealis/files/#GitHub-Integration
-
-  ---
 
 # Evaluation
 
