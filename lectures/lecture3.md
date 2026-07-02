@@ -38,8 +38,15 @@ PHD Comics - Jorge Cham ([website](https://phdcomics.com/comics/archive.php?comi
 
 # Code management
 
-**Paragraph 1**: 
-* Lorem ipsum
+**Paragraph 1**: Broad overview of key concepts in collaborative development
+* Going from solo-coding to collaborative coding, it's important to adopt certain practices that are intended to help this new situation. {cite:p}`Wilson2014,Wilson2016`
+* Clean code: variables/functions named for what they mean. no duplication ("DRY": don't repeat yourself). less comments -> cover downside of overly verbose. 
+* Code review:
+* Style guides:
+* Documentation:
+* Testing/TDD:
+* Version control: 
+
 
 
 **Paragraph 2**: 
