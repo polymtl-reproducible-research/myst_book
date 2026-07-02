@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - 'main'
+      - 'mb/lecture3'
+
 env:
   BASE_URL: /${{ github.event.repository.name }}
 
@@ -17,6 +19,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref_name == vars.BUILD_BRANCH
     environment:
       name: gh-pages
       url: ${{ steps.deployment.outputs.page_url }}
