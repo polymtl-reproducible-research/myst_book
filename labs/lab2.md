@@ -19,7 +19,7 @@ This laboratory introduces research data management practices in the context of 
 
 # Dataset Selection
 
-You must choose one dataset among the following options.
+You must choose between the following options.
 
 ## Option 1 — Own Research Data (Recommended)
 
@@ -129,7 +129,7 @@ Your report should address the following points:
 
 This section describes the publication workflow for research datasets using the Borealis Dataverse platform (demo environment). The dissemination process is a key component of FAIR data practices (Findable, Accessible, Interoperable, Reusable).
 
-The workflow is divided into the data deposit first, followed later by code deposit, followed by the publication of the data and code.
+The workflow is divided into:  data deposit, then code deposit, and finally the publication of the data and code.
 
 ---
 
@@ -162,13 +162,13 @@ You must publish your dataset in Borealis following these steps:
 Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
 
 ### Metadata Entry
-Complete obligatory metadata fields including minimally:
+Complete required metadata fields including minimally:
 - title;
 - authors;
 - identifier;
 - point of contact;
 - keywords;
-- description;
+- description.
 
 :::{note}
 Metadata quality is an evaluation criterion. Poor metadata reduces dataset usability and reproducibility. Add additional information in the relevant metadata fields depending on disciplinary norms, community standards, your judgement, etc.
@@ -199,10 +199,10 @@ Once you have completed the metadata, license and uploaded the data, select **Sa
 ---
 
 ## File-level editing
-Add embargoes, tags, file-level descriptions or restrict access by choosing **Edit Files**
+Add embargoes, tags, or file-level descriptions, or restrict access by choosing **Edit Files**
 
 ---
-### Submit for Review
+## Submit for Review
 Submit your dataset to change its status to **draft (in review)** for instructor review before publication.
 
 :::{note} 
@@ -223,10 +223,10 @@ This step is required to demonstrate dataset versioning practices commonly used 
 
 You must apply at least one modification to the dataset you already uploaded on Borealis. Examples include:
 
-- adding new data files.
-- removing incorrect or irrelevant data.
-- correcting an error in the dataset.
-- updating metadata or file structure.
+- adding new data files;
+- removing incorrect or irrelevant data;
+- correcting an error in the datasetl;
+- updating metadata or file structure;
 - modifying preprocessing decisions.
 
 Your modification must be meaningful and reproducible.
