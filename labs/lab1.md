@@ -120,7 +120,7 @@ git clone https://github.com/johndoe/notarealrepo.git
 :::
 
 :::{hint}
-Use git status to take a look at what is going on.
+Use `git status` to take a look at what is going on.
 :::
 
 ### Clone the repository
