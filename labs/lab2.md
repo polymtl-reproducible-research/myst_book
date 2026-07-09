@@ -31,7 +31,7 @@ Ensure that your dataset does not contain sensitive, confidential, or unauthoriz
 
 ## Option 2 — Existing Public Dataset
 
-Select an existing published dataset that is not already hosted on Borealis.
+Select an existing published dataset that is not already hosted on [Borealis](https://borealisdata.ca/).
 
 You must identify the dataset using OpenAlex:
 https://openalex.org/
