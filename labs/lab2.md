@@ -47,7 +47,7 @@ You should:
 1. Go to https://openalex.org/
 2. Use keywords related to your domain (e.g., "neuroimaging", "climate", "microscopy", etc.)
 3. In the "Type" field, select "Dataset"
-4. In the "License" field select "CC0" or "CC-BY".
+4. In the "License" field, select "CC0" or "CC-BY".
 5. Use additional fields that you consider important.
 6. Open a result that corresponds to a research publication or dataset-related output
 7. Inspect the "Works" page and associated links (DOI, publisher, repository links)
@@ -135,7 +135,7 @@ The workflow is divided into the data deposit first, followed later by code depo
 
 ## Platform Access and Account Setup
 
-You must verify access to the ING8100 Collection on Polytechnique Dataverse:
+You must verify access to the ING8100 collection on Polytechnique Dataverse:
 
 - https://demo.borealisdata.ca/dataverse/polytechnique
 TODO : Update with link to ING8100 collection once published
@@ -198,8 +198,8 @@ Once you have completed the metadata, license and uploaded the data, select **Sa
 
 ---
 
-## File level editing
-Add embargoes, tags, file level descriptions or restrict access by choosing **Edit Files**
+## File-level editing
+Add embargoes, tags, file-level descriptions or restrict access by choosing **Edit Files**
 
 ---
 ### Submit for Review
@@ -223,10 +223,10 @@ This step is required to demonstrate dataset versioning practices commonly used 
 
 You must apply at least one modification to the dataset you already uploaded on Borealis. Examples include:
 
-- adding new data files;
-- removing incorrect or irrelevant data;
-- correcting an error in the dataset;
-- updating metadata or file structure;
+- adding new data files.
+- removing incorrect or irrelevant data.
+- correcting an error in the dataset.
+- updating metadata or file structure.
 - modifying preprocessing decisions.
 
 Your modification must be meaningful and reproducible.
