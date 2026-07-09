@@ -185,7 +185,7 @@ Borealis automatically unzips all .zip files. If you have a zipped file, double-
 :::
 
 :::{note} 
-Ensure that your files and folders are properly structured *before* uploading it into Borealis.
+Ensure that your files and folders are properly structured *before* uploading them into Borealis.
 :::
 
 ### License Definition
@@ -194,7 +194,7 @@ Assign a license appropriate to your dataset:
 - document justification in your README.
 
 ### Save Dataset
-Once you have completed the metadata, license and uploaded the data, select **Save Dataset** This will create a **draft (unpublished)** dataset. Make any further modifications to the dataset as necessary by choosing **Edit Dataset**
+Once you have completed the metadata, license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** dataset. Make any further modifications to the dataset as necessary by choosing **Edit Dataset**.
 
 ---
 
@@ -206,14 +206,14 @@ Add embargoes, tags, file level descriptions or restrict access by choosing **Ed
 Submit your dataset to change its status to **draft (in review)** for instructor review before publication.
 
 :::{note} 
-Ensure that the dataset is all complete as possible before submitting it for review. Once the dataset is published, it can be edited, but cannot be removed. Borealis' linear versionning system ensures that all previous versions of a dataset remain accessible to all users.
+Ensure that the dataset is all as complete as possible before submitting it for review. Once the dataset is published, it can be edited, but cannot be removed. Borealis' linear versioning system ensures that all previous versions of a dataset remain accessible to all users.
 :::
 
 TODO : Explication que ce sera accepté par nous puis les modifications pourront être faites pour avoir du versionage.
 
 ## Dataset Evolution and Versioning
 
-After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution. When you edit your published dataset a new **draft (unpublished)** version of your dataset. You can then repeat the steps above before submitting it for review by the instructors again.
+After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution. When you edit your published dataset, a new **draft (unpublished)** version of your dataset. You can then repeat the steps above before submitting it for review by the instructors again.
 
 This step is required to demonstrate dataset versioning practices commonly used in research data management systems.
 
