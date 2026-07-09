@@ -228,7 +228,7 @@ You must apply at least one modification to the dataset you already uploaded on 
 
 - adding new data files;
 - removing incorrect or irrelevant data;
-- correcting an error in the datasetl;
+- correcting an error in the dataset;
 - updating metadata or file structure;
 - modifying preprocessing decisions.
 
