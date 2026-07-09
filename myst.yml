@@ -20,6 +20,12 @@ project:
   abbreviations:
     # Add abbreviations here, e.g.:
     # MRI: Magnetic resonance imaging
+    FAIR: Findable, Accessible, Interoperable, Reusable
+    BIDS: Brain Imaging Data Structure
+    DOI: Digital Object Identifier
+    CC0: Creative Commons Zero
+    CC-BY: Creative Commons Attribution
+    OME-TIFF: Open Microscopy Environment TIFF
   exclude:
     - README.md
     - LICENSE
