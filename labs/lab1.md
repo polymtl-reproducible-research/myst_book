@@ -63,7 +63,7 @@ Modify the `README.md` file directly from the GitHub web interface [](#edit-read
 
 ```{figure} ..\images\lab1\edit_readme_1.png
 :label: edit-readme-1
-:alt: First step to edit the README.md file with the Github interface 
+:alt: First step to edit the README.md file with the GitHub interface 
 :align: center
 ```
 
@@ -71,7 +71,7 @@ Add your group number [](#edit-readme-2).
 
 ```{figure} ..\images\lab1\edit_readme_2.png
 :label: edit-readme-2
-:alt: Second step to edit the README.md file with the Github interface 
+:alt: Second step to edit the README.md file with the GitHub interface 
 :align: center
 ```
 
@@ -79,7 +79,7 @@ Select the option **Create a new branch and start a pull request** [](#edit-read
 
 ```{figure} ..\images\lab1\edit_readme_3.png
 :label: edit-readme-3
-:alt: Third step to edit the README.md file with the Github interface 
+:alt: Third step to edit the README.md file with the GitHub interface 
 :align: center
 ```
 
@@ -87,7 +87,7 @@ Select the option **Create a new branch and start a pull request** [](#edit-read
 
 ```{figure} ..\images\lab1\open_PR_1.png
 :label: open-PR-1
-:alt: First step to open a pull request with the Github interface 
+:alt: First step to open a pull request with the GitHub interface 
 :align: center
 ```
 
@@ -95,7 +95,7 @@ Select the option **Create a new branch and start a pull request** [](#edit-read
 
 ```{figure} ..\images\lab1\merge_PR_1.png
 :label: merge-PR-1
-:alt: First step to merge a pull request with the Github interface 
+:alt: First step to merge a pull request with the GitHub interface 
 :align: center
 ```
 
@@ -103,7 +103,7 @@ Select the option **Create a new branch and start a pull request** [](#edit-read
 
 ```{figure} ..\images\lab1\delete_branch_1.png
 :label: delete-branch-1
-:alt: Delete a branch after merge with the Github interface 
+:alt: Delete a branch after merge with the GitHub interface 
 :align: center
 ```
 
@@ -247,7 +247,7 @@ Use the VS Code Source Control interface to synchronize the changes.
 
 ### Create a pull request
 
-Use the GitHub interface to create a pull request (PR) for the new branch.
+Use the GitHub interface to create a pull request for the new branch.
 
 ### Review the pull request
 A pull request review differs from a simple comment.  
@@ -290,5 +290,5 @@ The evaluation is based on the following criteria:
 | Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branche, -5% for each poorly named commit message, -10% for each incoherency in the flow.|
 | Reproducibility | **25%** | The original analysis is successfully reproduced by following the provided instructions. |
 | Replicability | **25%** | The analysis is successfully replicated after modifying the experimental parameters. |
-| Pull request workflow | **15%** | Pull requests are correctly created, reviewed, and merged using the required workflow. Each Pull Request counts for 5%.|
+| Pull request workflow | **15%** | Pull requests are correctly created, reviewed, and merged using the required workflow. Each pull request counts for 5%.|
 | Collaboration | **5%** | Both teammates follow the required collaborative workflow specified in the laboratory instructions. |
