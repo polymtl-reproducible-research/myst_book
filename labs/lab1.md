@@ -189,7 +189,7 @@ git push --set-upstream origin <branch-name>
 Use the GitHub interface to create the pull request (PR). 
 
 ### Merge the pull request
-The person who did not create the PR must merge the PR
+The person who did not create the PR must merge the PR.
 
 ### Delete the branch
 Once the PR is merged, delete the source branch (not `main`).
@@ -245,9 +245,9 @@ Use a meaningful and descriptive commit message.
 
 Use the VS Code Source Control interface to synchronize the changes.
 
-### Create a pull tequest
+### Create a pull request
 
-Use the GitHub interface to create a pull request for the new branch.
+Use the GitHub interface to create a pull request (PR) for the new branch.
 
 ### Review the pull request
 A pull request review differs from a simple comment.  
@@ -287,7 +287,7 @@ The evaluation is based on the following criteria:
 
 | Criterion | Weight | Description |
 |-----------|:------:|-------------|
-| Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branches, -5% for each poorly named commit messages, -10% for each incoherency in the flow|
+| Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branche, -5% for each poorly named commit message, -10% for each incoherency in the flow.|
 | Reproducibility | **25%** | The original analysis is successfully reproduced by following the provided instructions. |
 | Replicability | **25%** | The analysis is successfully replicated after modifying the experimental parameters. |
 | Pull request workflow | **15%** | Pull requests are correctly created, reviewed, and merged using the required workflow. Each Pull Request counts for 5%.|
