@@ -44,7 +44,7 @@ OpenAlex is a database that you can use to identify research outputs, including 
 
 You should:
 
-1. Go to https://openalex.org/
+1. Go to https://openalex.org/works
 2. Use keywords related to your domain (e.g., "neuroimaging", "climate", "microscopy", etc.)
 3. In the "Type" field, select "Dataset"
 4. In the "License" field, select "CC0" or "CC-BY".
