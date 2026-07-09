@@ -216,7 +216,7 @@ TODO : Explication que ce sera accepté par nous puis les modifications pourront
 
 ## Dataset Evolution and Versioning
 
-After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution. When you edit your published dataset, a new **draft (unpublished)** version of your dataset. You can then repeat the steps above before submitting it for review by the instructors again.
+After your initial upload to Borealis, you must perform controlled modifications to your dataset in order to generate a new version and document its evolution. When you edit your published dataset, a new **draft (unpublished)** version of your dataset is created. You can then repeat the steps above before submitting it for review by the instructors again.
 
 This step is required to demonstrate dataset versioning practices commonly used in research data management systems.
 
