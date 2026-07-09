@@ -59,8 +59,11 @@ You should:
 
 You may only use datasets released under one of the following licenses:
 
-- CC0 (public domain dedication)
-- CC-BY (Creative Commons Attribution)
+CC0
+: Public domain dedication — no rights reserved.
+
+CC-BY
+: Creative Commons Attribution — reuse permitted with credit.
 
 These licenses are commonly used in open research data publishing and ensure compatibility with redistribution in Borealis.
 
