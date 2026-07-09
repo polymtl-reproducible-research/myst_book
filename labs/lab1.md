@@ -58,7 +58,7 @@ Accept the invitation to the GitHub organization that will be sent to the email 
 
 ### Modify a file from the GitHub interface
 
-Modify the `README.md` file directly from the GitHub web interface [](#edit-readme-1). <br>
+Modify the `README.md` file directly from the GitHub web interface [](#edit-readme-1).
 
 
 ```{figure} ..\images\lab1\edit_readme_1.png
