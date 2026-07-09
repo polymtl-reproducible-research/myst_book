@@ -34,7 +34,7 @@ Ensure that your dataset does not contain sensitive, confidential, or unauthoriz
 Select an existing published dataset that is not already hosted on [Borealis](https://borealisdata.ca/).
 
 You must identify the dataset using OpenAlex:
-https://openalex.org/
+https://openalex.org/works
 
 ---
 
