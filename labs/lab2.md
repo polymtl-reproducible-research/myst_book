@@ -13,13 +13,16 @@ numbering:
 **Team formation:** You must complete this laboratory in a team of two students.
 :::
 
-This laboratory introduces research data management practices in the context of open and reproducible science. You will work through the final steps of the lifecycle of a research dataset, from organization and documentation to publication and dissemination.
+This laboratory introduces research data management practices in the context of open and reproducible science. You will work through the final steps of the lifecycle of a research dataset, from organization and documentation to publication and dissemination. **Please be aware that the dataset you select for this lab will be used in Lab 3.**
 
 ---
 
 # Dataset Selection
 
-You must choose between the following options.
+You must choose between the following options, please ensure that the dataset meets the following criteria.
+1. No individual file exceeds 5 GB.
+2. The entirety of the dataset does not exceed 20 GB.
+3. The number of individual files included in the dataset does not exceed 500.
 
 ## Option 1 — Own Research Data (Recommended)
 
@@ -57,7 +60,7 @@ You should:
 
 ### License requirement (CC0 / CC-BY only)
 
-You may only use datasets released under one of the following licenses:
+You may only reuse datasets released under one of the following licenses:
 
 CC0
 : Public domain dedication — no rights reserved.
@@ -105,9 +108,9 @@ Your project must include a `README.md` containing:
 
 Your README must be sufficient for another researcher to understand and reuse your dataset independently. Include any other information you judge pertinent to facilitate others' interpretation of the dataset.
 
-## Metadata
+## Dataset Metadata
 
-You must include appropriate metadata describing:
+You must include appropriate metadata for the dataset describing:
 - authorship;
 - acquisition context;
 - data type and modality;
@@ -140,8 +143,7 @@ The workflow is divided into:  data deposit, then code deposit, and finally the 
 
 You must verify access to the ING8100 collection on Polytechnique Dataverse:
 
-- https://demo.borealisdata.ca/dataverse/polytechnique
-TODO : Update with link to ING8100 collection once published
+- https://demo.borealisdata.ca/dataverse/ING8100
 
 :::{important}
 Report any access issues before proceeding with dataset submission.
