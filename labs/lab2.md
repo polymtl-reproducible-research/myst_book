@@ -167,7 +167,7 @@ You must publish your dataset in Borealis following these steps:
 Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
 
 ### Metadata Entry
-Complete required metadata fields including minimally:
+Complete the required metadata fields:
 - title;
 - authors;
 - identifier;
@@ -204,7 +204,13 @@ Once you have completed the metadata, license and uploaded the data, select **Sa
 ---
 
 ## File-level editing
-Add embargoes, tags, or file-level descriptions, or restrict access by choosing **Edit Files**
+Add embargoes, tags, or descriptions for specific files by following these steps;
+1. In the "Files" tab, select all files that you wish to add edits to.
+2. With the files selected, click on **Edit Files** and choose one of the following options
+   - Metadata : to add a description for the selected files
+   - Restrict : to require users to request access in order to download the file
+   - Tags : to add a "Documentation", "Data" or "Code" tag to the file to describe its contents.
+   - Embargo : to restrict access to the file until a certain date has passed.
 
 ---
 ## Submit for Review
