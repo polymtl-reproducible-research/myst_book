@@ -19,7 +19,7 @@ This laboratory introduces research data management practices in the context of 
 
 # Dataset Selection
 
-You must choose between the following options, please ensure that the dataset meets the following criteria.
+You must choose between the following two options, please ensure that the dataset meets the following criteria.
 1. No individual file exceeds 5 GB.
 2. The entirety of the dataset does not exceed 20 GB.
 3. The number of individual files included in the dataset does not exceed 500.
@@ -100,23 +100,13 @@ Your project must include a `README.md` containing:
 - explanation of variables (columns, rows, formats);
 - units of measurement;
 - preprocessing steps;
-- software requirements;
+- software requirements (if certain files are in proprietary formats);
 - usage instructions;
 - abbreviation descriptions;
 - associated publications;
 - licensing and citation information.
 
 Your README must be sufficient for another researcher to understand and reuse your dataset independently. Include any other information you judge pertinent to facilitate others' interpretation of the dataset.
-
-## Dataset Metadata
-
-You must include appropriate metadata for the dataset describing:
-- authorship;
-- acquisition context;
-- data type and modality;
-- preprocessing pipeline;
-- version information;
-- related publications or references.
 
 ## Report
 
@@ -173,11 +163,12 @@ Complete the required metadata fields:
 - identifier;
 - point of contact;
 - keywords;
-- description.
+- description
 
 :::{note}
 Metadata quality is an evaluation criterion. Poor metadata reduces dataset usability and reproducibility. Add additional information in the relevant metadata fields depending on disciplinary norms, community standards, your judgement, etc.
 :::
+
 
 ### Upload Data
 Upload all dataset files ensuring:
@@ -186,11 +177,11 @@ Upload all dataset files ensuring:
 - minimal unnecessary compression.
 
 :::{note} 
-Borealis automatically unzips all .zip files. If you have a zipped file, double-zip the file.
+Borealis automatically unzips all .zip files. To preserve your dataset's folder hierarchy, please zip your file before depositing. If you have a zipped file, double-zip the file.
 :::
 
 :::{note} 
-Ensure that your files and folders are properly structured *before* uploading them into Borealis.
+Ensure that your files and folders are properly structured *before* uploading them into Borealis. Borealis automatically unzips all '.zip' files. To preserve your dataset's folder structure, please zip your dataset before depositing it on Borealis.
 :::
 
 ### License Definition
@@ -199,7 +190,7 @@ Assign a license appropriate to your dataset:
 - document justification in your README.
 
 ### Save Dataset
-Once you have completed the metadata, license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** dataset. Make any further modifications to the dataset as necessary by choosing **Edit Dataset**.
+Once you have completed the metadata, license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** version of your dataset, visible only to you and the course evaluators. Make any further modifications to the dataset by choosing **Edit Dataset**.
 
 ---
 
@@ -214,13 +205,11 @@ Add embargoes, tags, or descriptions for specific files by following these steps
 
 ---
 ## Submit for Review
-Submit your dataset to change its status to **draft (in review)** for instructor review before publication.
+Submit your dataset to change its status to **draft (in review)** so that the course evaluators can review it before publication.
 
 :::{note} 
-Ensure that the dataset is all as complete as possible before submitting it for review. Once the dataset is published, it can be edited, but cannot be removed. Borealis' linear versioning system ensures that all previous versions of a dataset remain accessible to all users.
+Ensure that the dataset is as complete as possible before submitting it for review. **Once the dataset is published, it can be edited, but cannot be removed.** Borealis' linear versioning system ensures that all previous versions of a dataset remain accessible to all users. Once your dataset has been accepted by the course evaluators, it will be published and you can proceed with the versioning module of the lab.
 :::
-
-TODO : Explication que ce sera accepté par nous puis les modifications pourront être faites pour avoir du versionage.
 
 ## Dataset Evolution and Versioning
 
