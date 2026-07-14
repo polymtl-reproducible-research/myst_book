@@ -13,7 +13,11 @@ numbering:
 **Team composition:** You must complete this laboratory in a team of two students.
 :::
 
-This laboratory introduces research data management practices in the context of open and reproducible science. You will work through the final steps of the lifecycle of a research dataset, from organization and documentation to publication and dissemination. **Please be aware that the dataset you select for this lab will be used in Lab 3.**
+This laboratory introduces research data management practices in the context of open and reproducible science. Students will work through the final steps of the lifecycle of a research dataset, from organization and documentation to publication and dissemination. **Please be aware that the dataset you select for this lab will be used in Lab 3.**
+
+This laboratory involves two different components;
+1. Selecting a dataset, and preparing the files and folders for publication by following best practices.
+2. Submitting the dataset onto a data sharing platform with sufficient documentation and metadata to ensure that it follows FAIR principles.
 
 ---
 
