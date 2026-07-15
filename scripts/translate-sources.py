@@ -22,6 +22,14 @@ TRANSLATOR = GoogleTranslator(source="en", target="fr")
 # Max chars per translation call (Google Translate limit is ~5000)
 CHUNK_SIZE = 4500
 
+# MyST/Sphinx admonition directives whose title and body should be translated.
+# Other directives (figure, card, grid, tab-set, ...) are handled separately or
+# preserved verbatim.
+ADMONITION_DIRECTIVES = {
+    "admonition", "attention", "caution", "danger", "error", "hint",
+    "important", "note", "seealso", "tip", "warning",
+}
+
 
 def translate_text(text):
     """Translate a string from English to French, handling chunking."""
@@ -123,7 +131,7 @@ def translate_markdown_body(body):
                 continue
 
             # For admonitions - translate the title and body text
-            if directive_name == "admonition":
+            if directive_name in ADMONITION_DIRECTIVES:
                 # Line format: :::{admonition} Title Text
                 title_part = line.split("}", 1)
                 if len(title_part) > 1 and title_part[1].strip():
