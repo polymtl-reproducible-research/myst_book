@@ -62,6 +62,13 @@ You should:
 7. Inspect the "Works" page and associated links (DOI, publisher, repository links)
 8. Identify whether the underlying data is accessible and reusable. We also suggest to pick a dataset that not too large (<1GB). Example of a "small" dataset is one that is smaller than 100 MB.
 
+:::{warning}
+When preparing your dataset for upload, ensure that it respects the following limits:
+- Maximum number of files: 1,000 files per dataset.
+- Maximum individual file size: 10 GB per file.
+- Maximum total dataset size: 20 GB.
+:::
+
 ---
 
 ### License requirement (CC0 / CC-BY only)
