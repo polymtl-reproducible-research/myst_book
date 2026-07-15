@@ -66,11 +66,16 @@ You should:
 
 You may only reuse datasets released under one of the following licenses:
 
-CC0
-: Public domain dedication — no rights reserved.
+<!-- We use html instead of figures bloc since
+it can go on the same line as the text  -->
 
-CC-BY
-: Creative Commons Attribution — reuse permitted with credit.
+**CC0** <img src="../images/lab2/cc_zero_logo.svg" alt="CC0 logo">
+<br>
+Public domain dedication — no rights reserved.
+
+**CC-BY** <img src="../images/lab2/by_logo.svg" alt="BY logo">
+<br>
+Creative Commons Attribution — reuse permitted with credit.
 
 These licenses are commonly used in open research data publishing and ensure compatibility with redistribution in Borealis.
 
@@ -161,18 +166,18 @@ You must publish your dataset in Borealis following these steps:
 Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
 
 ### Metadata Entry
-Complete the required metadata fields:
-- title;
-- authors;
-- identifier;
-- point of contact;
-- keywords;
-- description
+### Metadata Entry
 
-:::{note}
-Metadata quality is an evaluation criterion. Poor metadata reduces dataset usability and reproducibility. Add additional information in the relevant metadata fields depending on disciplinary norms, community standards, your judgement, etc.
-:::
+Complete **all** of the following required metadata fields before publishing your dataset:
 
+- Title
+- Author
+- Point of Contact
+- Description
+- Subject
+- Keyword
+- Related Publication --> Only if applicable
+- Data Source
 
 ### Upload Data
 Upload all dataset files ensuring:
@@ -232,9 +237,6 @@ You must apply at least one modification to the dataset you already uploaded on 
 - correcting an error in the dataset;
 - updating metadata or file structure;
 - modifying preprocessing decisions.
-
-Your modification must be meaningful and reproducible.
-
 ---
 
 # Evaluation
@@ -247,6 +249,6 @@ The evaluation emphasizes the application of research data management best pract
 | License | 10% | An appropriate open-source license is included and is compatible with the selected dataset. |
 | README.md | 20% | The README clearly documents the dataset, repository structure, variables, preprocessing steps, software requirements, usage instructions, and citation information. |
 | Metadata | 20% | Metadata is complete, accurate, and sufficient for another researcher to discover, understand, and reuse the dataset. |
-| Folder Structure | 10% | The repository is organized using a clear, reproducible structure that separates raw data, processed data, code, and documentation. |
+| Folder Structure | 10% | The repository is organized using a clear structure that separates data, code, and documentation. |
 | Dataset Report | 15% | The report clearly justifies the dataset selection by describing its source, authorship, associated publication (if applicable), and relevance to the laboratory objectives. |
 | File-Level Editing | 5% | Appropriate use of Borealis file-level editing features to improve the organization and management of the dataset. |
