@@ -251,6 +251,6 @@ The evaluation emphasizes the application of research data management best pract
 | License | 10% | An appropriate open-source license is included and is compatible with the selected dataset. |
 | README.md | 20% | The README clearly documents the dataset, repository structure, variables, preprocessing steps, software requirements, usage instructions, and citation information. |
 | Metadata | 20% | Metadata is complete, accurate, and sufficient for another researcher to discover, understand, and reuse the dataset. |
-| Folder Structure | 10% | The repository follows a clear organization that separates data, code, and documentation. Folder and file names are consistent, descriptive, and meaningful. |
+| Folder Structure | 10% | The repository is organized using a clear structure. Example: raw data, processed data, code, and documentation are separated and clearly identified.Folder and file names are consistent, descriptive, and meaningful. |
 | Dataset Report | 15% | The report clearly justifies the dataset selection by describing its source, authorship, associated publication (if applicable), and relevance to the laboratory objectives. |
 | File-Level Editing | 5% | Appropriate use of Borealis file-level editing features to improve the organization and management of the dataset. |
