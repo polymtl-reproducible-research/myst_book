@@ -79,7 +79,7 @@ You need:
 
 A clear folder structure separates raw data, processed data, code, results, and documentation in a consistent way, making the workflow easier to understand and navigate. 
 
-For example :
+For example:
 
 ```
 project-root/
