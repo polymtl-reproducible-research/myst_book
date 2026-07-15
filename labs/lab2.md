@@ -119,6 +119,10 @@ Your project must include a `README.md` containing (when applicable):
 
 Your README must be sufficient for another researcher to understand and reuse your dataset independently. Include any other information you judge pertinent to facilitate others' interpretation of the dataset.
 
+:::{hint}
+You can use the [template](https://libguides.biblio.polymtl.ca/research_data/documentation) as a starting point.
+:::
+
 ## Report
 
 Prepare a brief report describing the rationale behind your dataset selection. Include this report as part of the documentation uploaded with your dataset on Borealis.
@@ -167,7 +171,6 @@ You must publish your dataset in Borealis following these steps:
 ### Create Dataset
 Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
 
-### Metadata Entry
 ### Metadata Entry
 
 Complete **all** of the following required metadata fields before publishing your dataset:
