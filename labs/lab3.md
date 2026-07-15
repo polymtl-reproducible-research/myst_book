@@ -108,7 +108,7 @@ Create a script that retrieves the dataset from Borealis. This step ensures that
 
 ## Preprocess the data
 
-Create a preprocessing script to clean and standardize the raw data before analysis. This may include :
+Create a preprocessing script to clean and standardize the raw data before analysis. This may include:
 - missing values handling
 - renaming / formatting columns
 filtering rows (basic criteria)
