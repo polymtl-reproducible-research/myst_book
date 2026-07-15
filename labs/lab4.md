@@ -84,7 +84,7 @@ Communication between the reviewers and maintainers should be timely and profess
 
 ## Contributing Fixes
 
-The reviewers should attempt to resolve identified issues via a [fork and a Pull Reques](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
+The reviewers should attempt to resolve identified issues via a [fork and a Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
 
 An adequate workflow is expected and will be evaluated.
 
