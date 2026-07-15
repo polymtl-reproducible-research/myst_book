@@ -104,7 +104,7 @@ Examples include:
 
 ## README File
 
-Your project must include a `README.md` containing:
+Your project must include a `README.md` containing (when applicable):
 
 - dataset origin and provenance;
 - description of structure;
