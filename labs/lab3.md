@@ -201,7 +201,6 @@ Possible examples include:
 
 | Criterion | Weight | Description |
 |---|---|---|
-| --- | --- | --- |
 | README.md | 15% | The README.md contains all required sections and clearly documents the project. |
 | License | 5% | An appropriate open-source license is included in the repository. |
 | Code of Conduct | 5% | A complete Code of Conduct is provided. |
