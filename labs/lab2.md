@@ -51,6 +51,13 @@ https://openalex.org/works
 
 OpenAlex is a database that you can use to identify research outputs, including datasets and dataset-associated publications.
 
+```{figure} ../images/lab2/open_alex.png
+:label: open_alex
+:alt: Open Alex interface
+:align: center
+
+```
+
 You should:
 
 1. Go to https://openalex.org/works
