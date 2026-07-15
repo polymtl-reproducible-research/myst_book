@@ -287,7 +287,7 @@ The evaluation is based on the following criteria:
 
 | Criterion | Weight | Description |
 |-----------|:------:|-------------|
-| Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branche, -5% for each poorly named commit message, -10% for each incoherency in the flow.|
+| Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branch, -5% for each poorly named commit message, -10% for each incoherence in the flow.|
 | Reproducibility | **25%** | The original analysis is successfully reproduced by following the provided instructions. |
 | Replicability | **25%** | The analysis is successfully replicated after modifying the experimental parameters. |
 | Pull request workflow | **15%** | Pull requests are correctly created, reviewed, and merged using the required workflow. Each pull request counts for 5%.|
