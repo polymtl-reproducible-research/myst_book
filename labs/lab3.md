@@ -81,20 +81,22 @@ A clear folder structure separates raw data, processed data, code, results, and 
 
 For example :
 
-project-root/ <br>
-│ <br>
-├── README.md <br>
-├── environment.yml <br>
-├── .gitignore <br>
-├── data/ <br>
-│   ├── raw/ <br>
-│   └── processed/ <br>
-├── scripts/ <br>
-│   ├── download_data.py <br>
-│   └── analyze.py <br>
-├── notebooks/ <br>
-├── figures/ <br>
-└── results/ <br>
+```
+project-root/
+│
+├── README.md
+├── environment.yml
+├── .gitignore
+├── data/
+│   ├── raw/
+│   └── processed/
+├── scripts/
+│   ├── download_data.py
+│   └── analyze.py
+├── notebooks/
+├── figures/
+└── results/
+```
 
 ## Virtual environment
 
