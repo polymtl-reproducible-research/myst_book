@@ -125,7 +125,8 @@ You can use the [template](https://libguides.biblio.polymtl.ca/research_data/doc
 
 ## Report
 
-Prepare a brief report (2-3 sentences) describing the rationale behind your dataset selection. For example: what analysis are you planning to do with this dataset? Include this report as part of the documentation uploaded with your dataset on Borealis.
+Prepare a brief report (2–3 sentences) describing the rationale behind your dataset selection. For example, explain what analysis you are planning to perform with this dataset and why it is suitable for your project. Save this report as dataset_selection_report.md and include it as part of the documentation uploaded with your dataset on Borealis.
+
 ---
 
 # Dissemination Strategy — Borealis Dataverse
