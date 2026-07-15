@@ -30,7 +30,7 @@ Before starting the laboratory, ensure that you have selected a team on the cour
 
 ### GitHub
 
-Create a [GitHub](https://github.com/signup) account and provide both your username and your teammate’s username to the course staff.
+Create a [GitHub](https://github.com/signup) account and add both your username and your teammate’s username to the course staff in [this Google Sheet](https://docs.google.com/spreadsheets/d/1jadHXQkGt-tra9uiJBqvydLRbzdSggvVO9ipc4SCcjU/).
 
 This account is required in order to grant your team access to a dedicated repository, which will be used throughout the laboratory activities and for the organizational setup phase.
 
