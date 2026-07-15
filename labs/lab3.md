@@ -16,7 +16,9 @@ This laboratory introduces the principles of reproducible research through the d
 
 ## Repository
 
-Create a repository in the ING8100 organization.
+Create a repository in the [polymtl-repoducible-research](https://github.com/polymtl-reproducible-research) organization.
+
+Refer to the [GitHub Quickstart for repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories) for an introduction to repository creation and management.
 
 ## `README.md` file
 
