@@ -60,7 +60,7 @@ You should:
 5. Use additional fields that you consider important.
 6. Open a result that corresponds to a research publication or dataset-related output
 7. Inspect the "Works" page and associated links (DOI, publisher, repository links)
-8. Identify whether the underlying data is accessible and reusable
+8. Identify whether the underlying data is accessible and reusable. We also suggest to pick a dataset that not too large (<1GB). Example of a "small" dataset is one that is smaller than 100 MB.
 
 ---
 
@@ -126,14 +126,6 @@ You can use the [template](https://libguides.biblio.polymtl.ca/research_data/doc
 ## Report
 
 Prepare a brief report (2-3 sentences) describing the rationale behind your dataset selection. For example: what analysis are you planning to do with this dataset? Include this report as part of the documentation uploaded with your dataset on Borealis.
-
-Your report should address the following points:
-
-- The repository or source from which the dataset was obtained.
-- The dataset creator(s) or author(s).
-- The publication associated with the dataset (if applicable), including its citation or DOI.
-- The reasons for selecting this dataset, including its relevance to the objectives of this laboratory.
-
 ---
 
 # Dissemination Strategy — Borealis Dataverse
