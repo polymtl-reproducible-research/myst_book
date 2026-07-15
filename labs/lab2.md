@@ -188,10 +188,6 @@ Upload all dataset files ensuring:
 - minimal unnecessary compression.
 
 :::{note} 
-Borealis automatically unzips all .zip files. To preserve your dataset's folder hierarchy, please zip your file before depositing. If you have a zipped file, double-zip the file.
-:::
-
-:::{note} 
 Ensure that your files and folders are properly structured *before* uploading them into Borealis. Borealis automatically unzips all '.zip' files. To preserve your dataset's folder structure, please zip your dataset before depositing it on Borealis.
 :::
 
