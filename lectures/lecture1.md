@@ -55,8 +55,6 @@ someone else re-run your pipeline and get your numbers? Replicability is
 about *scientific robustness* — does the underlying effect hold up when the
 study is repeated independently?
 
-To cite this page elsewhere in the book, use its `label`: see [](#lecture1).
-
 ## Open Science
 
 Open science is the broader movement to make the entire research lifecycle
