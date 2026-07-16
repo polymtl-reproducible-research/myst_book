@@ -4,6 +4,14 @@ date: 2026-07-16
 label: lecture1
 ---
 
+:::{iframe} https://docs.google.com/presentation/d/100t7GQeYoFKjA-O44iaJstgfMCzsK46cA47EDUPkQdo/embed?start=false&loop=false&delayms=3000
+:width: 100%
+:align: center
+:title: Lecture 1 slides
+
+Lecture 1 slides
+:::
+
 # Why This Course Exists
 
 Modern research increasingly depends on code, data pipelines, and computational
