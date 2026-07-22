@@ -25,10 +25,7 @@ This laboratory consists of three main components:
 
 # Dataset Selection
 
-You must choose between the following two options, please ensure that the dataset meets the following criteria.
-1. No individual file exceeds 5 GB.
-2. The entirety of the dataset does not exceed 20 GB.
-3. The number of individual files included in the dataset does not exceed 500.
+You must choose between the following two options.
 
 ## Option 1 — Own Research Data (Recommended)
 
@@ -72,8 +69,10 @@ You should:
 :::{warning}
 When preparing your dataset for upload, ensure that it respects the following limits:
 - Maximum number of files: 1,000 files per dataset.
-- Maximum individual file size: 10 GB per file.
+- Maximum individual file size: 5 GB per file.
 - Maximum total dataset size: 20 GB.
+
+Keep in mind that larger datasets require more time to upload to Borealis. It is recommended that you select a dataset that is well below the forementioned limits.
 :::
 
 ---
@@ -139,7 +138,7 @@ You can use the [template](https://libguides.biblio.polymtl.ca/research_data/doc
 
 ## Report
 
-Prepare a brief report (2–3 sentences) describing the rationale behind your dataset selection. For example, explain what analysis you are planning to perform with this dataset and why it is suitable for your project. Save this report as dataset_selection_report.md and include it as part of the documentation uploaded with your dataset on Borealis.
+Prepare a brief report (3-4 sentences) describing the rationale behind your dataset selection. For example, explain what analysis you are planning to perform with this dataset and why it is suitable for your project. Save this report as dataset_selection_report.md and include it as part of the documentation uploaded with your dataset on Borealis.
 
 ---
 
@@ -147,13 +146,13 @@ Prepare a brief report (2–3 sentences) describing the rationale behind your da
 
 This section describes the publication workflow for research datasets using the Borealis Dataverse platform (demo environment). The dissemination process is a key component of FAIR data practices (Findable, Accessible, Interoperable, Reusable).
 
-The workflow is divided into:  data deposit, then code deposit, and finally the publication of the data and code.
+The workflow is divided into:  data deposit, data publication and versioning of the dataset.
 
 ---
 
 ## Platform Access and Account Setup
 
-You must verify access to the ING8100 collection on Polytechnique Dataverse:
+You must verify access to the ING8100 collection on the Polytechnique Montréal Demo Dataverse:
 
 - https://demo.borealisdata.ca/dataverse/ING8100
 
