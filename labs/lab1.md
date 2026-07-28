@@ -52,10 +52,26 @@ Miniforge is a lightweight Conda distribution used to create and manage reproduc
 
 ## Organizational setup
 
-Accept the invitation to the GitHub organization that will be sent to the email address associated with your GitHub account.
+Accept the invitation to the GitHub organization that will be sent to the email address associated with your GitHub account. This is the link to the [organization](https://github.com/polymtl-reproducible-research).
 
 ## Onboarding with GitHub
 
+### Fork the repository 
+
+Fork this [repository](https://github.com/polymtl-reproducible-research/tp1). A fork creates your own copy of the repository under your GitHub account while preserving its connection to the original repository. You will complete the laboratory using your fork.
+ 
+
+```{figure} ../images/lab1/press_fork_button.png
+:label: press-fork-button
+:alt: Click fork button
+:align: center
+```
+
+```{figure} ../images/lab1/make_fork.png
+:label: make-fork
+:alt: Create fork 
+:align: center
+```
 ### Modify a file from the GitHub interface
 
 Modify the `README.md` file directly from the GitHub web interface.
@@ -80,6 +96,14 @@ Select the option **Create a new branch and start a pull request**.
 ```{figure} ../images/lab1/edit_readme_3.png
 :label: edit-readme-3
 :alt: Third step to edit the README.md file with the GitHub interface 
+:align: center
+```
+
+### Compare your changes with your own repository
+
+```{figure} ../images/lab1/choose_base_repository
+:label: compare-and-choose-repo
+:alt: Compare your change with your own repository 
 :align: center
 ```
 
@@ -115,6 +139,7 @@ If you see text enclosed in angle brackets (`<...>`), replace it with your own v
 For example:
 
 ```bash
+git clone <repository-url>
 git clone https://github.com/johndoe/notarealrepo.git
 ```
 :::
@@ -124,6 +149,8 @@ Use `git status` to take a look at what is going on.
 :::
 
 ### Clone the repository
+
+From your **terminal**, clone your `tp1` repository to a location where you will keep your course files. For example, you may create a dedicated directory for your **ING8100** laboratories.
 
 ```bash
 git clone <repository-url>
