@@ -132,6 +132,10 @@ Select the option **Create a new branch and start a pull request**.
 :align: center
 ```
 
+This promote cleaner merge.
+
+For more guidelines about branches, refers to [Comparing Git workflows: What you should know](https://www.atlassian.com/git/tutorials/comparing-workflows).
+
 ## Reproducibility
 
 :::{hint}
@@ -228,7 +232,7 @@ Use the GitHub interface to create the pull request (PR).
 
 ### Merge the pull request
 
-The person who did not create the PR must merge the PR.
+The teammate who did not create the PR must merge the PR.
 
 ### Delete the branch
 
