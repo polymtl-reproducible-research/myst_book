@@ -16,13 +16,11 @@ This laboratory introduces the principles of reproducible research through the d
 
 ## Repository
 
-Create a repository in the [polymtl-repoducible-research](https://github.com/polymtl-reproducible-research) organization.
-
-Refer to the [GitHub Quickstart for repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories) for an introduction to repository creation and management.
+Create a repository. Refer to the [GitHub Quickstart for repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories) for an introduction to repository creation and management.
 
 ## `README.md` file
 
-The `README.md` file is the entry point to your project. It provides the information needed for others to understand your work, reproduce your results, and reuse your repository. 
+The `README.md` file is the entry point to your project. It provides the information needed for others to understand your work, reproduce your results, and reuse your repository.
 
 You may use the following template as a starting point:
 
@@ -32,26 +30,25 @@ The `README.md` should be updated throughout the lab as you build your project.
 
 ## License
 
-A [license](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) defines how others are allowed to use, modify, and share your project. 
+A [license](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository) defines how others are allowed to use, modify, and share your project.
 
 ## Code of Conduct
 
-A [Code of Conduct](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project) establishes clear expectations for respectful and inclusive collaboration within your project. 
+A [Code of Conduct](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-code-of-conduct-to-your-project) establishes clear expectations for respectful and inclusive collaboration within your project.
 
 ## CONTRIBUTING.md file
 
-A [`CONTRIBUTING.md`](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) file explains how others can participate in your project. It defines clear guidelines for submitting changes, reporting issues, and following project conventions. 
+A [`CONTRIBUTING.md`](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) file explains how others can participate in your project. It defines clear guidelines for submitting changes, reporting issues, and following project conventions.
 
 ## AI_Prompts file
 
-
 Create an `AI_Prompts.md` file that documents any prompts used during this assignment. Recording your prompts promotes transparency and allows others to better understand how AI was used throughout the project.
 
-When writing your prompts, pay particular attention to the **Description** component of the [4D Framework](https://www-cdn.anthropic.com/334975cdec18f744b4fa511dc8518bd8d119d29d.pdf), as providing clear context is essential for obtaining useful and reproducible results. To learn more about effective prompting, you are encouraged to explore Anthropic's free [AI Fluency Framework Foundations](https://anthropic.skilljar.com/ai-fluency-framework-foundations) course. 
+When writing your prompts, pay particular attention to the **Description** component of the [4D Framework](https://www-cdn.anthropic.com/334975cdec18f744b4fa511dc8518bd8d119d29d.pdf), as providing clear context is essential for obtaining useful and reproducible results. To learn more about effective prompting, you are encouraged to explore Anthropic's free [AI Fluency Framework Foundations](https://anthropic.skilljar.com/ai-fluency-framework-foundations) course.
 
-## Branch protection rules 
+## Branch protection rules
 
-[Branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches) rules help maintain the integrity of your repository by preventing direct or unreviewed changes to critical branches. 
+[Branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches) rules help maintain the integrity of your repository by preventing direct or unreviewed changes to critical branches.
 
 ### Protect `main`
 
@@ -67,19 +64,21 @@ A consistent branch naming convention must be followed to keep the project histo
 
 ## Issues
 
-You must use GitHub Issues to structure and track the work of your project. Each issue should represent a clear task or objective, and the work should be distributed across the team. 
+You must use GitHub Issues to structure and track the work of your project. Each issue should represent a clear task or objective, and the work should be distributed across the team.
 
 You need:
+
 - At least 3 issues,
 - At least one assigned to each member,
 - At least one closed via PR.
 
 ---
+
 # Code environment
 
 ## Folder structure
 
-A clear folder structure separates raw data, processed data, code, results, and documentation in a consistent way, making the workflow easier to understand and navigate. 
+A clear folder structure separates raw data, processed data, code, results, and documentation in a consistent way, making the workflow easier to understand and navigate.
 
 For example:
 
@@ -111,9 +110,10 @@ Create a script that retrieves the dataset from Borealis. This step ensures that
 ## Preprocess the data
 
 Create a preprocessing script to clean and standardize the raw data before analysis. This may include:
+
 - missing values handling
 - renaming / formatting columns
-filtering rows (basic criteria)
+  filtering rows (basic criteria)
 - simple type conversion (string → numeric/date)
 - removing obvious outliers if justified
 
@@ -158,10 +158,12 @@ Include the figures generated by your analysis and explain what they show. Each 
 Export your virtual environment and its dependencies to a file that can be used to recreate the same computational environment. This file captures the project's required packages and versions, allowing others to reproduce your analysis in a consistent environment.
 
 Depending on your chosen environment management tool, export your dependencies using the appropriate format:
+
 - For Conda environments, use an `environment.yml` file.
 - For Python `venv` environments, use a `requirements.txt` file.
 
 For examples:
+
 - [Isolating programming environments for Python using Conda](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/environment-instructions/python.md)
 - [Virtual Environments and Packages with venv](https://docs.python.org/3/tutorial/venv.html)
 
@@ -169,7 +171,7 @@ For examples:
 
 The `.gitignore` file specifies which files and directories should not be tracked by Git. It is commonly used to exclude temporary files, caches, virtual environments, and large or generated data files that should not be stored in the repository. Keeping these files out of version control helps maintain a clean and reproducible project.
 
-You may use the GitHub `.gitignore` template as a starting point. 
+You may use the GitHub `.gitignore` template as a starting point.
 
 ## Collaborative Git workflow
 
@@ -199,26 +201,25 @@ Possible examples include:
 
 ---
 
-# Evaluation 
+# Evaluation
 
-| Criterion | Weight | Description |
-|---|---|---|
-| README.md | 15% | The README.md contains all required sections and clearly documents the project. |
-| License | 5% | An appropriate open-source license is included in the repository. |
-| Code of Conduct | 5% | A complete Code of Conduct is provided. |
-| CONTRIBUTING.md | 5% | A complete CONTRIBUTING.md file defines contribution guidelines. |
-| Branch Protection Rules | 3% | Branch protection rules are configured according to the assignment requirements. |
-| Issues | 6% | GitHub Issues are used to plan and track project work according to the assignment requirements. |
-| Folder Structure | 3% | The repository follows the required project organization. |
-| Virtual Environment | 3% | A reproducible Conda environment is provided and documented. |
-| Scripts | 15% | Download, preprocessing, and analysis scripts are complete, functional, and well written. |
-| Report | 10% | The report clearly presents the project, methodology, and analysis results. |
-| .gitignore | 5% | The repository excludes unnecessary files from version control. |
-| Development Workflow | 20% | Appropriate use of branches, commits, pull requests, reviews, and repository maintenance practices. |
-| AI Prompt Documentation | 5% | AI usage is transparently documented through an AI_Prompts.md file. |
+| Criterion               | Weight | Description                                                                                         |
+| ----------------------- | ------ | --------------------------------------------------------------------------------------------------- |
+| README.md               | 15%    | The README.md contains all required sections and clearly documents the project.                     |
+| License                 | 5%     | An appropriate open-source license is included in the repository.                                   |
+| Code of Conduct         | 5%     | A complete Code of Conduct is provided.                                                             |
+| CONTRIBUTING.md         | 5%     | A complete CONTRIBUTING.md file defines contribution guidelines.                                    |
+| Branch Protection Rules | 3%     | Branch protection rules are configured according to the assignment requirements.                    |
+| Issues                  | 6%     | GitHub Issues are used to plan and track project work according to the assignment requirements.     |
+| Folder Structure        | 3%     | The repository follows the required project organization.                                           |
+| Virtual Environment     | 3%     | A reproducible Conda environment is provided and documented.                                        |
+| Scripts                 | 15%    | Download, preprocessing, and analysis scripts are complete, functional, and well written.           |
+| Report                  | 10%    | The report clearly presents the project, methodology, and analysis results.                         |
+| .gitignore              | 5%     | The repository excludes unnecessary files from version control.                                     |
+| Development Workflow    | 20%    | Appropriate use of branches, commits, pull requests, reviews, and repository maintenance practices. |
+| AI Prompt Documentation | 5%     | AI usage is transparently documented through an AI_Prompts.md file.                                 |
 
-
-<!-- Guidelines for evaluators : 
+<!-- Guidelines for evaluators :
 | Criterion | Weight | Description | Evaluation |
 |---|---|---|---|
 | README.md | 15% | The README.md contains all required sections and clearly documents the project. | −2% for each incomplete section. −3% for each missing section. |
