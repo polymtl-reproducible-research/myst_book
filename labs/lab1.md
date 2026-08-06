@@ -190,6 +190,10 @@ git add .
 
 to stage all modified, added, or deleted files.
 
+:::{note}
+The period `.` at the end refers to the current directory (and its descendants). It needs to be separated from `add` by (at least) one space.
+:::
+
 ### Create a commit
 
 ```bash
