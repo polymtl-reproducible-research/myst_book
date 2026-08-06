@@ -9,7 +9,7 @@ numbering:
 # Introduction
 
 :::{important}
-**Submission deadline:** *To be determined*  
+**Submission deadline:** _To be determined_  
 **Team formation:** This laboratory must be completed in teams of two students.
 :::
 
@@ -34,6 +34,8 @@ Create a [GitHub](https://github.com/signup) account and add both your username 
 
 This account is required in order to grant your team access to a dedicated repository, which will be used throughout the laboratory activities and for the organizational setup phase.
 
+If you already have a GitHub account, you may use it instead of creating a new one.
+
 ## Local setup
 
 ### Visual Studio Code
@@ -56,10 +58,9 @@ Accept the invitation to the GitHub organization that will be sent to the email 
 
 ## Onboarding with GitHub
 
-### Fork the repository 
+### Fork the repository
 
 Fork this [repository](https://github.com/polymtl-reproducible-research/tp1). A fork creates your own copy of the repository under your GitHub account while preserving its connection to the original repository. You will complete the laboratory using your fork.
- 
 
 ```{figure} ../images/lab1/press_fork_button.png
 :label: press-fork-button
@@ -69,17 +70,17 @@ Fork this [repository](https://github.com/polymtl-reproducible-research/tp1). A 
 
 ```{figure} ../images/lab1/make_fork.png
 :label: make-fork
-:alt: Create fork 
+:alt: Create fork
 :align: center
 ```
+
 ### Modify a file from the GitHub interface
 
 Modify the `README.md` file directly from the GitHub web interface.
 
-
 ```{figure} ../images/lab1/edit_readme_1.png
 :label: edit-readme-1
-:alt: First step to edit the README.md file with the GitHub interface 
+:alt: First step to edit the README.md file with the GitHub interface
 :align: center
 ```
 
@@ -87,7 +88,7 @@ Add your group number.
 
 ```{figure} ../images/lab1/edit_readme_2.png
 :label: edit-readme-2
-:alt: Second step to edit the README.md file with the GitHub interface 
+:alt: Second step to edit the README.md file with the GitHub interface
 :align: center
 ```
 
@@ -95,7 +96,7 @@ Select the option **Create a new branch and start a pull request**.
 
 ```{figure} ../images/lab1/edit_readme_3.png
 :label: edit-readme-3
-:alt: Third step to edit the README.md file with the GitHub interface 
+:alt: Third step to edit the README.md file with the GitHub interface
 :align: center
 ```
 
@@ -103,7 +104,7 @@ Select the option **Create a new branch and start a pull request**.
 
 ```{figure} ../images/lab1/choose_base_repository
 :label: compare-and-choose-repo
-:alt: Compare your change with your own repository 
+:alt: Compare your change with your own repository
 :align: center
 ```
 
@@ -111,7 +112,7 @@ Select the option **Create a new branch and start a pull request**.
 
 ```{figure} ../images/lab1/open_PR_1.png
 :label: open-PR-1
-:alt: First step to open a pull request with the GitHub interface 
+:alt: First step to open a pull request with the GitHub interface
 :align: center
 ```
 
@@ -119,7 +120,7 @@ Select the option **Create a new branch and start a pull request**.
 
 ```{figure} ../images/lab1/merge_PR_1.png
 :label: merge-PR-1
-:alt: First step to merge a pull request with the GitHub interface 
+:alt: First step to merge a pull request with the GitHub interface
 :align: center
 ```
 
@@ -127,7 +128,7 @@ Select the option **Create a new branch and start a pull request**.
 
 ```{figure} ../images/lab1/delete_branch_1.png
 :label: delete-branch-1
-:alt: Delete a branch after merge with the GitHub interface 
+:alt: Delete a branch after merge with the GitHub interface
 :align: center
 ```
 
@@ -142,6 +143,7 @@ For example:
 git clone <repository-url>
 git clone https://github.com/johndoe/notarealrepo.git
 ```
+
 :::
 
 :::{hint}
@@ -164,6 +166,10 @@ git switch -c <branch-name>
 
 :::{note}
 The `-c` option creates a new branch. Use a meaningful and descriptive branch name.
+
+Use a short, descriptive branch name that reflects your work. Use lowercase letters and hyphens (-) to separate words. Optionally, prefix the name with a category such as feature/, bugfix/, or docs/.
+
+Refers to [conventional branch](https://conventionalbranch.org/#summary) for more informations.
 :::
 
 ### Create the virtual environment
@@ -213,12 +219,15 @@ git push --set-upstream origin <branch-name>
 ```
 
 ### Create a pull request
-Use the GitHub interface to create the pull request (PR). 
+
+Use the GitHub interface to create the pull request (PR).
 
 ### Merge the pull request
+
 The person who did not create the PR must merge the PR.
 
 ### Delete the branch
+
 Once the PR is merged, delete the source branch (not `main`).
 
 ## Replicability
@@ -277,10 +286,12 @@ Use the VS Code Source Control interface to synchronize the changes.
 Use the GitHub interface to create a pull request for the new branch.
 
 ### Review the pull request
+
 A pull request review differs from a simple comment.  
 When starting a review, GitHub groups comments together and allows the reviewer to formally approve the changes or request modifications.
 
 The other teammate must:
+
 - start a review on GitHub
 - leave a comment requesting a modification to the selected year range
 
@@ -312,10 +323,10 @@ After the merge is completed, delete the source branch (not `main`).
 
 The evaluation is based on the following criteria:
 
-| Criterion | Weight | Description |
-|-----------|:------:|-------------|
-| Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branch, -5% for each poorly named commit message, -10% for each incoherence in the flow.|
-| Reproducibility | **25%** | The original analysis is successfully reproduced by following the provided instructions. |
-| Replicability | **25%** | The analysis is successfully replicated after modifying the experimental parameters. |
-| Pull request workflow | **15%** | Pull requests are correctly created, reviewed, and merged using the required workflow. Each pull request counts for 5%.|
-| Collaboration | **5%** | Both teammates follow the required collaborative workflow specified in the laboratory instructions. |
+| Criterion                 | Weight  | Description                                                                                                                                                                                                                                               |
+| ------------------------- | :-----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version control practices | **30%** | Appropriate use of Git, including meaningful branch names, descriptive commit messages, and a coherent development history. -5% for each poorly named or missing branch, -5% for each poorly named commit message, -10% for each incoherence in the flow. |
+| Reproducibility           | **25%** | The original analysis is successfully reproduced by following the provided instructions.                                                                                                                                                                  |
+| Replicability             | **25%** | The analysis is successfully replicated after modifying the experimental parameters.                                                                                                                                                                      |
+| Pull request workflow     | **15%** | Pull requests are correctly created, reviewed, and merged using the required workflow. Each pull request counts for 5%.                                                                                                                                   |
+| Collaboration             | **5%**  | Both teammates follow the required collaborative workflow specified in the laboratory instructions.                                                                                                                                                       |
