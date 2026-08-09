@@ -25,9 +25,25 @@ myst build --html
 
 The built site will be in `_build/html/`.
 
+### Previews for pull requests
+
+Warning: these steps deploy the preview to the main website. You should re-deploy the `main` branch as soon as you're done. (The `main` branch is also automatically re-deployed if any pull request gets merged, in which case you don't have to re-deploy it manually.)
+
+To build and deploy a pull request preview of the website:
+
+1. Go to the workflow page: https://github.com/polymtl-reproducible-research/myst_book/actions/workflows/deploy.yml
+2. Click "Run workflow" on the right side.
+3. Select the branch you want to preview.
+4. Click "Run workflow".
+5. This will build the website and make it visible at: https://reproducible-research.polymtl.ca/
+
+<img width="950" height="508" alt="image" src="https://github.com/user-attachments/assets/4f057eb9-176e-4264-8fe2-bfdb56cadb11" />
+
 ### Deployment
 
-This repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages on push to `main`. Enable GitHub Pages in your repository settings (Settings > Pages > Source: GitHub Actions).
+To see the current status of the website (that is, which branch/commit is currently visible online), look at the latest deployment here: https://github.com/polymtl-reproducible-research/myst_book/deployments
+
+[This workflow](https://github.com/polymtl-reproducible-research/myst_book/actions/workflows/deploy.yml) automatically re-deploys the `main` branch to https://reproducible-research.polymtl.ca/ whenever there is a push (including when a pull request is merged).
 
 ## Contributing
 
