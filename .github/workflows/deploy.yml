@@ -4,31 +4,17 @@ on:
   push:
     branches:
       - main
-  pull_request:
-  workflow_dispatch:  # Also allow manual runs
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  workflow_dispatch:
+    # This allows manual runs from any commit/branch
 
 concurrency:
-  group: deploy-${{ github.event.pull_request.number || 'main' }}
+  group: deploy
   cancel-in-progress: true
 
-env:
-  BASE_URL: /${{ github.event.pull_request.number || 'main' }}
-
 jobs:
-  deploy:
-    environment:
-      name: gh-pages
-      url: https://reproducible-research.polymtl.ca${{ env.BASE_URL }}
-
-    runs-on: ubuntu-latest
-
+  build:
     steps:
-      - name: Checkout PR branch
+      - name: Checkout
         uses: actions/checkout@v7
 
       - name: Setup Node
@@ -56,13 +42,21 @@ jobs:
       - name: Inject language switcher
         run: python3 scripts/inject-language-switcher.py
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453
-          # Version 4.1.0, pinned by commit hash since it's a third-party action
-          # We use peaceiris/actions-gh-pages instead of actions/deploy-pages
-          # because of the `destination_dir` option, which lets us keep the
-          # files from other deployments in other sub-directories.
+      - name: Upload static files as artifact
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/html/
-          destination_dir: ./${{ env.BASE_URL }}
+          path: _build/html/
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: gh-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy the artifact
+        id: deployment
+        uses: actions/deploy-pages@v5
