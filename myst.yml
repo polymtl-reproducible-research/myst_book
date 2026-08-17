@@ -2,8 +2,8 @@
 version: 1
 
 project:
-  title: My Book Title
-  subtitle: A short description of this book
+  title: Open Science and Reproducible Research
+  subtitle: Tools and Practices
   copyright: '2026'
   keywords:
     - keyword1
@@ -50,7 +50,7 @@ site:
     logo: ./images/site_logo.png
     logo_dark: ./images/site_logo_dark.png
     style: poly.css
-    logo_text: My Book
+    logo_text: Open Science and Reproducible Research
   actions:
     - title: GitHub
       url: https://github.com/polymtl-reproducible-research/myst_book
