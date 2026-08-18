@@ -1,36 +1,35 @@
 ---
-title: My Book Title
-description: A brief description of this book.
+title: 'Open Science and Reproducible Research: Tools and Practices'
+description: Open Science, Reproducibility and Replicability — a course from Polytechnique Montréal.
 date: 2026-03-27
 ---
 
-# Welcome
+Modern research increasingly depends on code, data pipelines, and computational
+analyses — yet a large share of published results cannot be reproduced, even by
+the original authors. This course covers the vocabulary, principles, and tools
+that make computational research reproducible and replicable, from version
+control and environments to open data and transparent reporting.
 
-This is the landing page for your MyST book. Edit this file to introduce your book's purpose and content.
+[Start with Lecture 1 →](lectures/lecture1.md)
 
-## About This Book
+This course was supported by Polytechnique Montréal and the UNIQUE Centre.
 
-Describe what this book is about, who it is for, and what readers will learn.
+:::::{grid} 2 2 2 2
 
-## How to Use This Book
-
-Provide instructions for navigating or interacting with the book.
-
-:::{admonition} Getting Started
-:class: tip
-To build this book locally, run:
-
-```bash
-myst start
-```
-:::
-
-## Acknowledgments
-
-This work was supported by Unique.
-
-:::{figure} images/unique-logo.png
-:alt: Unique
-:width: 200px
+::::{grid-item}
+:::{image} images/site_logo.png
+:alt: Polytechnique Montréal
+:height: 120px
 :align: center
 :::
+::::
+
+::::{grid-item}
+:::{image} images/unique-logo.png
+:alt: UNIQUE Centre
+:height: 120px
+:align: center
+:::
+::::
+
+:::::
