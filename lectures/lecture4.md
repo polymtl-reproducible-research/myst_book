@@ -1,57 +1,25 @@
 ---
-title: Lecture 4 — Subject
+title: Organizing and Versioning Research Data
 date: 2026-06-10
 label: lecture4
 ---
 
-# Heading 1
+# Overview
 
-Some references for MyST formatting:
+This lecture focuses on research data: how to organize it, document it, and
+version it so that it remains usable and interpretable over time, both for
+others and for your future self.
 
-* [60 seconds cheatsheet](https://commonmark.org/help/).
-* [MyST "get started"](https://mystmd.org/guide/quickstart-myst-markdown).
-* [MyST overview of "directives" and "roles"](https://mystmd.org/guide/syntax-overview).
-* [MyST reference for "directives"](https://mystmd.org/guide/directives).
-* [MyST reference for "roles"](https://mystmd.org/guide/roles).
+## What We'll Cover
 
-## Heading 2
+- Principles for structuring data directories and file naming
+- Documenting datasets with metadata and data dictionaries
+- Versioning data alongside code
+- Choosing where and how to store and share data
+- The FAIR principles (Findable, Accessible, Interoperable, Reusable)
 
-This horizontal rule is exactly 80 characters long:
---------------------------------------------------------------------------------
-
-:::{admonition} Note
+:::{admonition} Content in progress
 :class: note
-This is a placeholder admonition. Replace with your own content.
+The full lecture material is still being developed. Check back soon for
+slides, readings, and detailed notes.
 :::
-
-To cite another page of the MyST book, you can use the `label` defined at the
-top of the file, with this syntax: see [](#lecture1).
-
-To cite a bibtex reference, use the syntax {cite:p}`sample2026` and make sure
-it appears in `bibliography/references.bib`.
-
-You can include equations using LaTeX syntax:
-
-$$
-E = mc^2
-$$ (lec-4-eq-energy)
-
-Reference it as [](#lec-4-eq-energy).
-
-You can include figures using this syntax:
-
-```{figure} ../images/site_logo.png
-:label: lec-4-fig-placeholder
-:alt: A placeholder figure
-:align: center
-
-A placeholder figure. Replace with your own image.
-```
-
-Reference it as [](#lec-4-fig-placeholder).
-
-You can include tables using this syntax:
-
-| Parameter | Value | Unit |
-|-----------|-------|------|
-| Example   | 42    | --   |

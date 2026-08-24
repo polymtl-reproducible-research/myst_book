@@ -10,8 +10,6 @@ project:
     - keyword2
   github: https://github.com/polymtl-reproducible-research/myst_book
   subject: Book
-  numbering:
-    headings: true
   open_access: true
   license: MIT
   date: 2026-03-27
