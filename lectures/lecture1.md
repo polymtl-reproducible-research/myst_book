@@ -99,3 +99,11 @@ concepts to hands-on practice:
 Each lecture is paired with a lab where you will apply the concepts to a
 small, concrete research artifact that you will build up over the semester.
 :::
+
+## Further Resources
+
+- [The Turing Way — Reproducible Research](https://book.the-turing-way.org/reproducible-research/reproducible-research/) — The canonical community handbook.
+- [Open Science Training Handbook](https://open-science-training-handbook.github.io/Open-Science-Training-Handbook_EN/) — 12 chapters, funded by the EU.
+- [NASA Open Science 101](https://science.nasa.gov/open-science/training/) — Free 5-module course, ~12 hours.
+- [awesome-reproducible-research](https://github.com/leipzig/awesome-reproducible-research) — Curated meta-list of tools, papers, and courses.
+- [INCF Training Space](https://training.incf.org/lesson/standards-project-management-and-organization) — Standards and project management.
