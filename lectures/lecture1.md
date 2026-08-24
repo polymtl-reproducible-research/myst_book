@@ -1,5 +1,5 @@
 ---
-title: Lecture 1 — Foundations of Open Science, Reproducibility and Replicability
+title: Foundations of Open Science, Reproducibility and Replicability
 date: 2026-07-16
 label: lecture1
 ---

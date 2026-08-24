@@ -1,57 +1,26 @@
 ---
-title: Lecture 2 — Subject
+title: Open Development and Scientific Collaboration
 date: 2026-06-10
 label: lecture2
 ---
 
-# Heading 1
+# Overview
 
-Some references for MyST formatting:
+This lecture looks at how open, collaborative development practices from
+software engineering can be applied to research projects. It covers how open
+projects are organized on platforms like GitHub, and the mechanics of
+day-to-day collaboration: issues, pull requests, and code review.
 
-* [60 seconds cheatsheet](https://commonmark.org/help/).
-* [MyST "get started"](https://mystmd.org/guide/quickstart-myst-markdown).
-* [MyST overview of "directives" and "roles"](https://mystmd.org/guide/syntax-overview).
-* [MyST reference for "directives"](https://mystmd.org/guide/directives).
-* [MyST reference for "roles"](https://mystmd.org/guide/roles).
+## What We'll Cover
 
-## Heading 2
+- How open-source projects are structured and governed
+- Using issues to track bugs, questions, and planned work
+- Proposing changes through pull requests
+- Giving and receiving effective code review
+- Building a culture of open, collaborative research
 
-This horizontal rule is exactly 80 characters long:
---------------------------------------------------------------------------------
-
-:::{admonition} Note
+:::{admonition} Content in progress
 :class: note
-This is a placeholder admonition. Replace with your own content.
+The full lecture material is still being developed. Check back soon for
+slides, readings, and detailed notes.
 :::
-
-To cite another page of the MyST book, you can use the `label` defined at the
-top of the file, with this syntax: see [](#lecture1).
-
-To cite a bibtex reference, use the syntax {cite:p}`sample2026` and make sure
-it appears in `bibliography/references.bib`.
-
-You can include equations using LaTeX syntax:
-
-$$
-E = mc^2
-$$ (lec-2-eq-energy)
-
-Reference it as [](#lec-2-eq-energy).
-
-You can include figures using this syntax:
-
-```{figure} ../images/site_logo.png
-:label: lec-2-fig-placeholder
-:alt: A placeholder figure
-:align: center
-
-A placeholder figure. Replace with your own image.
-```
-
-Reference it as [](#lec-2-fig-placeholder).
-
-You can include tables using this syntax:
-
-| Parameter | Value | Unit |
-|-----------|-------|------|
-| Example   | 42    | --   |
