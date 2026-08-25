@@ -57,6 +57,11 @@ def restore(text, placeholders):
     return text
 
 
+def strip_placeholders(text):
+    """Remove every placeholder token, leaving only the surrounding literal text."""
+    return _PH_RE.sub("", text)
+
+
 def validate(source_protected, translated_protected):
     """True if the translation preserved every structural marker.
 
