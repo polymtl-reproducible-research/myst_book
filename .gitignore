@@ -4,6 +4,9 @@ _build/
 # Translated source files (generated at build time)
 _translated/
 
+# Translation cache checkout (fetched from the translation-cache branch at build time)
+.tcache/
+
 # Portable translation kit (workspace only)
 myst-translation-kit/
 
