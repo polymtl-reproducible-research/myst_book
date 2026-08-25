@@ -28,6 +28,7 @@ jobs:
         with:
           ref: translation-cache
           path: .tcache
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v7
@@ -52,6 +53,7 @@ jobs:
         run: python3 scripts/build-french.py --cache .tcache/fr.cache.json
 
       - name: Commit refreshed translation cache
+        if: always()
         continue-on-error: true
         working-directory: .tcache
         run: |
