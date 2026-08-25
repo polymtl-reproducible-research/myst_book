@@ -112,3 +112,27 @@ def test_admonition_without_options_is_unchanged():
     body = ":::{note}\nNo options here.\n:::"
     out = translate_body(body, UP).split("\n")
     assert out[1] == "NO OPTIONS HERE."
+
+
+def test_labeled_math_block_closes():
+    body = "$$\nE = mc^2\n$$ (eq-energy)\n\nProse after the equation."
+    out = translate_body(body, UP).split("\n")
+    assert out[:3] == ["$$", "E = mc^2", "$$ (eq-energy)"]
+    assert out[-1] == "PROSE AFTER THE EQUATION."
+
+
+def test_single_line_math_still_works():
+    assert translate_body("$$ x = 1 $$", UP) == "$$ x = 1 $$"
+
+
+def test_fenced_directive_reaches_the_directive_renderer():
+    body = "```{figure} img/x.png\n:alt: A picture\nA caption here.\n```"
+    out = translate_body(body, UP).split("\n")
+    assert out[0] == "```{figure} img/x.png"
+    assert out[1] == ":alt: A picture"
+    assert out[2] == "A CAPTION HERE."
+
+
+def test_plain_code_fence_is_still_verbatim():
+    body = "```python\nx = 1  # keep\n```"
+    assert translate_body(body, UP) == body

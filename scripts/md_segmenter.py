@@ -16,6 +16,7 @@ ADMONITION_DIRECTIVES = {
 }
 
 FENCE_RE = re.compile(r"^(`{3,}|~{3,})")
+FENCE_DIRECTIVE_RE = re.compile(r"^(`{3,}|~{3,})\{(.+?)\}")
 DIRECTIVE_RE = re.compile(r"^(:{3,})\{(.+?)\}")
 TABLE_RE = re.compile(r"^\s*\|")
 TABLE_SEP_RE = re.compile(r"^\s*\|[\s\-:|]+\|\s*$")
@@ -48,6 +49,25 @@ def segment(body):
 
     while i < len(lines):
         line = lines[i]
+
+        fenced_directive = FENCE_DIRECTIVE_RE.match(line)
+        if fenced_directive:
+            flush()
+            char = fenced_directive.group(1)[0]
+            close = re.compile(r"^" + re.escape(char)
+                               + r"{" + str(len(fenced_directive.group(1))) + r",}\s*$")
+            buf = [line]
+            i += 1
+            while i < len(lines) and not close.match(lines[i]):
+                buf.append(lines[i])
+                i += 1
+            closed = i < len(lines)
+            if closed:
+                buf.append(lines[i])
+                i += 1
+            blocks.append(Block("directive", buf,
+                                {"name": fenced_directive.group(2), "closed": closed}))
+            continue
 
         fence = FENCE_RE.match(line)
         if fence:
@@ -85,12 +105,14 @@ def segment(body):
             flush()
             buf = [line]
             i += 1
-            if line.strip() == "$$" or not line.strip().endswith("$$"):
+            single = line.strip() != "$$" and line.strip().endswith("$$")
+            if not single:
                 while i < len(lines):
                     buf.append(lines[i])
-                    ends = lines[i].strip().endswith("$$")
+                    # A closing fence may carry a MyST label: `$$ (eq-name)`.
+                    closes = lines[i].strip().startswith("$$")
                     i += 1
-                    if ends:
+                    if closes:
                         break
             blocks.append(Block("math", buf))
             continue
