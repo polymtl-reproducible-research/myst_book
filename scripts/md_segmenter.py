@@ -150,6 +150,12 @@ def segment(body):
             i += 1
             continue
 
+        if (blocks and blocks[-1].kind == "list_item" and not para
+                and line[:1].isspace() and line.strip()):
+            blocks[-1].lines.append(line)
+            i += 1
+            continue
+
         para.append(line)
         i += 1
         if HARD_BREAK_RE.search(line):
@@ -177,7 +183,12 @@ def render_block(block, translate):
     if block.kind == "heading":
         return [_render_prefixed(block.lines[0], HEADING_RE, translate)]
     if block.kind == "list_item":
-        return [_render_prefixed(block.lines[0], LIST_RE, translate)]
+        prefix, first = LIST_RE.match(block.lines[0]).groups()
+        text = " ".join([first.strip()] + [l.strip() for l in block.lines[1:]]).strip()
+        if not HAS_WORDS_RE.search(text):
+            return list(block.lines)
+        trailing = "  " if HARD_BREAK_RE.search(block.lines[-1]) else ""
+        return [prefix + translate(text) + trailing]
     if block.kind == "paragraph":
         text = " ".join(line.strip() for line in block.lines)
         trailing = "  " if HARD_BREAK_RE.search(block.lines[-1]) else ""

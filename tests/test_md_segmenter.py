@@ -136,3 +136,28 @@ def test_fenced_directive_reaches_the_directive_renderer():
 def test_plain_code_fence_is_still_verbatim():
     body = "```python\nx = 1  # keep\n```"
     assert translate_body(body, UP) == body
+
+
+def test_wrapped_list_item_is_translated_as_one_unit():
+    body = "- Findable — data are assigned an identifier and\n  are described richly enough."
+    sent = []
+    translate_body(body, lambda t: sent.append(t) or "<T>")
+    assert sent == ["Findable — data are assigned an identifier and are described richly enough."]
+
+
+def test_list_item_hard_break_is_preserved():
+    body = "- Dissemination with Borealis  \n- Collaboration workflow"
+    out = translate_body(body, UP).split("\n")
+    assert out[0].endswith("  ")
+    assert out[1] == "- COLLABORATION WORKFLOW"
+
+
+def test_nested_sublist_is_not_absorbed_into_its_parent():
+    assert translate_body("- top\n  - nested", UP) == "- TOP\n  - NESTED"
+
+
+def test_indented_line_after_a_paragraph_is_not_absorbed_into_a_list():
+    body = "- an item\n\nSome paragraph\n  continued here."
+    out = translate_body(body, UP).split("\n")
+    assert out[0] == "- AN ITEM"
+    assert "SOME PARAGRAPH CONTINUED HERE." in out
