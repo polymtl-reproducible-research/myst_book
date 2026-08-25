@@ -225,3 +225,5 @@ __marimo__/
 mooc
 claude
 external/
+.venv-translate/
+fr.cache.json
