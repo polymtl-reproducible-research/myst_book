@@ -64,7 +64,7 @@ jobs:
             echo "cache unchanged"
           else
             git commit -m "Update French translation cache [skip ci]"
-            git pull --rebase origin translation-cache
+            git pull --rebase origin translation-cache || echo "no existing cache branch; creating it"
             git push origin HEAD:translation-cache
           fi
 
