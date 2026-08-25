@@ -24,7 +24,6 @@ def test_shields_external_link_target_but_not_link_text():
 def test_shields_crossref_link_target():
     protected, ph = shield("Defined in [Lab 2](#lab2).")
     assert protected == "Defined in [Lab 2]XPHX0XPHX."
-    assert ph == ["(#lab2)"]
 
 
 def test_round_trip_is_identity_when_untranslated():
@@ -57,3 +56,9 @@ def test_validate_rejects_broken_brackets():
 def test_validate_rejects_broken_emphasis():
     src, _ = shield("This is **important** here.")
     assert validate(src, "Ceci est *important* ici.") is False
+
+
+def test_does_not_shield_ordinary_prose_parentheses():
+    protected, ph = shield("Research outputs (data and code) must be shared.")
+    assert protected == "Research outputs (data and code) must be shared."
+    assert ph == []

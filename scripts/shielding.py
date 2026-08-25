@@ -16,7 +16,7 @@ _PATTERNS = (
     r"\{[a-zA-Z:_-]+\}`[^`]*`",                 # MyST roles: {cite:p}`key`
     r"(?<!\$)\$(?!\$)(?:.+?)(?<!\$)\$(?!\$)",   # inline math: $x$
     r"`[^`]+`",                                 # inline code: `code`
-    r"\([^)]*\)",                               # link targets: (url) and (#ref)
+    r"(?<=\])\([^)]*\)",                        # link targets: ](url) and ](#ref)
 )
 
 
