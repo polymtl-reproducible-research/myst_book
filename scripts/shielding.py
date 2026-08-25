@@ -40,23 +40,20 @@ def shield(text):
 
 
 def restore(text, placeholders):
-    """Substitute placeholders back into text.
+    """Substitute placeholders back into text in descending index order.
+
+    Processes indices from high to low, ensuring each placeholder is expanded
+    exactly once. A shielded span can only contain LOWER-numbered placeholders
+    (since patterns are applied sequentially), so descending order prevents
+    re-expansion of restored content.
 
     Raises KeyError if the text references a placeholder that does not exist.
-    Iterates to a fixed point to handle nested placeholders.
     """
-
-    def _sub(match):
-        index = int(match.group(1))
-        if index >= len(placeholders):
-            raise KeyError(match.group(0))
-        return placeholders[index]
-
-    for _ in range(len(placeholders) + 1):
-        expanded = _PH_RE.sub(_sub, text)
-        if expanded == text:
-            return expanded
-        text = expanded
+    for index in range(len(placeholders) - 1, -1, -1):
+        text = text.replace(PLACEHOLDER.format(index), placeholders[index])
+    leftover = _PH_RE.search(text)
+    if leftover and int(leftover.group(1)) >= len(placeholders):
+        raise KeyError(leftover.group(0))
     return text
 
 

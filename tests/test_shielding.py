@@ -84,4 +84,11 @@ def test_inline_math_is_still_shielded():
 
 def test_validate_rejects_placeholder_detached_from_its_bracket():
     src, _ = shield("See [the guide](https://e.com).")
-    assert validate(src, "Voir le guide XPHX0XPHX.") is False
+    # Same bracket and placeholder counts; only the adjacency differs.
+    assert validate(src, "Voir [le guide] XPHX0XPHX.") is False
+
+
+def test_round_trip_survives_literal_placeholder_shaped_content():
+    original = "Code `XPHX0XPHX` and [l](#r)."
+    protected, ph = shield(original)
+    assert restore(protected, ph) == original
