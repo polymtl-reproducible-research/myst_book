@@ -91,3 +91,24 @@ def test_hard_line_break_is_preserved():
     out = translate_body(body, UP).split("\n")
     assert len(out) == 2
     assert out[0].endswith("  ")
+
+
+def test_admonition_option_line_is_preserved_verbatim():
+    body = ":::{note}\n:class: dropdown\nSome prose here.\n:::"
+    out = translate_body(body, UP).split("\n")
+    assert out[1] == ":class: dropdown"
+    assert out[2] == "SOME PROSE HERE."
+
+
+def test_admonition_options_precede_translated_title_and_body():
+    body = ":::{admonition} Key takeaway\n:class: important\nThis matters.\nAnd more.\n:::"
+    out = translate_body(body, UP).split("\n")
+    assert out[0] == ":::{admonition} KEY TAKEAWAY"
+    assert out[1] == ":class: important"
+    assert out[2] == "THIS MATTERS. AND MORE."
+
+
+def test_admonition_without_options_is_unchanged():
+    body = ":::{note}\nNo options here.\n:::"
+    out = translate_body(body, UP).split("\n")
+    assert out[1] == "NO OPTIONS HERE."

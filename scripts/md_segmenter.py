@@ -24,6 +24,7 @@ LIST_RE = re.compile(r"^(\s*(?:[-*+]|\d+\.)\s+)(.*)$")
 HAS_WORDS_RE = re.compile(r"[a-zA-Z]{2,}")
 RULE_RE = re.compile(r"^\s*([-*_])\1{2,}\s*$")
 HARD_BREAK_RE = re.compile(r"\S {2,}$")
+DIRECTIVE_OPTION_RE = re.compile(r"^:[a-zA-Z_][a-zA-Z0-9_-]*:")
 
 
 @dataclass
@@ -202,9 +203,12 @@ def _render_directive(block, translate):
     if name in ADMONITION_DIRECTIVES:
         head, _, title = opening.partition("}")
         first = head + "} " + translate(title.strip()) if title.strip() else opening
-        # Recurse so nested code blocks, lists and paragraphs are handled.
-        body = render(segment("\n".join(inner)), translate).split("\n") if inner else []
-        return [first] + body + closing
+        # Directive options sit at the very start of the body and are not prose.
+        options, rest = [], list(inner)
+        while rest and DIRECTIVE_OPTION_RE.match(rest[0]):
+            options.append(rest.pop(0))
+        body = render(segment("\n".join(rest)), translate).split("\n") if rest else []
+        return [first] + options + body + closing
 
     return list(block.lines)
 
