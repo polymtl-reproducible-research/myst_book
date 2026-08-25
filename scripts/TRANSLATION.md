@@ -111,3 +111,19 @@ _translated/
 - **Flag icons**: The SVG flags are embedded as base64 data URIs in `language-switcher.js`. Replace the `ukUri` and `qcUri` variables with your own flag SVGs.
 - **Widget position**: Adjust the `PAD_BOTTOM`, `PAD_RIGHT`, `W`, and `H` constants in `language-switcher.js` (and matching values in the CSS string).
 - **Translation corrections**: Add post-translation term corrections in `translate-sources.py` if Google Translate consistently mistranslates domain-specific terms.
+
+## Live demo
+
+A working deployment of this pipeline, built from the `mb/tradfix` branch:
+
+- English: <https://mathieuboudreau.github.io/myst_book-staging/>
+- French: <https://mathieuboudreau.github.io/myst_book-staging/fr/>
+
+That site was produced by the exact workflow described above. Its French build
+made **zero** calls to Google Translate, because every string resolved from the
+committed cache on the `translation-cache` branch — which is the property that
+makes the build deterministic and immune to the translation endpoint failing.
+
+The same deployment also demonstrates the failure policy: an earlier run with an
+empty cache exited non-zero and refused to publish, rather than shipping a
+half-English site.
