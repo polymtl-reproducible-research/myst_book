@@ -8,6 +8,7 @@ report every failure at once and exit non-zero.
 import json
 import os
 import re
+import sys
 
 from shielding import restore, shield, strip_placeholders, validate
 
@@ -40,6 +41,15 @@ class Resolver:
         self.unresolved = []
         self.added = 0
 
+    def _use(self, protected, candidate, placeholders, original, source):
+        """Apply a stored translation, rejecting one whose markup does not match."""
+        if not validate(protected, candidate):
+            print("  Warning: malformed %s entry for %r -- ignoring"
+                  % (source, protected), file=sys.stderr)
+            self.unresolved.append(original.strip())
+            return original
+        return restore(candidate, placeholders)
+
     def resolve(self, text):
         stripped = text.strip()
         if not stripped or not HAS_WORDS_RE.search(stripped):
@@ -54,9 +64,9 @@ class Resolver:
             return text
 
         if protected in self.overrides:
-            return restore(self.overrides[protected], placeholders)
+            return self._use(protected, self.overrides[protected], placeholders, text, "override")
         if protected in self.cache:
-            return restore(self.cache[protected], placeholders)
+            return self._use(protected, self.cache[protected], placeholders, text, "cache")
 
         try:
             result = self.translate_fn(protected)

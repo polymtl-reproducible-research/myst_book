@@ -98,3 +98,41 @@ def test_prose_containing_markup_is_still_translated():
     out = r.resolve("See [the guide](https://e.com) now.")
     assert out == "FR:See [the guide](https://e.com) now."
     assert len(r.cache) == 1
+
+
+def test_override_that_drops_a_placeholder_is_rejected():
+    src = "See [the guide](https://e.com) now."
+    key = "See [the guide]XPHX0XPHX now."
+    r = Resolver(fake({}), overrides={key: "Voir le guide maintenant."})
+    assert r.resolve(src) == src          # English kept, link intact
+    assert r.unresolved == [src]          # and the build will fail
+
+
+def test_override_naming_an_unknown_placeholder_is_rejected():
+    src = "See [the guide](https://e.com) now."
+    key = "See [the guide]XPHX0XPHX now."
+    r = Resolver(fake({}), overrides={key: "Voir [le guide]XPHX5XPHX maintenant."})
+    assert r.resolve(src) == src          # no KeyError escapes
+    assert r.unresolved == [src]
+
+
+def test_corrupt_cache_entry_is_rejected_the_same_way():
+    src = "See [the guide](https://e.com) now."
+    key = "See [the guide]XPHX0XPHX now."
+    r = Resolver(fake({}), cache={key: "Voir le guide."})
+    assert r.resolve(src) == src
+    assert r.unresolved == [src]
+
+
+def test_valid_override_is_still_applied():
+    src = "See [the guide](https://e.com) now."
+    key = "See [the guide]XPHX0XPHX now."
+    r = Resolver(fake({}), overrides={key: "Voir [le guide]XPHX0XPHX maintenant."})
+    assert r.resolve(src) == "Voir [le guide](https://e.com) maintenant."
+
+
+def test_stored_hit_paths_do_not_touch_the_cache():
+    r = Resolver(fake({"Labs": "NEW"}), cache={"Labs": "PINNED"})
+    r.resolve("Labs")
+    assert r.cache["Labs"] == "PINNED"
+    assert r.added == 0
