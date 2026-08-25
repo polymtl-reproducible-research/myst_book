@@ -136,3 +136,36 @@ def test_stored_hit_paths_do_not_touch_the_cache():
     r.resolve("Labs")
     assert r.cache["Labs"] == "PINNED"
     assert r.added == 0
+
+
+def test_translator_space_before_placeholder_is_repaired():
+    r = Resolver(lambda t: "[Aide-mémoire de 60 secondes] XPHX0XPHX.")
+    out = r.resolve("[60 seconds cheatsheet](https://commonmark.org/help/).")
+    assert out == "[Aide-mémoire de 60 secondes](https://commonmark.org/help/)."
+    assert r.unresolved == []
+
+
+def test_empty_link_text_space_is_repaired():
+    r = Resolver(lambda t: "Référencez-le comme [] XPHX0XPHX.")
+    out = r.resolve("Reference it as [](#lab-1-eq-energy).")
+    assert out == "Référencez-le comme [](#lab-1-eq-energy)."
+
+
+def test_malformed_override_is_still_rejected_not_repaired():
+    key = "See [the guide]XPHX0XPHX now."
+    r = Resolver(lambda t: "x", overrides={key: "Voir le guide maintenant."})
+    src = "See [the guide](https://e.com) now."
+    assert r.resolve(src) == src
+    assert r.unresolved == [src]
+
+
+def test_a_failed_string_is_not_retried():
+    calls = []
+    def flaky(text):
+        calls.append(text)
+        raise RuntimeError("nope")
+    r = Resolver(flaky)
+    r.resolve("Some English prose here.")
+    r.resolve("Some English prose here.")
+    assert len(calls) == 1
+    assert len(r.unresolved) == 2

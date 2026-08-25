@@ -10,7 +10,7 @@ import os
 import re
 import sys
 
-from shielding import restore, shield, strip_placeholders, validate
+from shielding import repair_placeholder_spacing, restore, shield, strip_placeholders, validate
 
 HAS_WORDS_RE = re.compile(r"[a-zA-Z]{2,}")
 
@@ -41,6 +41,7 @@ class Resolver:
         self.unresolved = []
         self.unresolved_keys = []
         self.added = 0
+        self._failed = set()
 
     def _use(self, protected, candidate, placeholders, original, source):
         """Apply a stored translation, rejecting one whose markup does not match."""
@@ -65,6 +66,11 @@ class Resolver:
         if not HAS_WORDS_RE.search(strip_placeholders(protected)):
             return text
 
+        if protected in self._failed:
+            self.unresolved.append(stripped)
+            self.unresolved_keys.append(protected)
+            return text
+
         if protected in self.overrides:
             return self._use(protected, self.overrides[protected], placeholders, text, "override")
         if protected in self.cache:
@@ -75,9 +81,13 @@ class Resolver:
         except Exception:
             result = None
 
+        if result:
+            result = repair_placeholder_spacing(result)
+
         if not result or not validate(protected, result):
             self.unresolved.append(stripped)
             self.unresolved_keys.append(protected)
+            self._failed.add(protected)
             return text
 
         if protected not in self.cache:   # never overwrite an existing entry

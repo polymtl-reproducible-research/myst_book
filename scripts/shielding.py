@@ -62,6 +62,17 @@ def strip_placeholders(text):
     return _PH_RE.sub("", text)
 
 
+def repair_placeholder_spacing(text):
+    """Undo the translator's habit of inserting space between `]` and a placeholder.
+
+    Google reliably renders `[text]XPHX0XPHX` as `[text] XPHX0XPHX`. Left alone that
+    is a broken markdown link, and validate() rightly rejects it -- but the artifact is
+    deterministic, so repairing it is better than failing a string that is otherwise a
+    perfectly good translation.
+    """
+    return re.sub(r"\]\s+(XPHX\d+XPHX)", r"]\1", text)
+
+
 def validate(source_protected, translated_protected):
     """True if the translation preserved every structural marker.
 
