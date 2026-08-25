@@ -104,4 +104,38 @@ def test_main_exits_nonzero_when_a_string_is_unresolved(tmp_path, monkeypatch):
         "project:\n  title: My Book\n  toc:\n  - file: index.md\n", encoding="utf-8")
     (tmp_path / "index.md").write_text("Some prose.\n", encoding="utf-8")
     monkeypatch.setattr(ts, "TRANSLATED_DIR", str(tmp_path / "_translated"))
+    monkeypatch.setattr(ts, "OVERRIDES_PATH", str(tmp_path / "overrides.json"))
     assert ts.main(["--cache", str(tmp_path / "c.json")]) == 1
+
+
+def test_non_mapping_frontmatter_warns_and_is_left_alone(capsys):
+    fm = "---\n- a\n- b\n---\n"
+    assert ts._translate_frontmatter(fm, UP, ("title",)) == fm
+    assert "not a mapping" in capsys.readouterr().err
+
+
+def test_malformed_yaml_frontmatter_warns_and_is_left_alone(capsys):
+    fm = "---\ntitle: [unclosed\n---\n"
+    assert ts._translate_frontmatter(fm, UP, ("title",)) == fm
+    assert "not valid YAML" in capsys.readouterr().err
+
+
+def test_a_resolver_error_is_not_swallowed():
+    def boom(text):
+        raise ValueError("resolver bug")
+    with pytest.raises(ValueError):
+        ts._translate_frontmatter("---\ntitle: Lab 1\n---\n", boom, ("title",))
+
+
+def test_main_succeeds_and_writes_the_cache(tmp_path, monkeypatch):
+    monkeypatch.setattr(ts, "make_google_translator", lambda **kw: (lambda t: "FR:" + t))
+    monkeypatch.setattr(ts, "ROOT_DIR", str(tmp_path))
+    monkeypatch.setattr(ts, "TRANSLATED_DIR", str(tmp_path / "_translated"))
+    monkeypatch.setattr(ts, "OVERRIDES_PATH", str(tmp_path / "overrides.json"))
+    (tmp_path / "myst.yml").write_text(
+        "project:\n  title: My Book\n  toc:\n  - file: index.md\n", encoding="utf-8")
+    (tmp_path / "index.md").write_text("Some prose.\n", encoding="utf-8")
+    cache = tmp_path / "c.json"
+    assert ts.main(["--cache", str(cache)]) == 0
+    assert cache.exists()
+    assert json.loads(cache.read_text(encoding="utf-8"))

@@ -54,14 +54,26 @@ def translate_md_file(src_path, dst_path, resolve):
 
 
 def _translate_frontmatter(frontmatter, resolve, fields):
+    """Translate selected frontmatter fields, leaving unparseable frontmatter alone.
+
+    Only YAML parse failures and non-mapping frontmatter are tolerated, and both
+    warn. Any other exception propagates: silently swallowing a translation
+    failure is the exact bug this project exists to remove.
+    """
     try:
         data = yaml.safe_load(frontmatter.strip("- \n"))
-        for field in fields:
-            if isinstance(data.get(field), str):
-                data[field] = resolve(data[field])
-        return "---\n" + yaml.dump(data, allow_unicode=True, default_flow_style=False) + "---\n"
-    except Exception:
-        return frontmatter   # keep original on parse error
+    except yaml.YAMLError as error:
+        print("  Warning: frontmatter is not valid YAML (%s); leaving it untranslated"
+              % error.__class__.__name__, file=sys.stderr)
+        return frontmatter
+    if not isinstance(data, dict):
+        print("  Warning: frontmatter is not a mapping; leaving it untranslated",
+              file=sys.stderr)
+        return frontmatter
+    for field in fields:
+        if isinstance(data.get(field), str):
+            data[field] = resolve(data[field])
+    return "---\n" + yaml.dump(data, allow_unicode=True, default_flow_style=False) + "---\n"
 
 
 def translate_notebook(src_path, dst_path, resolve):
