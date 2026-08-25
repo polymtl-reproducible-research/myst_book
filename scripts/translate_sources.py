@@ -143,14 +143,23 @@ def create_french_myst_yml(config, resolve):
     print("  Created " + os.path.relpath(destination, ROOT_DIR))
 
 
-def report_unresolved(unresolved):
+def report_unresolved(unresolved, keys=None):
     """Build the failure report printed before a non-zero exit."""
     lines = ["", "=== %d strings could not be translated ===" % len(unresolved)]
-    for text in unresolved:
+    keys = keys or [None] * len(unresolved)
+    any_key_differs = False
+    for text, key in zip(unresolved, keys):
         excerpt = text if len(text) <= 70 else text[:67] + "..."
         lines.append("  " + excerpt)
+        if key is not None and key != text:
+            lines.append("      override key: " + key)
+            any_key_differs = True
     lines.append("")
-    lines.append("Re-run the job, or pin a translation in translations/fr.overrides.json.")
+    if any_key_differs:
+        lines.append("Re-run the job, or pin a translation in translations/fr.overrides.json")
+        lines.append("using the exact override key shown above.")
+    else:
+        lines.append("Re-run the job, or pin a translation in translations/fr.overrides.json.")
     return "\n".join(lines)
 
 
@@ -231,7 +240,7 @@ def main(argv=None):
         print("  Cached %d new translations in %s" % (resolver.added, args.cache))
 
     if resolver.unresolved:
-        print(report_unresolved(resolver.unresolved), file=sys.stderr)
+        print(report_unresolved(resolver.unresolved, resolver.unresolved_keys), file=sys.stderr)
         return 1
 
     print("=== Translation complete ===")

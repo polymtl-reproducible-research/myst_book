@@ -6,19 +6,23 @@ import translate_sources as ts
 from resolver import Resolver
 
 FENCE = re.compile(r"^(`{3,}|~{3,})")
+FENCE_DIRECTIVE = re.compile(r"^(`{3,}|~{3,})\{")
 UP = str.upper
 
 
 def fences(text):
-    """Every fenced code block in a document, as raw line lists."""
-    out, buf, inside = [], [], False
+    """Plain fenced CODE blocks only. Fenced directives hold translatable prose."""
+    out, buf, inside, is_directive = [], [], False, False
     for line in text.split("\n"):
         if FENCE.match(line):
-            buf.append(line)
-            if inside:
-                out.append(buf)
-                buf = []
-            inside = not inside
+            if not inside:
+                is_directive = bool(FENCE_DIRECTIVE.match(line))
+                inside, buf = True, [line]
+            else:
+                buf.append(line)
+                if not is_directive:
+                    out.append(buf)
+                buf, inside = [], False
         elif inside:
             buf.append(line)
     return out
@@ -32,6 +36,16 @@ def test_report_lists_every_unresolved_string():
 
 def test_report_mentions_the_overrides_file():
     assert "translations/fr.overrides.json" in ts.report_unresolved(["Labs"])
+
+
+def test_report_shows_the_exact_override_key_when_it_differs():
+    report = ts.report_unresolved(["See [the guide](https://e.com) now."],
+                                  ["See [the guide]XPHX0XPHX now."])
+    assert "override key: See [the guide]XPHX0XPHX now." in report
+
+
+def test_report_omits_the_key_when_identical():
+    assert "override key" not in ts.report_unresolved(["Labs"], ["Labs"])
 
 
 def test_md_file_translates_prose_and_frontmatter_title(tmp_path):
@@ -92,6 +106,43 @@ def test_golden_real_sources_preserve_code_blocks(tmp_path, path):
     ts.translate_md_file(src, str(dst), UP)
     original = open(src, encoding="utf-8").read()
     assert fences(dst.read_text(encoding="utf-8")) == fences(original)
+
+
+def untranslated_prose(original, translated):
+    """Source prose lines that survived byte-identical => never reached the translator.
+
+    Deliberately does NOT re-parse the source for structure. A coverage check that
+    trusts the same block boundaries the segmenter produced would inherit the very
+    bug it is meant to catch. Prose is identified purely by content: three or more
+    lowercase words. Equations, paths, options and table rules do not qualify.
+    """
+    out = set(translated.split("\n"))
+    suspects = []
+    for line in original.split("\n"):
+        s = line.strip()
+        if s.startswith((":", "|", "$$")) or re.match(r"^(`{3,}|~{3,})", s):
+            continue
+        if len(re.findall(r"\b[a-z]{3,}\b", s)) >= 3 and line in out:
+            suspects.append(s)
+    return suspects
+
+
+@pytest.mark.parametrize("path", [
+    "index.md", "labs/lab1.md", "labs/lab2.md", "labs/lab5.md", "lectures/lecture1.md",
+])
+def test_golden_real_sources_translate_all_their_prose(tmp_path, path):
+    """Coverage guard: catches a segmenter bug that swallows prose into a verbatim
+    block. An integrity check cannot see this, because swallowed content is preserved
+    perfectly and only the translation is missing."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    src = os.path.join(root, path)
+    if not os.path.exists(src):
+        pytest.skip(path + " not present")
+    dst = tmp_path / "out.md"
+    ts.translate_md_file(src, str(dst), UP)
+    original = open(src, encoding="utf-8").read()
+    missed = untranslated_prose(original, dst.read_text(encoding="utf-8"))
+    assert missed == [], "prose never reached the translator: %r" % missed[:3]
 
 
 def test_main_exits_nonzero_when_a_string_is_unresolved(tmp_path, monkeypatch):

@@ -39,6 +39,7 @@ class Resolver:
         self.cache = dict(cache or {})
         self.overrides = dict(overrides or {})
         self.unresolved = []
+        self.unresolved_keys = []
         self.added = 0
 
     def _use(self, protected, candidate, placeholders, original, source):
@@ -47,6 +48,7 @@ class Resolver:
             print("  Warning: malformed %s entry for %r -- ignoring"
                   % (source, protected), file=sys.stderr)
             self.unresolved.append(original.strip())
+            self.unresolved_keys.append(protected)
             return original
         return restore(candidate, placeholders)
 
@@ -75,6 +77,7 @@ class Resolver:
 
         if not result or not validate(protected, result):
             self.unresolved.append(stripped)
+            self.unresolved_keys.append(protected)
             return text
 
         if protected not in self.cache:   # never overwrite an existing entry
