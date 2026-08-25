@@ -39,7 +39,7 @@ def test_restore_raises_on_unknown_placeholder():
 
 def test_validate_accepts_faithful_translation():
     src, _ = shield("See [the guide](https://e.com) and `code`.")
-    dst = "Voir [le guide]XPHX0XPHX et XPHX1XPHX."
+    dst = "Voir [le guide]XPHX1XPHX et XPHX0XPHX."
     assert validate(src, dst) is True
 
 
@@ -62,3 +62,26 @@ def test_does_not_shield_ordinary_prose_parentheses():
     protected, ph = shield("Research outputs (data and code) must be shared.")
     assert protected == "Research outputs (data and code) must be shared."
     assert ph == []
+
+
+def test_round_trip_exact_for_code_span_containing_dollars():
+    original = "Run `echo $HOME $PATH` now."
+    protected, ph = shield(original)
+    assert restore(protected, ph) == original
+    assert "XPHX" not in restore(protected, ph)
+
+
+def test_currency_amounts_are_not_treated_as_math():
+    protected, ph = shield("This costs $5 and that costs $10 today.")
+    assert protected == "This costs $5 and that costs $10 today."
+    assert ph == []
+
+
+def test_inline_math_is_still_shielded():
+    protected, ph = shield("Solve $x > 0$ here.")
+    assert protected == "Solve XPHX0XPHX here."
+
+
+def test_validate_rejects_placeholder_detached_from_its_bracket():
+    src, _ = shield("See [the guide](https://e.com).")
+    assert validate(src, "Voir le guide XPHX0XPHX.") is False
