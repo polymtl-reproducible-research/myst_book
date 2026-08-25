@@ -77,13 +77,16 @@ def test_zero_attempts_raises_a_real_exception():
 def test_modules_import_without_deep_translator_installed():
     """The CI test job installs only pytest and pyyaml, so the deep_translator
     import must stay lazy. A module-level import would break the whole job."""
+    import os
     import subprocess
     import sys
+    scripts = os.path.join(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts")
     code = (
         "import sys; sys.modules['deep_translator'] = None;"
-        "sys.path.insert(0, 'scripts');"
+        "sys.path.insert(0, %r);"
         "import translator_backend, translate_sources;"
-        "print('ok')"
+        "print('ok')" % scripts
     )
     result = subprocess.run([sys.executable, "-c", code],
                             capture_output=True, text=True)
