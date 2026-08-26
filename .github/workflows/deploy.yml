@@ -16,8 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      BASE_URL: ${{ vars.BASE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
