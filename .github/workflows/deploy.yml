@@ -22,7 +22,6 @@ jobs:
 
       - name: Checkout translation cache
         uses: actions/checkout@v7
-        continue-on-error: true
         with:
           ref: translation-cache
           path: .tcache
