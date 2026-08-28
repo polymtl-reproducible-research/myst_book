@@ -6,16 +6,18 @@ A MyST book template.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or later)
-- [mystmd](https://mystmd.org/) (`npm install -g mystmd`)
+- [conda](https://docs.conda.io/) (or [miniconda](https://docs.conda.io/en/latest/miniconda.html))
 
 ### Local Development
 
 ```bash
-myst start
+git clone https://github.com/polymtl-reproducible-research/myst_book.git
+cd myst_book
+conda create -n ing8100 python=3.12  # a fresh environment for this course
+conda activate ing8100
+conda install -c conda-forge mystmd   # brings Node with it
+myst start   # opens the site at localhost, with live reload
 ```
-
-This will start a local development server with live reload.
 
 ### Building
 
