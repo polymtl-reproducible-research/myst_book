@@ -12,6 +12,17 @@ control and environments to open data and transparent reporting.
 
 [Start with Lecture 1 →](lectures/lecture1.md)
 
+(ai-disclosure)=
+:::{admonition} Disclosure: use of AI in writing this book
+:class: note
+Parts of the text on this site — including this page — were drafted with
+the help of an AI assistant (Claude Opus 5), prompted with bullet-point
+outlines and then reviewed and edited by the instructor. This is
+deliberate: it doubles as a live example of the disclosure practice
+discussed in the [Use of AI](lectures/lecture2.md#use-of-ai-in-open-development)
+section of Lecture 2 — which links back here.
+:::
+
 This course was supported by Polytechnique Montréal and the UNIQUE Centre.
 
 :::::{grid} 2 2 2 2

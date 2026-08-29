@@ -271,6 +271,7 @@ after which you may be required to destroy it. Polytechnique's data
 management policy (see Annex 2) spells out what a data management plan
 should contain.
 
+(use-of-ai-in-open-development)=
 ## Use of AI in Open Development
 
 You may use AI assistants in this course — the expectation is that you use
@@ -291,6 +292,9 @@ Record the model and version you used (e.g., Claude Opus 5) and the prompt,
 alongside the commit. Treat AI-generated code as a contribution that still
 needs review — the same review a stranger's pull request would get. You
 remain the author, and you are accountable for every line.
+
+This book practices what it teaches: see the
+[AI disclosure](../index.md#ai-disclosure) on the homepage.
 :::
 
 JOSS now requires an AI usage disclosure section in submitted papers.
