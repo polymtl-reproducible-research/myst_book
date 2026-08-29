@@ -57,30 +57,12 @@ channels, each solving a specific problem:
 None of these were invented for industry. Each one replaces something a lab
 used to keep in one person's head, or one person's inbox.
 
-## Every Tool Is a Trade-off
-
-These very slides are made in Google Slides — a proprietary, closed format.
-That is a deliberate choice, not an oversight:
-
-| | Google Slides | Beamer / Quarto |
-|---|---|---|
-| Format | Proprietary | Plain text, open |
-| Diffs and review | Not supported | Work like code |
-| Real-time co-editing | Yes | No |
-| Animation, drag-and-drop | Yes | Limited or painful |
-| Who can edit | Anyone on the team | Only whoever knows LaTeX |
-
-Open is not automatically better. Openness has a cost, and the cost is
-sometimes paid by your collaborators. Be pragmatic about which tool fits the
-job.
-
 ## The Issue as an Open Lab Notebook
 
 A GitHub issue can be more than a bug report — it can be a lab notebook page
 anyone can read. In one real example from the
-[ivadomed](https://github.com/ivadomed/ivadomed) project, a single issue
-documents an experiment (30 test scans, 6 contrasts, 24 downsampling
-factors, 720 images generated in total): datasets named, commands pasted,
+[ivadomed](https://github.com/ivadomed/ivadomed/issues/841) project, a single issue
+documents a new feature, communication with international teams, experiments, datasets named, commands pasted,
 results plotted — in public, while the work was still in progress.
 
 ## Working from the Command Line
@@ -111,8 +93,7 @@ ls -la        # .git and .github, neither is visible in Finder
 git log -5    # the history of the syllabus on your Moodle
 ```
 
-You can build this course's own material locally the same way: install
-[Node.js](https://nodejs.org/), then
+You can build this course's own material locally the same way: 
 
 ```bash
 git clone https://github.com/polymtl-reproducible-research/myst_book.git
@@ -185,11 +166,11 @@ Two models make software review itself reproducible:
 - **[JOSS](https://joss.theoj.org/)** (Journal of Open Source Software) — the
   peer review *is* the code review. It happens in a public GitHub issue; the
   reviewers install the software and run it.
-- **ACM Artifact Review & Badging** — badges printed on the paper: Artifacts
+- **[ACM Artifact Review & Badging](https://www.acm.org/publications/policies/artifact-review-and-badging-current)** — badges printed on the paper: Artifacts
   Available, Artifacts Evaluated (Functional / Reusable), Results
   Reproduced, Results Replicated.
 
-The JOSS reviewer checklist covers:
+The [JOSS reviewer checklist](https://joss.readthedocs.io/en/latest/review_checklist.html#) covers:
 
 - **General** — repository reachable, OSI-approved license, appropriate
   authorship, scholarly significance
