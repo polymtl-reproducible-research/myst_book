@@ -308,16 +308,3 @@ you merge it — and what would you need in the commit message to understand
 it in a year?
 :::
 
-## Where This Goes Next
-
-- **Lab 1** — onboarding: accounts, environment, and your first documented
-  issue
-- **Lecture 3** — version control: the Code and Environment rows of the
-  audit
-- **Lab 4** — you use the JOSS reviewer checklist on another team's project
-
-:::{admonition} Note
-:class: note
-The audit you ran at the start of this lecture is the one that will
-eventually be run on you.
-:::
