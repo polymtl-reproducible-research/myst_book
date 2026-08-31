@@ -55,9 +55,11 @@ produced the output. Try it yourself in the
 change a variable, skip re-running a dependent cell, and watch the output go
 stale. `Kernel → Restart & Run All` is the way to check whether a notebook
 is even internally reproducible. Of 1.16 million notebooks on GitHub, only
-24% ran without error and 4% reproduced their own stored outputs (Pimentel
-et al., 2019) — for a reproducible artifact, convert the notebook to a
-script.
+24% ran without error and 4% reproduced their own stored outputs
+{cite:p}`pimentel2019`. Of roughly 27,000 notebooks attached to
+biomedical papers, only 1,203 ran to completion, and 879 reproduced the
+published result {cite:p}`samuel2024` — for a reproducible artifact,
+convert the notebook to a script.
 
 ## Contributing: Issues and Review
 
@@ -128,7 +130,8 @@ practice is to commit the prompt alongside the code it produced (e.g., a
 trailer like `Assisted-by: Claude Opus 5`), and to review AI-generated code
 as you would a stranger's pull request — you remain accountable for every
 line. Several journals (JOSS, Wiley, Nature, Elsevier) now require an AI
-usage disclosure.
+usage disclosure — {cite:p}`resnik2025` discusses when such disclosure
+should be mandatory, optional, or unnecessary.
 
 :::{admonition} This book practices what it teaches
 :class: important
@@ -145,6 +148,4 @@ reviewing is not, and some projects have started
 - **[How to open a GitHub issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue)**
 - **[The Unix Shell (Software Carpentry)](https://swcarpentry.github.io/shell-novice/)**
 - **[This course's notebook example](https://github.com/polymtl-reproducible-research/notebook-example)** and the **[Jupyter docs](https://docs.jupyter.org/en/latest/)**
-- **[Pimentel et al., 2019](https://ieeexplore.ieee.org/document/8816763)** and **[Samuel et al., 2024](https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giad113/7516267)** — on notebook reproducibility
 - **[BIDS](https://bids.neuroimaging.io/collaboration/governance.html)** and **[scikit-learn](http://scikit-learn.org/stable/governance.html)** governance documents
-- **Resnik, 2026** — on the ethics of AI use and disclosure in science ([PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC12353913/))
