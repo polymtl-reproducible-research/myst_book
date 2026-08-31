@@ -10,7 +10,7 @@ the original authors. This course covers the vocabulary, principles, and tools
 that make computational research reproducible and replicable, from version
 control and environments to open data and transparent reporting.
 
-[Start with Lecture 1 →](lectures/lecture1.md)
+[Start with Lecture 1 →](lectures/lecture1.md) · [Syllabus (PDF) ↓](https://github.com/polymtl-reproducible-research/ing8100/releases/latest/download/ING8100_plan_de_cours.pdf)
 
 (ai-disclosure)=
 :::{admonition} Disclosure: use of AI in writing this book
