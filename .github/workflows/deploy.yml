@@ -14,9 +14,18 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+
+      - name: Checkout translation cache
+        uses: actions/checkout@v7
+        with:
+          ref: translation-cache
+          path: .tcache
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v7
@@ -38,7 +47,23 @@ jobs:
         run: myst build --html
 
       - name: Translate and build French book
-        run: python3 scripts/build-french.py
+        run: python3 scripts/build-french.py --cache .tcache/fr.cache.json
+
+      - name: Commit refreshed translation cache
+        if: always()
+        continue-on-error: true
+        working-directory: .tcache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fr.cache.json
+          if git diff --cached --quiet; then
+            echo "cache unchanged"
+          else
+            git commit -m "Update French translation cache [skip ci]"
+            git pull --rebase origin translation-cache || echo "no existing cache branch; creating it"
+            git push origin HEAD:translation-cache
+          fi
 
       - name: Inject language switcher
         run: python3 scripts/inject-language-switcher.py
