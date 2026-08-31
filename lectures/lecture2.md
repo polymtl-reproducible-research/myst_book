@@ -56,10 +56,10 @@ change a variable, skip re-running a dependent cell, and watch the output go
 stale. `Kernel → Restart & Run All` is the way to check whether a notebook
 is even internally reproducible. Of 1.16 million notebooks on GitHub, only
 24% ran without error and 4% reproduced their own stored outputs
-{cite:p}`pimentel2019`. Of roughly 27,000 notebooks attached to
-biomedical papers, only 1,203 ran to completion, and 879 reproduced the
-published result {cite:p}`samuel2024` — for a reproducible artifact,
-convert the notebook to a script.
+([Pimentel et al., 2019](#ref-pimentel2019)). Of roughly 27,000 notebooks
+attached to biomedical papers, only 1,203 ran to completion, and 879
+reproduced the published result ([Samuel & Mietchen, 2024](#ref-samuel2024))
+— for a reproducible artifact, convert the notebook to a script.
 
 ## Contributing: Issues and Review
 
@@ -130,8 +130,8 @@ practice is to commit the prompt alongside the code it produced (e.g., a
 trailer like `Assisted-by: Claude Opus 5`), and to review AI-generated code
 as you would a stranger's pull request — you remain accountable for every
 line. Several journals (JOSS, Wiley, Nature, Elsevier) now require an AI
-usage disclosure — {cite:p}`resnik2025` discusses when such disclosure
-should be mandatory, optional, or unnecessary.
+usage disclosure — [Resnik & Hosseini (2025)](#ref-resnik2025) discuss when
+such disclosure should be mandatory, optional, or unnecessary.
 
 :::{admonition} This book practices what it teaches
 :class: important
@@ -142,6 +142,27 @@ Agentic AI — agents that open issues and submit pull requests with little
 human oversight — is a growing presence: contributing is now cheap, but
 reviewing is not, and some projects have started
 [refusing AI-generated contributions outright](https://github.com/melissawm/open-source-ai-contribution-policies).
+
+## References
+
+(ref-pimentel2019)=
+Pimentel, J. F., Murta, L., Braganholo, V., & Freire, J. (2019). A
+Large-Scale Study About Quality and Reproducibility of Jupyter Notebooks.
+*Proceedings of the 16th International Conference on Mining Software
+Repositories (MSR)*, 507–517.
+[doi:10.1109/MSR.2019.00077](https://ieeexplore.ieee.org/document/8816763)
+
+(ref-samuel2024)=
+Samuel, S., & Mietchen, D. (2024). Computational Reproducibility of Jupyter
+Notebooks from Biomedical Publications. *GigaScience*, *13*, giad113.
+[doi:10.1093/gigascience/giad113](https://pmc.ncbi.nlm.nih.gov/articles/PMC10783158/)
+
+(ref-resnik2025)=
+Resnik, D. B., & Hosseini, M. (2025). Disclosing Artificial Intelligence Use
+in Scientific Research and Publication: When Should Disclosure Be
+Mandatory, Optional, or Unnecessary? *Accountability in Research*, *33*(2),
+2481949.
+[doi:10.1080/08989621.2025.2481949](https://pmc.ncbi.nlm.nih.gov/articles/PMC12353913/)
 
 ## Further Resources
 

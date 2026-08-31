@@ -24,14 +24,16 @@ builds on: open science, reproducibility, and replicability.
 
 Concerns about the reliability of published research are not new. Ioannidis
 argued that, under common statistical and publication practices, a surprising
-share of published findings are likely to be false {cite:p}`ioannidis2005`.
-A decade later, a large-scale effort to replicate 100 studies in psychology
-succeeded in reproducing the original results for well under half of them
-{cite:p}`opensciencecollaboration2015`. These findings, echoed across other
-fields, motivated a 2019 consensus report from the U.S. National Academies of
-Sciences, Engineering, and Medicine that examined the scope of the problem and
-proposed concrete recommendations for researchers, institutions, and funders
-{cite:p}`nationalacademies2019`.
+share of published findings are likely to be false
+([Ioannidis, 2005](#ref-ioannidis2005)). A decade later, a large-scale effort
+to replicate 100 studies in psychology succeeded in reproducing the original
+results for well under half of them
+([Open Science Collaboration, 2015](#ref-opensciencecollaboration2015)).
+These findings, echoed across other fields, motivated a 2019 consensus
+report from the U.S. National Academies of Sciences, Engineering, and
+Medicine that examined the scope of the problem and proposed concrete
+recommendations for researchers, institutions, and funders
+([National Academies of Sciences, Engineering, and Medicine, 2019](#ref-nationalacademies2019)).
 
 :::{admonition} Key takeaway
 :class: important
@@ -43,7 +45,8 @@ conducted, reported, and shared.
 ## Reproducibility vs. Replicability
 
 These two terms are often used interchangeably, but this course follows the
-distinction adopted by the National Academies report {cite:p}`nationalacademies2019`:
+distinction adopted by the
+[National Academies report](#ref-nationalacademies2019):
 
 | Term | Definition | Same data? | Same methods? |
 |------|------------|:---:|:---:|
@@ -61,10 +64,10 @@ Open science is the broader movement to make the entire research lifecycle
 — data, code, materials, and publications — transparent and accessible.
 Munafò et al. propose a manifesto of concrete practices that address the
 reproducibility crisis directly, including pre-registration, sharing of data
-and code, and reporting guidelines {cite:p}`munafo2017`.
+and code, and reporting guidelines ([Munafò et al., 2017](#ref-munafo2017)).
 
 A widely adopted framework for making research outputs usable by others is
-the **FAIR** principles {cite:p}`wilkinson2016`:
+the **FAIR** principles ([Wilkinson et al., 2016](#ref-wilkinson2016)):
 
 :::{admonition} FAIR Principles
 :class: tip
@@ -99,6 +102,37 @@ concepts to hands-on practice:
 Each lecture is paired with a lab where you will apply the concepts to a
 small, concrete research artifact that you will build up over the semester.
 :::
+
+## References
+
+(ref-ioannidis2005)=
+Ioannidis, J. P. A. (2005). Why Most Published Research Findings Are False.
+*PLOS Medicine*, *2*(8), e124.
+[PMC1182327](https://pmc.ncbi.nlm.nih.gov/articles/PMC1182327/)
+
+(ref-opensciencecollaboration2015)=
+Open Science Collaboration. (2015). Estimating the Reproducibility of
+Psychological Science. *Science*, *349*(6251), aac4716.
+[PMID 26315443](https://pubmed.ncbi.nlm.nih.gov/26315443/)
+
+(ref-nationalacademies2019)=
+National Academies of Sciences, Engineering, and Medicine. (2019).
+Reproducibility and Replicability in Science. The National Academies Press.
+[Read online](https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science)
+
+(ref-munafo2017)=
+Munafò, M. R., Nosek, B. A., Bishop, D. V. M., Button, K. S., Chambers, C.
+D., Percie du Sert, N., Simonsohn, U., Wagenmakers, E.-J., Ware, J. J., &
+Ioannidis, J. P. A. (2017). A Manifesto for Reproducible Science. *Nature
+Human Behaviour*, *1*, 0021.
+[PMC7610724](https://pmc.ncbi.nlm.nih.gov/articles/PMC7610724/)
+
+(ref-wilkinson2016)=
+Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton,
+M., Baak, A., Blomberg, N., Boiten, J.-W., da Silva Santos, L. B., Bourne,
+P. E., & others. (2016). The FAIR Guiding Principles for Scientific Data
+Management and Stewardship. *Scientific Data*, *3*, 160018.
+[PMID 26978244](https://pubmed.ncbi.nlm.nih.gov/26978244/)
 
 ## Further Resources
 
