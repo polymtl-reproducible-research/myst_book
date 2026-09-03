@@ -28,17 +28,11 @@ that can be reused by yourself and others.
 ## What We'll Cover
 
 - Principles for structuring data directories and file naming
-- Documenting datasets with metadata and data dictionaries
+- Documenting datasets with metadata and documentation
 - Versioning data alongside code
 - Choosing where and how to store and share data
 - Ethical considerations when it comes to research data management
 - The FAIR principles (Findable, Accessible, Interoperable, Reusable)
-
-:::{admonition} Content in progress
-:class: note
-The full lecture material is still being developed. Check back soon for
-slides, readings, and detailed notes.
-:::
 
 
 ## Documentation
@@ -54,9 +48,8 @@ Having detailed documentation that explains how your data is organized and it's 
 
 - [UBC Library - Introduction to RDM](https://ubc-library-rc.github.io/rdm/) — Excellent open ressource covering the basics of Research Data Management.
 - [Research Data Management in the Canadian Context](https://ecampusontario.pressbooks.pub/canadardm/) — Open Education Ressource created by Librarians across the country.
-- [NASA Open Science 101](https://science.nasa.gov/open-science/training/) — Free 5-module course, ~12 hours.
-- [awesome-reproducible-research](https://github.com/leipzig/awesome-reproducible-research) — Curated meta-list of tools, papers, and courses.
-- [INCF Training Space](https://training.incf.org/lesson/standards-project-management-and-organization) — Standards and project management.
+- [Cornell University README templates] (https://data.research.cornell.edu/data-management/sharing/writing-readmes-for-research-code-software/) - Templates for Code and Data
+- [Alliance services catalogue] (https://www.alliancecan.ca/en/services/research-software) - List of services offered by the Digital Research Alliance of Canada
 
 
 
