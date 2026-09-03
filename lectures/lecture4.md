@@ -50,6 +50,9 @@ Having detailed documentation that explains how your data is organized and it's 
 - [Research Data Management in the Canadian Context](https://ecampusontario.pressbooks.pub/canadardm/) — Open Education Ressource created by Librarians across the country.
 - [Cornell University README templates] (https://data.research.cornell.edu/data-management/sharing/writing-readmes-for-research-code-software/) - Templates for Code and Data
 - [Alliance services catalogue] (https://www.alliancecan.ca/en/services/research-software) - List of services offered by the Digital Research Alliance of Canada
+- [Tri-Agency - Ethical Conduct for Research Involving Humans] (https://ethics.gc.ca/eng/policy-politique_tcps2-eptc2_2022.html) - An important policy statement for any research involving human participants
+- [Polytechnique Research Data Management Policy] (https://share.polymtl.ca/alfresco/service/api/node/content/workspace/SpacesStore/c2b4b268-f107-4f1f-a039-c2c7037128d8?a=false&guest=true) - Polytechnique's RDM policy
+- [Commission d'accès à l'information] (https://www.cai.gouv.qc.ca/english) - Ressources from Quebec's privacy watchdog
 
 
 
