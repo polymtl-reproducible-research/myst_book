@@ -51,6 +51,10 @@ To see the current status of the website (that is, which branch/commit is curren
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project, including branch naming conventions, workflow, and development setup.
 
+## Code of Conduct
+
+All course participants are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## Project Structure
 
 ```
