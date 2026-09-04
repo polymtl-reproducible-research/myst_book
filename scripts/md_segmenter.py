@@ -9,7 +9,7 @@ import re
 from dataclasses import dataclass, field
 
 # Admonition directives whose title and body are translated. Every other
-# directive except `figure` is preserved verbatim.
+# directive except `figure` and `iframe` is preserved verbatim.
 ADMONITION_DIRECTIVES = {
     "admonition", "attention", "caution", "danger", "error", "hint",
     "important", "note", "seealso", "tip", "warning",
@@ -224,7 +224,7 @@ def _render_directive(block, translate):
     name = block.meta["name"]
     opening, inner, closing = _split_directive(block)
 
-    if name == "figure":
+    if name in ("figure", "iframe"):
         rendered = []
         for line in inner:
             if line.startswith(":") or not line.strip():

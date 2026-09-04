@@ -9,7 +9,7 @@ label: lecture3
 :align: center
 :title: Lecture 3 slides
 
-Lecture 3 slides
+[Open in Google Slides](https://docs.google.com/presentation/d/18YuN3zLDkFI7wXzsOqVnSGbh2wbge-g2bqXqamUJbeE/edit?usp=sharing)
 :::
 
 ## Why Version Control

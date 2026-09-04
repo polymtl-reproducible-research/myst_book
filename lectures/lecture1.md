@@ -9,7 +9,7 @@ label: lecture1
 :align: center
 :title: Lecture 1 slides
 
-Lecture 1 slides
+[Open in Google Slides](https://docs.google.com/presentation/d/100t7GQeYoFKjA-O44iaJstgfMCzsK46cA47EDUPkQdo/edit?usp=sharing)
 :::
 
 # Why This Course Exists
