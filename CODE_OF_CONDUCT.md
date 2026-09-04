@@ -1,4 +1,6 @@
-# Code of Conduct
+---
+title: Code of Conduct
+---
 
 Hello 👋, and welcome to ING8100 — Open Science and Reproducible Research.
 
