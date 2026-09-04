@@ -74,6 +74,14 @@ def test_figure_translates_caption_but_not_options():
     assert out[2] == "A CAPTION HERE."
 
 
+def test_iframe_translates_caption_but_not_options():
+    body = ":::{iframe} https://example.com/embed\n:width: 100%\nA caption here.\n:::"
+    out = translate_body(body, UP).split("\n")
+    assert out[0] == ":::{iframe} https://example.com/embed"
+    assert out[1] == ":width: 100%"
+    assert out[2] == "A CAPTION HERE."
+
+
 def test_body_with_no_prose_is_unchanged():
     body = "```\ncode\n```\n\n$$\nx\n$$"
     assert translate_body(body, UP) == body
