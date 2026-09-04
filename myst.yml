@@ -40,6 +40,7 @@ project:
         - file: labs/lab3.md
         - file: labs/lab4.md
         - file: labs/lab5.md
+    - file: CODE_OF_CONDUCT.md
 
 site:
   template: book-theme
