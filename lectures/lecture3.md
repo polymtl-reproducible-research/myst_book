@@ -9,10 +9,8 @@ label: lecture3
 :align: center
 :title: Lecture 3 slides
 
-Lecture 3 slides
+[Open in Google Slides ↗](https://docs.google.com/presentation/d/18YuN3zLDkFI7wXzsOqVnSGbh2wbge-g2bqXqamUJbeE/edit?usp=sharing)
 :::
-
-[Open in Google Slides ↗](https://docs.google.com/presentation/d/18YuN3zLDkFI7wXzsOqVnSGbh2wbge-g2bqXqamUJbeE/edit?usp=sharing) — the embed above doesn't support text selection or the "Google Slides" button in its own toolbar.
 
 ## Why Version Control
 

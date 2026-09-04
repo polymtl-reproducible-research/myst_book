@@ -9,10 +9,8 @@ label: lecture1
 :align: center
 :title: Lecture 1 slides
 
-Lecture 1 slides
+[Open in Google Slides ↗](https://docs.google.com/presentation/d/100t7GQeYoFKjA-O44iaJstgfMCzsK46cA47EDUPkQdo/edit?usp=sharing)
 :::
-
-[Open in Google Slides ↗](https://docs.google.com/presentation/d/100t7GQeYoFKjA-O44iaJstgfMCzsK46cA47EDUPkQdo/edit?usp=sharing) — the embed above doesn't support text selection or the "Google Slides" button in its own toolbar.
 
 # Why This Course Exists
 

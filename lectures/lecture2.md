@@ -9,10 +9,8 @@ label: lecture2
 :align: center
 :title: Lecture 2 slides
 
-Lecture 2 slides
+[Open in Google Slides ↗](https://docs.google.com/presentation/d/1ijGraNw6-um2RGUOEXWkiuJj1TtAihA5M9XOFJVw5Gg/edit?usp=sharing)
 :::
-
-[Open in Google Slides ↗](https://docs.google.com/presentation/d/1ijGraNw6-um2RGUOEXWkiuJj1TtAihA5M9XOFJVw5Gg/edit?usp=sharing) — the embed above doesn't support text selection or the "Google Slides" button in its own toolbar.
 
 ## Auditing a Research Project
 
