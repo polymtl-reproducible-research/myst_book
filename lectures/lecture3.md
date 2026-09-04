@@ -12,6 +12,8 @@ label: lecture3
 Lecture 3 slides
 :::
 
+[Open in Google Slides ↗](https://docs.google.com/presentation/d/18YuN3zLDkFI7wXzsOqVnSGbh2wbge-g2bqXqamUJbeE/edit?usp=sharing) — the embed above doesn't support text selection or the "Google Slides" button in its own toolbar.
+
 ## Why Version Control
 
 :::{figure} https://phdcomics.com/comics/archive/phd101212s.gif
