@@ -272,7 +272,7 @@ Use a meaningful and descriptive branch name.
 
 ### Modify the analysis parameters
 
-Open the `analysis.py` file and change the values of:
+Open the `src/analysis.py` file and change the values of:
 
 ```python
 START_YEAR = ...
