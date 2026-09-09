@@ -1,57 +1,26 @@
 ---
-title: Lecture 5 — Subject
+title: Licenses, Intellectual Property, and Publication
 date: 2026-06-10
 label: lecture5
 ---
 
-# Heading 1
+# Overview
 
-Some references for MyST formatting:
+This lecture covers the legal and publishing side of open research: how
+licenses govern reuse of code and data, how intellectual property applies to
+research outputs, and how publication venues are increasingly evaluating
+reproducibility.
 
-* [60 seconds cheatsheet](https://commonmark.org/help/).
-* [MyST "get started"](https://mystmd.org/guide/quickstart-myst-markdown).
-* [MyST overview of "directives" and "roles"](https://mystmd.org/guide/syntax-overview).
-* [MyST reference for "directives"](https://mystmd.org/guide/directives).
-* [MyST reference for "roles"](https://mystmd.org/guide/roles).
+## What We'll Cover
 
-## Heading 2
+- Common open-source and open-data licenses, and how to choose one
+- Intellectual property basics for academic research
+- Copyright and authorship considerations for shared code and data
+- How journals and conferences assess and reward reproducibility
+- Preparing a project for publication and archiving
 
-This horizontal rule is exactly 80 characters long:
---------------------------------------------------------------------------------
-
-:::{admonition} Note
+:::{admonition} Content in progress
 :class: note
-This is a placeholder admonition. Replace with your own content.
+The full lecture material is still being developed. Check back soon for
+slides, readings, and detailed notes.
 :::
-
-To cite another page of the MyST book, you can use the `label` defined at the
-top of the file, with this syntax: see [](#lecture1).
-
-To cite a bibtex reference, use the syntax {cite:p}`sample2026` and make sure
-it appears in `bibliography/references.bib`.
-
-You can include equations using LaTeX syntax:
-
-$$
-E = mc^2
-$$ (lec-5-eq-energy)
-
-Reference it as [](#lec-5-eq-energy).
-
-You can include figures using this syntax:
-
-```{figure} ../images/site_logo.png
-:label: lec-5-fig-placeholder
-:alt: A placeholder figure
-:align: center
-
-A placeholder figure. Replace with your own image.
-```
-
-Reference it as [](#lec-5-fig-placeholder).
-
-You can include tables using this syntax:
-
-| Parameter | Value | Unit |
-|-----------|-------|------|
-| Example   | 42    | --   |

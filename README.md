@@ -6,16 +6,18 @@ A MyST book template.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or later)
-- [mystmd](https://mystmd.org/) (`npm install -g mystmd`)
+- [conda](https://docs.conda.io/) (or [miniconda](https://docs.conda.io/en/latest/miniconda.html))
 
 ### Local Development
 
 ```bash
-myst start
+git clone https://github.com/polymtl-reproducible-research/myst_book.git
+cd myst_book
+conda create -n ing8100 python=3.12  # a fresh environment for this course
+conda activate ing8100
+conda install -c conda-forge mystmd   # brings Node with it
+myst start   # opens the site at localhost, with live reload
 ```
-
-This will start a local development server with live reload.
 
 ### Building
 
@@ -25,13 +27,33 @@ myst build --html
 
 The built site will be in `_build/html/`.
 
+### Previews for pull requests
+
+Warning: these steps deploy the preview to the main website. You should re-deploy the `main` branch as soon as you're done. (The `main` branch is also automatically re-deployed if any pull request gets merged, in which case you don't have to re-deploy it manually.)
+
+To build and deploy a pull request preview of the website:
+
+1. Go to the workflow page: https://github.com/polymtl-reproducible-research/myst_book/actions/workflows/deploy.yml
+2. Click "Run workflow" on the right side.
+3. Select the branch you want to preview.
+4. Click "Run workflow".
+5. This will build the website and make it visible at: https://reproducible-research.polymtl.ca/
+
+<img width="950" height="508" alt="image" src="https://github.com/user-attachments/assets/4f057eb9-176e-4264-8fe2-bfdb56cadb11" />
+
 ### Deployment
 
-This repository includes a GitHub Actions workflow that automatically deploys to GitHub Pages on push to `main`. Enable GitHub Pages in your repository settings (Settings > Pages > Source: GitHub Actions).
+To see the current status of the website (that is, which branch/commit is currently visible online), look at the latest deployment here: https://github.com/polymtl-reproducible-research/myst_book/deployments
+
+[This workflow](https://github.com/polymtl-reproducible-research/myst_book/actions/workflows/deploy.yml) automatically re-deploys the `main` branch to https://reproducible-research.polymtl.ca/ whenever there is a push (including when a pull request is merged).
 
 ## Contributing
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project, including branch naming conventions, workflow, and development setup.
+
+## Code of Conduct
+
+All course participants are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Project Structure
 
