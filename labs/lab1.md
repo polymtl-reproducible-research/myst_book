@@ -236,9 +236,11 @@ git push --set-upstream origin <branch-name>
 
 Use the GitHub online interface to create the pull request (PR).
 
+Add the teamate who is not creating the PR as the reviewer.
+
 ### Merge the pull request
 
-The teammate who did not create the PR must merge the PR.
+The reviewer must approve and merge the PR.
 
 ### Delete the branch
 
