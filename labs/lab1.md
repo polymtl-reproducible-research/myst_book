@@ -160,6 +160,8 @@ From your **terminal**, clone your `tp1` repository to a location where you will
 
 ```bash
 git clone <repository-url>
+# Go inside your repository
+cd <repo-name>
 ```
 
 ### Create a new branch
