@@ -178,6 +178,10 @@ Use a short, descriptive branch name that reflects your work. Use lowercase lett
 Refer to [conventional branch](https://conventionalbranch.org/#summary) for more informations.
 :::
 
+:::{hint}
+In the next steps, you will run the analysis.
+:::
+
 ### Create the virtual environment
 
 Follow the instructions provided in the `README.md` file.
