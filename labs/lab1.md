@@ -234,7 +234,7 @@ git push --set-upstream origin <branch-name>
 
 ### Create a pull request
 
-Use the GitHub interface to create the pull request (PR).
+Use the GitHub online interface to create the pull request (PR).
 
 ### Merge the pull request
 
