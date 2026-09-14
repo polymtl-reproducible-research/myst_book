@@ -97,23 +97,27 @@ Having detailed documentation that explains how your data is organized and its e
 
 Any research involving human participants or their data — surveys,
 interviews, biological materials, medical records — requires approval from
-Polytechnique's Research Ethics Board (REB) before you access data or
-recruit participants, even if you're collecting it yourself
-(*primary* collection) or requesting data someone else already collected for
-another purpose (*secondary use*). For primary collection, the REB helps you
-draft an informed consent form; for secondary use, it checks that the
-original consent actually covers your new use.
+your institution's research ethics board (an REB, or IRB in the US) before
+you access data or recruit participants, even if you're collecting it
+yourself (*primary* collection) or requesting data someone else already
+collected for another purpose (*secondary use*). For primary collection,
+the board helps you draft an informed consent form; for secondary use, it
+checks that the original consent actually covers your new use. (At
+Polytechnique Montréal, this is the REB.)
 
 Personal information — anything that can identify someone, directly or
 indirectly — is *sensitive* when people have a high expectation of privacy
 around it (health information, ethnicity, financial data, and similar). Data
-shared publicly must be properly anonymized, per Quebec's regulation on the
-anonymization of personal information (A-2.1, r. 0.1); contact
+shared publicly must be properly anonymized, and jurisdictions increasingly
+regulate how — for example, Quebec's regulation on the anonymization of
+personal information (A-2.1, r. 0.1). A handful of research topics are also
+subject to export-control and sanctions regimes that restrict dissemination
+— check with your institution's research security office if that might
+apply to you. (At Polytechnique, that's
 [secretariat.general@polymtl.ca](mailto:secretariat.general@polymtl.ca) for
-questions about that process. A handful of research topics are also subject
-to export-control and sanctions regimes that restrict dissemination — if
-that might apply to you, reach out to Polytechnique's Research Security team
-at [securite.recherche@polymtl.ca](mailto:securite.recherche@polymtl.ca).
+anonymization questions, and
+[securite.recherche@polymtl.ca](mailto:securite.recherche@polymtl.ca) for
+research security.)
 
 ## Sharing Data and Code
 
