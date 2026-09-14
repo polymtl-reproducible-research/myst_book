@@ -121,14 +121,12 @@ research security.)
 
 ## Sharing Data and Code
 
-GitHub is built for active, collaborative *development* — branch-based
-versioning, issues, pull requests — not for long-term discovery of finished
-research outputs. A dedicated data-sharing platform (e.g.,
-[Borealis](https://borealisdata.ca/), [Zenodo](https://zenodo.org/), or a
-discipline-specific one like [OpenNeuro](https://openneuro.org/)) is built
-for the opposite: a citable landing page, searchable metadata, a DOI, and
-linear versioning of a finished dataset, which is exactly what the FAIR
-principles from [Lecture 1](lecture1.md) ask for. In this course, Lab 2 uses
+A dedicated data-sharing platform (e.g., [Borealis](https://borealisdata.ca/),
+[Zenodo](https://zenodo.org/), or a discipline-specific one like
+[OpenNeuro](https://openneuro.org/)) gives a finished dataset a citable
+landing page, searchable metadata, a DOI, and linear versioning — exactly
+what the FAIR principles from [Lecture 1](lecture1.md) ask for. In this
+course, Lab 2 uses
 [Polytechnique's Borealis Dataverse](https://demo.borealisdata.ca/dataverse/fall2026/)
 — built on Harvard's Dataverse software and supported by the [Digital
 Research Alliance of Canada](https://www.alliancecan.ca/en/services/research-software)
