@@ -47,7 +47,14 @@ jobs:
         run: myst build --html
 
       - name: Translate and build French book
+        id: french
+        continue-on-error: true
         run: python3 scripts/build-french.py --cache .tcache/fr.cache.json
+
+      - name: Warn if French build failed
+        if: steps.french.outcome == 'failure'
+        run: |
+          echo "::warning::French build failed (often a Google Translate rate limit -- see the 'Translate and build French book' step). Deploying the English site without updating /fr/ rather than blocking the whole deploy. Re-run this workflow to retry French once the rate limit clears, or pin any newly-failing strings in translations/fr.overrides.json."
 
       - name: Commit refreshed translation cache
         if: always()

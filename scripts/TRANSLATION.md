@@ -127,3 +127,12 @@ makes the build deterministic and immune to the translation endpoint failing.
 The same deployment also demonstrates the failure policy: an earlier run with an
 empty cache exited non-zero and refused to publish, rather than shipping a
 half-English site.
+
+That failure policy is scoped to the French build itself: `translate_sources.py`
+still refuses to write a half-translated site if any string is unresolved. But
+the deploy workflow treats that failure as non-fatal at the job level (it lets
+the "Translate and build French book" step fail via `continue-on-error`, and
+warns rather than blocks) so a French translation hiccup — most often a rate
+limit on the free Google Translate endpoint — never blocks deploying the
+updated English site. `/fr/` simply won't be updated until a later successful
+run.
