@@ -15,13 +15,13 @@ One of the key factors influencing the replicability crisis, is that data is oft
  - Researchers do not know how to request access to the data.
  - Etc.
 
-Remember that replicability is a spectrum, not a binary. The actions you take to ensure that your data is properly managed, the more likely it is that your results or data, can be replicated or reused.
+Remember that replicability is a spectrum, not a binary. The more actions you take during your project to ensure that your data is properly managed, the more likely it is that your results or data, can be replicated or reused afterwards.
 
 :::{admonition} Key takeaway
 :class: important
 Research data management is not a single act or step in your research workflow, 
 but is a series of overlaping actions that you will take throughout your project, 
-to ensure at the end of your project, you have a well managed and organized dataset, 
+to ensure that at the end of your project, you have a well managed and organized dataset, 
 that can be reused by yourself and others.
 :::
 
@@ -33,6 +33,7 @@ that can be reused by yourself and others.
 - Choosing where and how to store and share data
 - Ethical considerations when it comes to research data management
 - The FAIR principles (Findable, Accessible, Interoperable, Reusable)
+- Research data management basics when using Git
 
 
 ## Documentation
