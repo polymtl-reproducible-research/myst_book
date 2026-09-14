@@ -85,7 +85,7 @@ example_dataset/
 :::
 
 ## Documentation
-Having detailed documentation that explains how your data is organized and it's evolution, is key if you want your dataset to be reuseable in the future. Keeping documentation and keeping it up to date is like writing a letter to your future self, explaining all of the small details that you will later forget. Here are some of the main types of documentation that you might come across when working with research data.
+Having detailed documentation that explains how your data is organized and its evolution, is key if you want your dataset to be reuseable in the future. Keeping documentation and keeping it up to date is like writing a letter to your future self, explaining all of the small details that you will later forget. Here are some of the main types of documentation that you might come across when working with research data.
 
 | Name | Definition | Scope | Source |
 |------|------------|:---:|:---:|
