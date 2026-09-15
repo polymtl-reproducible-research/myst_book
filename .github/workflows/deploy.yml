@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -47,14 +48,37 @@ jobs:
         run: myst build --html
 
       - name: Translate and build French book
-        id: french
-        continue-on-error: true
         run: python3 scripts/build-french.py --cache .tcache/fr.cache.json
 
-      - name: Warn if French build failed
-        if: steps.french.outcome == 'failure'
+      - name: Open or update an issue if the deploy failed
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          echo "::warning::French build failed (often a Google Translate rate limit -- see the 'Translate and build French book' step). Deploying the English site without updating /fr/ rather than blocking the whole deploy. Re-run this workflow to retry French once the rate limit clears, or pin any newly-failing strings in translations/fr.overrides.json."
+          TITLE="Deploy is failing"
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="The deploy failed again on [this run]($RUN_URL). This blocks the whole site from updating (English included) until it's fixed.
+
+          The usual cause is the French build hitting a Google Translate rate limit on the free endpoint -- re-running the workflow once it clears often fixes it. If specific strings keep failing, pin them in \`translations/fr.overrides.json\` (see \`scripts/TRANSLATION.md\` for how)."
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "$BODY"
+          else
+            gh issue create --repo "${{ github.repository }}" --title "$TITLE" --body "$BODY"
+          fi
+
+      - name: Close the deploy-is-failing issue if now fixed
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="Deploy is failing"
+          EXISTING=$(gh issue list --repo "${{ github.repository }}" --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number // empty')
+          if [ -n "$EXISTING" ]; then
+            RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "Fixed by a later successful run: $RUN_URL"
+            gh issue close "$EXISTING" --repo "${{ github.repository }}"
+          fi
 
       - name: Commit refreshed translation cache
         if: always()

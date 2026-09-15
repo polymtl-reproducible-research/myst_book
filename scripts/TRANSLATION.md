@@ -128,11 +128,16 @@ The same deployment also demonstrates the failure policy: an earlier run with an
 empty cache exited non-zero and refused to publish, rather than shipping a
 half-English site.
 
-That failure policy is scoped to the French build itself: `translate_sources.py`
-still refuses to write a half-translated site if any string is unresolved. But
-the deploy workflow treats that failure as non-fatal at the job level (it lets
-the "Translate and build French book" step fail via `continue-on-error`, and
-warns rather than blocks) so a French translation hiccup — most often a rate
-limit on the free Google Translate endpoint — never blocks deploying the
-updated English site. `/fr/` simply won't be updated until a later successful
-run.
+`translate_sources.py` refuses to write a half-translated site if any string
+is unresolved, and the deploy workflow deliberately does not soften that:
+a French build failure fails the whole deploy, English included. The
+alternative — deploying English while skipping French — was considered and
+rejected, because GitHub Pages deployments fully replace the live site with
+the uploaded artifact rather than patching it. There's no way to publish
+just the English update without `/fr/` disappearing from the live site
+until a later successful run (worse than merely being stale).
+
+To keep failures from going unnoticed — as happened for about a week after
+one run hit a Google Translate rate limit — a failure opens (or updates, if
+one is already open) a "Deploy is failing" issue with a link to the run, and
+a later successful run closes it automatically.
