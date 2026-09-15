@@ -47,6 +47,8 @@ To see the current status of the website (that is, which branch/commit is curren
 
 [This workflow](https://github.com/polymtl-reproducible-research/myst_book/actions/workflows/deploy.yml) automatically re-deploys the `main` branch to https://reproducible-research.polymtl.ca/ whenever there is a push (including when a pull request is merged).
 
+The French build (`/fr/`) uses a free, unofficial Google Translate backend that occasionally rate-limits, and translations for new content are cached and pinned in `translations/fr.overrides.json` as they're added (see `scripts/TRANSLATION.md`). If the French build fails, the whole deploy fails with it (English included) — GitHub Pages deployments fully replace the live site rather than patching it, so there's no safe way to publish just the English update without risking `/fr/` disappearing from the live site. A failure opens (or updates) a "Deploy is failing" issue automatically, and it's closed automatically once a run succeeds again — re-run the workflow once any rate limit clears, or add overrides for newly-failing strings.
+
 ## Contributing
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute to this project, including branch naming conventions, workflow, and development setup.
