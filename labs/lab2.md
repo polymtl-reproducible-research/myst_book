@@ -154,7 +154,7 @@ The workflow is divided into:  data deposit, data publication and versioning of 
 
 You must verify access to the ING8100 collection on the Polytechnique Montréal Demo Dataverse:
 
-- https://demo.borealisdata.ca/dataverse/ING8100
+- https://demo.borealisdata.ca/dataverse/fall2026
 
 :::{important}
 Report any access issues before proceeding with dataset submission.
@@ -166,7 +166,7 @@ Report any access issues before proceeding with dataset submission.
 
 A shared Dataverse is created:
 
-- Name: `ING8100`
+- Name: `ING8100 - Fall 2026`
 
 This serves as the parent container for all student submissions.
 
@@ -175,7 +175,7 @@ This serves as the parent container for all student submissions.
 You must publish your dataset in Borealis following these steps:
 
 ### Create Dataset
-Inside `ING8100`, create a new dataset via **Add Data → New Dataset**.
+Inside `ING8100 - Fall 2026`, create a new dataset via **Add Data → New Dataset**.
 
 ### Metadata Entry
 
