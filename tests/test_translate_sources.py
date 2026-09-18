@@ -118,9 +118,20 @@ def untranslated_prose(original, translated):
     """
     out = set(translated.split("\n"))
     suspects = []
+    fence = "closed"
     for line in original.split("\n"):
         s = line.strip()
-        if s.startswith((":", "|", "$$")) or re.match(r"^(`{3,}|~{3,})", s):
+        if re.match(r"^(`{3,}|~{3,})", s):
+            if fence != "closed":
+                fence = "closed"
+            elif FENCE_DIRECTIVE.match(s):
+                fence = "directive"
+            else:
+                fence = "code"
+            continue
+        if fence == "code":
+            continue
+        if s.startswith((":", "|", "$$")):
             continue
         if len(re.findall(r"\b[a-z]{3,}\b", s)) >= 3 and line in out:
             suspects.append(s)
