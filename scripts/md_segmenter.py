@@ -15,7 +15,7 @@ ADMONITION_DIRECTIVES = {
     "important", "note", "seealso", "tip", "warning",
 }
 
-FENCE_RE = re.compile(r"^(`{3,}|~{3,})")
+FENCE_RE = re.compile(r"^(\s*)(`{3,}|~{3,})")
 FENCE_DIRECTIVE_RE = re.compile(r"^(`{3,}|~{3,})\{(.+?)\}")
 DIRECTIVE_RE = re.compile(r"^(:{3,})\{(.+?)\}")
 TABLE_RE = re.compile(r"^\s*\|")
@@ -72,8 +72,9 @@ def segment(body):
         fence = FENCE_RE.match(line)
         if fence:
             flush()
-            char = fence.group(1)[0]
-            close = re.compile(r"^" + re.escape(char) + r"{" + str(len(fence.group(1))) + r",}\s*$")
+            indent, marker = fence.group(1), fence.group(2)
+            close = re.compile(r"^\s{0," + str(len(indent)) + r"}"
+                               + re.escape(marker[0]) + r"{" + str(len(marker)) + r",}\s*$")
             buf = [line]
             i += 1
             while i < len(lines):
