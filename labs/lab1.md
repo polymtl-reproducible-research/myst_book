@@ -9,7 +9,7 @@ numbering:
 # Introduction
 
 :::{important}
-**Submission deadline:** _To be determined_  
+**Submission deadline:** September 28th, 2026  
 **Team formation:** This laboratory must be completed in teams of two students.
 :::
 
