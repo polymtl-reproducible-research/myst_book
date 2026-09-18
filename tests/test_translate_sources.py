@@ -2,12 +2,22 @@ import json
 import os
 import re
 import pytest
+import yaml
 import translate_sources as ts
 from resolver import Resolver
 
 FENCE = re.compile(r"^(`{3,}|~{3,})")
 FENCE_DIRECTIVE = re.compile(r"^(`{3,}|~{3,})\{")
 UP = str.upper
+
+
+def _golden_sources():
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    with open(os.path.join(root, "myst.yml"), encoding="utf-8") as handle:
+        return ts.collect_source_files(yaml.safe_load(handle))
+
+
+GOLDEN_SOURCES = _golden_sources()
 
 
 def fences(text):
@@ -94,9 +104,7 @@ def test_myst_yml_translates_titles_and_toc(tmp_path, monkeypatch):
     assert "LABS" in text
 
 
-@pytest.mark.parametrize("path", [
-    "index.md", "labs/lab1.md", "labs/lab2.md", "labs/lab5.md", "lectures/lecture1.md",
-])
+@pytest.mark.parametrize("path", GOLDEN_SOURCES)
 def test_golden_real_sources_preserve_code_blocks(tmp_path, path):
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     src = os.path.join(root, path)
@@ -118,18 +126,27 @@ def untranslated_prose(original, translated):
     """
     out = set(translated.split("\n"))
     suspects = []
+    fence = "closed"
     for line in original.split("\n"):
         s = line.strip()
-        if s.startswith((":", "|", "$$")) or re.match(r"^(`{3,}|~{3,})", s):
+        if re.match(r"^(`{3,}|~{3,})", s):
+            if fence != "closed":
+                fence = "closed"
+            elif FENCE_DIRECTIVE.match(s):
+                fence = "directive"
+            else:
+                fence = "code"
+            continue
+        if fence == "code":
+            continue
+        if s.startswith((":", "|", "$$")):
             continue
         if len(re.findall(r"\b[a-z]{3,}\b", s)) >= 3 and line in out:
             suspects.append(s)
     return suspects
 
 
-@pytest.mark.parametrize("path", [
-    "index.md", "labs/lab1.md", "labs/lab2.md", "labs/lab5.md", "lectures/lecture1.md",
-])
+@pytest.mark.parametrize("path", GOLDEN_SOURCES)
 def test_golden_real_sources_translate_all_their_prose(tmp_path, path):
     """Coverage guard: catches a segmenter bug that swallows prose into a verbatim
     block. An integrity check cannot see this, because swallowed content is preserved
