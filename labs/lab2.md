@@ -9,7 +9,7 @@ numbering:
 # Introduction
 
 :::{important}
-**Submission deadline:** *To be determined*  
+**Submission deadline: September 29th 2026 
 **Team composition:** You must complete this laboratory in a team of two students.
 :::
 
@@ -39,7 +39,7 @@ Ensure that your dataset does not contain sensitive, confidential, or unauthoriz
 
 Select an existing published dataset that is not already hosted on [Borealis](https://borealisdata.ca/).
 
-You must identify the dataset using OpenAlex:
+You can identify a dataset using OpenAlex:
 https://openalex.org/works
 
 ---
@@ -62,17 +62,17 @@ You should:
 3. In the "Type" field, select "Dataset"
 4. In the "License" field, select "CC0" or "CC-BY".
 5. Use additional fields that you consider important.
-6. Open a result that corresponds to a research publication or dataset-related output
-7. Inspect the "Works" page and associated links (DOI, publisher, repository links)
-8. Identify whether the underlying data is accessible and reusable. We also suggest to pick a dataset that not too large (<1GB). Example of a "small" dataset is one that is smaller than 100 MB.
+6. Select a result that corresponds to a dataset in your domain that you'd like to use for Lab 2.
+7. Ensure that the dataset is accessible and comes from a reliable source. We also suggest to pick a dataset that not too large (<1GB). Example of a "small" dataset is one that is smaller than 100 MB.
+8. Identify if there are any publications (articles, data papers, conference papers, etc.) or code repositories associated with the dataset and download a copy.
 
 :::{warning}
 When preparing your dataset for upload, ensure that it respects the following limits:
-- Maximum number of files: 1,000 files per dataset.
+- Maximum number of files: 999 files per dataset.
 - Maximum individual file size: 5 GB per file.
 - Maximum total dataset size: 20 GB.
 
-Keep in mind that larger datasets require more time to upload to Borealis. It is recommended that you select a dataset that is well below the forementioned limits.
+Keep in mind that larger datasets require more time to upload to Borealis and that you will transfer this dataset to GitHub in Lab 3. It is recommended that you select a dataset that is well below the forementioned limits.
 :::
 
 ---
@@ -97,7 +97,6 @@ These licenses are commonly used in open research data publishing and ensure com
 You must verify the license explicitly by checking:
 - the dataset repository page (preferred);
 - the authors' data availability statement;
-- or the associated DOI landing page.
 
 ---
 
@@ -105,11 +104,19 @@ You must verify the license explicitly by checking:
 
 ## Community Standards
 
-You must identify whether a community standard applies to your data.
+Try to identify identify whether a community standard applies to your data.
 
 Examples include:
 - BIDS (neuroimaging);
 - OME-TIFF (microscopy);
+
+---
+## Preparing the dataset for upload
+
+Modify the dataset as you see fit so that it follows best practices mentioned in class. Including
+- clear naming conventions;
+- consistent structure;
+- minimal unnecessary compression.
 
 ---
 
@@ -119,21 +126,19 @@ Examples include:
 
 Your project must include a `README.md` containing (when applicable):
 
-- dataset origin and provenance;
-- description of structure;
+- dataset origin and provenance (cite the original authors);
+- description of the dataset's structure;
 - explanation of variables (columns, rows, formats);
-- units of measurement;
-- preprocessing steps;
+- preprocessing steps (i.e., any modifications you have many to the original dataset);
 - software requirements (if certain files are in proprietary formats);
 - usage instructions;
-- abbreviation descriptions;
 - associated publications;
 - licensing and citation information.
 
-Your README must be sufficient for another researcher to understand and reuse your dataset independently. Include any other information you judge pertinent to facilitate others' interpretation of the dataset.
+Your README should be sufficient for another researcher to understand and reuse your dataset independently. Try to include as much information as possible, and anything else you judge pertinent to facilitate others' interpretation of the dataset.
 
 :::{hint}
-You can use the [template](https://libguides.biblio.polymtl.ca/research_data/documentation) as a starting point.
+You can use these [templates](https://libguides.biblio.polymtl.ca/research_data/documentation) as a starting point.
 :::
 
 ## Report
@@ -144,7 +149,7 @@ Prepare a brief report (3-4 sentences) describing the rationale behind your data
 
 # Dissemination Strategy — Borealis Dataverse
 
-This section describes the publication workflow for research datasets using the Borealis Dataverse platform (demo environment). The dissemination process is a key component of FAIR data practices (Findable, Accessible, Interoperable, Reusable).
+This section describes the publication workflow for research datasets using the Borealis platform (demo environment). The dissemination process is a key component of FAIR data practices (Findable, Accessible, Interoperable, Reusable).
 
 The workflow is divided into:  data deposit, data publication and versioning of the dataset.
 
@@ -202,11 +207,16 @@ Ensure that your files and folders are properly structured *before* uploading th
 
 ### License Definition
 Assign a license appropriate to your dataset:
-- ensure compatibility with reused data;
-- document justification in your README.
+- ensure compatibility with the license associated with the original dataset;
 
 ### Save Dataset
 Once you have completed the metadata, license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** version of your dataset, visible only to you and the course evaluators. Make any further modifications to the dataset by choosing **Edit Dataset**.
+
+---
+
+### Add your collaborator
+So that both you and your teammate have access to the dataset, you will need to add them as a collaborator. 
+- to do this select **Modify dataset → Permissions → Dataset → Assign roles to users/groups**. Select their account and give them the role **Contributor**, then click on **Save changes**.
 
 ---
 
