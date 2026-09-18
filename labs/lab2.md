@@ -92,7 +92,7 @@ Public domain dedication — no rights reserved.
 <br>
 Creative Commons Attribution — reuse permitted with credit.
 
-These licenses are commonly used in open research data publishing and ensure compatibility with redistribution in Borealis.
+These licenses are commonly used in open science and ensure compatibility with redistribution in Borealis.
 
 You must verify the license explicitly by checking:
 - the dataset repository page (preferred);
@@ -113,7 +113,7 @@ Examples include:
 ---
 ## Preparing the dataset for upload
 
-Modify the dataset as you see fit so that it follows best practices mentioned in class. Including
+Modify the dataset as you see fit so that it follows best practices discussed in class. Including
 - clear naming conventions;
 - consistent structure;
 - minimal unnecessary compression.
@@ -124,18 +124,18 @@ Modify the dataset as you see fit so that it follows best practices mentioned in
 
 ## README File
 
-Your project must include a `README.md` containing (when applicable):
+Your project must include a `README.md` file containing (when applicable):
 
 - dataset origin and provenance (cite the original authors);
 - description of the dataset's structure;
 - explanation of variables (columns, rows, formats);
-- preprocessing steps (i.e., any modifications you have many to the original dataset);
+- Any modifications you have many to the original dataset;
 - software requirements (if certain files are in proprietary formats);
 - usage instructions;
 - associated publications;
 - licensing and citation information.
 
-Your README should be sufficient for another researcher to understand and reuse your dataset independently. Try to include as much information as possible, and anything else you judge pertinent to facilitate others' interpretation of the dataset.
+Remember that your README should be sufficient for another researcher to understand and reuse your dataset independently. Try to include as much information as possible, and anything else you judge pertinent to facilitate others' interpretation of the dataset.
 
 :::{hint}
 You can use these [templates](https://libguides.biblio.polymtl.ca/research_data/documentation) as a starting point.
@@ -169,7 +169,7 @@ Report any access issues before proceeding with dataset submission.
 
 ## Course Dataverse Structure
 
-A shared Dataverse is created:
+A shared Dataverse has been created for this lab:
 
 - Name: `ING8100 - Fall 2026`
 
@@ -210,7 +210,7 @@ Assign a license appropriate to your dataset:
 - ensure compatibility with the license associated with the original dataset;
 
 ### Save Dataset
-Once you have completed the metadata, license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** version of your dataset, visible only to you and the course evaluators. Make any further modifications to the dataset by choosing **Edit Dataset**.
+Once you have completed added the metadata and license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** version of your dataset, visible only to you and the course evaluators. Make any further modifications to the dataset by choosing **Edit Dataset**.
 
 ---
 
