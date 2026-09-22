@@ -1,36 +1,46 @@
 ---
-title: My Book Title
-description: A brief description of this book.
+title: 'Open Science and Reproducible Research: Tools and Practices'
+description: Open Science, Reproducibility and Replicability — a course from Polytechnique Montréal.
 date: 2026-03-27
 ---
 
-# Welcome
+Modern research increasingly depends on code, data pipelines, and computational
+analyses — yet a large share of published results cannot be reproduced, even by
+the original authors. This course covers the vocabulary, principles, and tools
+that make computational research reproducible and replicable, from version
+control and environments to open data and transparent reporting.
 
-This is the landing page for your MyST book. Edit this file to introduce your book's purpose and content.
+[Syllabus (PDF) ↓](https://github.com/polymtl-reproducible-research/ing8100/releases/latest/download/ING8100_plan_de_cours.pdf) · [Start with Lecture 1 →](lectures/lecture1.md)
 
-## About This Book
-
-Describe what this book is about, who it is for, and what readers will learn.
-
-## How to Use This Book
-
-Provide instructions for navigating or interacting with the book.
-
-:::{admonition} Getting Started
-:class: tip
-To build this book locally, run:
-
-```bash
-myst start
-```
+(ai-disclosure)=
+:::{admonition} Disclosure: use of AI in writing this book
+:class: note
+Parts of the text on this site — including this page — were drafted with
+the help of an AI assistant (Claude Opus 5), prompted with bullet-point
+outlines and then reviewed and edited by the instructor. This is
+deliberate: it doubles as a live example of the disclosure practice
+discussed in the [Use of AI](lectures/lecture2.md#use-of-ai-in-open-development)
+section of Lecture 2 — which links back here.
 :::
 
-## Acknowledgments
+This course was supported by Polytechnique Montréal and the UNIQUE Centre.
 
-This work was supported by Unique.
+:::::{grid} 2 2 2 2
 
-:::{figure} images/unique-logo.png
-:alt: Unique
-:width: 200px
+::::{grid-item}
+:::{image} images/site_logo.png
+:alt: Polytechnique Montréal
+:height: 120px
 :align: center
 :::
+::::
+
+::::{grid-item}
+:::{image} images/unique-logo.png
+:alt: UNIQUE Centre
+:height: 120px
+:align: center
+:::
+::::
+
+:::::
