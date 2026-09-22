@@ -14,10 +14,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # GOOGLE_TRANSLATE_API_KEY is an environment secret, and the environment
-    # only admits main. A branch that rewrites the push trigger to fire on
-    # itself therefore gets no key: repository secrets are handed to every
-    # branch, environment secrets are not.
+    # GOOGLE_TRANSLATE_API_KEY is an environment secret
     environment: translation
     permissions:
       contents: write
