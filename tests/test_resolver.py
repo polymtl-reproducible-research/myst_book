@@ -169,3 +169,35 @@ def test_a_failed_string_is_not_retried():
     r.resolve("Some English prose here.")
     assert len(calls) == 1
     assert len(r.unresolved) == 2
+
+
+class Permanent(RuntimeError):
+    permanent = True
+
+
+def test_permanent_errors_stop_the_run():
+    """A rejected key fails the same way for every string; report it once."""
+    def translate(text):
+        raise Permanent("API key not valid")
+
+    r = Resolver(translate)
+    try:
+        r.resolve("Labs")
+    except Permanent:
+        pass
+    else:
+        raise AssertionError("permanent error should propagate")
+    assert r.unresolved == [], "a permanent failure is not a per-string result"
+
+
+def test_ordinary_failures_are_still_collected():
+    r = Resolver(fake({}, fail=("Labs",)))
+    assert r.resolve("Labs") == "Labs"
+    assert r.unresolved == ["Labs"]
+
+
+def test_failure_cause_is_logged(capsys):
+    """The cause used to be swallowed, which made CI failures undiagnosable."""
+    r = Resolver(fake({}, fail=("Labs",)))
+    r.resolve("Labs")
+    assert "RuntimeError" in capsys.readouterr().err

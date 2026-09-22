@@ -41,12 +41,14 @@ jobs:
           python-version: "3.14"
 
       - name: Install Python dependencies
-        run: pip install deep-translator pyyaml
+        run: pip install pyyaml
 
       - name: Build English book
         run: myst build --html
 
       - name: Translate and build French book
+        env:
+          GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
         run: python3 scripts/build-french.py --cache .tcache/fr.cache.json
 
       - name: Commit refreshed translation cache
