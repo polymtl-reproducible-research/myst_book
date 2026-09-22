@@ -92,6 +92,13 @@ class Resolver:
         if result:
             result = repair_placeholder_spacing(result)
 
+        if result and not validate(protected, result):
+            # The translator answered, but the answer lost a bracket, a bold
+            # marker or a shielded target. Say so: "could not be translated"
+            # alone sent three weeks of debugging down the wrong path.
+            print("  Translation rejected, structure changed:\n"
+                  "    en: %s\n    fr: %s" % (protected, result), file=sys.stderr)
+
         if not result or not validate(protected, result):
             self.unresolved.append(stripped)
             self.unresolved_keys.append(protected)

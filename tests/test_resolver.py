@@ -201,3 +201,12 @@ def test_failure_cause_is_logged(capsys):
     r = Resolver(fake({}, fail=("Labs",)))
     r.resolve("Labs")
     assert "RuntimeError" in capsys.readouterr().err
+
+
+def test_structurally_broken_translation_is_reported(capsys):
+    """A mangled translation must name itself, not vanish into 'unresolved'."""
+    r = Resolver(lambda text: "Installez Git XPHX0XPHX sur votre systeme.")
+    r.resolve("Install [Git]XPHX0XPHX on your system.")
+    err = capsys.readouterr().err
+    assert "structure changed" in err
+    assert "Installez Git" in err, "the returned translation must be shown"
