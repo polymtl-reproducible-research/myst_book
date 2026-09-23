@@ -124,19 +124,34 @@ def test_comment_explains_why_it_blocks():
 
 # --- integration against the real book -------------------------------------
 
-def test_the_real_book_against_its_real_cache_needs_nothing(tmp_path):
-    """The committed cache covers main, so an estimate on main is zero.
-
-    This exercises the true pipeline -- TOC walk, shielding, overrides -- so
-    the estimate cannot drift from what the deploy would actually send.
-    """
+def real_cache():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    cache = subprocess.run(["git", "show", "origin/translation-cache:fr.cache.json"],
-                           cwd=root, capture_output=True, text=True)
-    if cache.returncode != 0:
+    result = subprocess.run(["git", "show", "origin/translation-cache:fr.cache.json"],
+                            cwd=root, capture_output=True, text=True)
+    if result.returncode != 0:
         pytest.skip("translation-cache branch not fetched")
-    pending = et.collect_pending(json.loads(cache.stdout), str(tmp_path / "out"))
-    assert et.summarise(pending)["characters"] == 0
+    return json.loads(result.stdout)
+
+
+def test_pending_strings_are_exactly_the_ones_the_cache_lacks(tmp_path):
+    """Exercises the true pipeline -- TOC walk, shielding, overrides -- so the
+    estimate cannot drift from what the deploy would send.
+
+    Asserts the invariant rather than a count: the count depends on the branch
+    under test, and a branch that adds prose is the normal case.
+    """
+    cache = real_cache()
+    pending = et.collect_pending(cache, str(tmp_path / "out"))
+    assert all(s not in cache for s in pending), "a cached string must never be re-sent"
+    assert all(s.strip() for s in pending), "blank strings are not worth sending"
+
+
+def test_estimating_twice_gives_the_same_answer(tmp_path):
+    """A figure that moved between runs could not be used to gate a merge."""
+    cache = real_cache()
+    first = et.collect_pending(cache, str(tmp_path / "a"))
+    second = et.collect_pending(cache, str(tmp_path / "b"))
+    assert first == second
 
 
 # --- what is actually chargeable ------------------------------------------
