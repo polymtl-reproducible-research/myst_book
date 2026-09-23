@@ -1,0 +1,13 @@
+# Anything the deploy workflow executes can read GOOGLE_TRANSLATE_API_KEY,
+# which is billed to a real account. Changes to these paths need review from
+# someone who knows what that means.
+#
+# /.github/ covers this file too: without that, a pull request could remove
+# these rules with an approval from anyone.
+#
+# Course content is deliberately not owned. Lectures, labs and pinned
+# translations cannot reach the key, and gating them would make the owners a
+# bottleneck on the actual work.
+
+/.github/    @mathieuboudreau @mguaypaq @jcohenadad
+/scripts/    @mathieuboudreau @mguaypaq @jcohenadad
