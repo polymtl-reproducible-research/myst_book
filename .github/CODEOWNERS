@@ -9,5 +9,5 @@
 # translations cannot reach the key, and gating them would make the owners a
 # bottleneck on the actual work.
 
-/.github/    @mathieuboudreau @mguaypaq @jcohenadad
-/scripts/    @mathieuboudreau @mguaypaq @jcohenadad
+/.github/    @mathieuboudreau @mguaypaq
+/scripts/    @mathieuboudreau @mguaypaq
