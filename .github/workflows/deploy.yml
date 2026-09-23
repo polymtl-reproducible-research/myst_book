@@ -1,49 +1,88 @@
 name: MyST GitHub Pages Deploy
+
 on:
   push:
     branches:
-      - '**'
-
-env:
-  BASE_URL: /${{ github.event.repository.name }}
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+      - main
+  workflow_dispatch:
+    # This allows manual runs from any commit/branch
 
 concurrency:
-  group: 'pages'
-  cancel-in-progress: false
+  group: deploy
+  cancel-in-progress: true
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Checkout translation cache
+        uses: actions/checkout@v7
+        with:
+          ref: translation-cache
+          path: .tcache
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Install MyST
+        run: npm install -g mystmd
+
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Install Python dependencies
+        run: pip install deep-translator pyyaml
+
+      - name: Build English book
+        run: myst build --html
+
+      - name: Translate and build French book
+        run: python3 scripts/build-french.py --cache .tcache/fr.cache.json
+
+      - name: Commit refreshed translation cache
+        if: always()
+        continue-on-error: true
+        working-directory: .tcache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fr.cache.json
+          if git diff --cached --quiet; then
+            echo "cache unchanged"
+          else
+            git commit -m "Update French translation cache [skip ci]"
+            git pull --rebase origin translation-cache || echo "no existing cache branch; creating it"
+            git push origin HEAD:translation-cache
+          fi
+
+      - name: Inject language switcher
+        run: python3 scripts/inject-language-switcher.py
+
+      - name: Upload static files as artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _build/html/
+
   deploy:
-    if: github.ref_name == vars.BUILD_BRANCH
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: gh-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - name: Setup Pages
-        uses: actions/configure-pages@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22.x
-      - name: Install MyST Markdown
-        run: npm install -g mystmd
-      - name: Install Python dependencies
-        run: pip install deep-translator pyyaml
-      - name: Build HTML Assets
-        run: myst build --html
-      - name: Translate and build French site
-        run: python3 scripts/build-french.py
-      - name: Inject Language Switcher
-        run: python3 scripts/inject-language-switcher.py
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: './_build/html'
-      - name: Deploy to GitHub Pages
+      - name: Deploy the artifact
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
