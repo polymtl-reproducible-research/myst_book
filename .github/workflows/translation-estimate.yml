@@ -1,0 +1,75 @@
+name: Translation estimate
+
+# Reports what a pull request would send to Cloud Translation, and blocks it
+# when the month's free allowance would be exceeded. Runs the real pipeline
+# with the network stubbed out, so it needs no API key and makes no calls.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: translation-estimate-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  estimate:
+    name: Translation budget
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the merge result
+        uses: actions/checkout@v7
+
+      - name: Checkout translation cache
+        uses: actions/checkout@v7
+        with:
+          ref: translation-cache
+          path: .tcache
+          fetch-depth: 0          # month-to-date reads this branch's history
+
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      # continue-on-error so the comment is still posted when over budget;
+      # the final step turns the outcome back into a failure.
+      - name: Estimate
+        id: estimate
+        continue-on-error: true
+        run: |
+          python3 scripts/estimate_translation.py \
+            --cache .tcache/fr.cache.json \
+            --cache-repo .tcache \
+            --comment "$RUNNER_TEMP/comment.md"
+
+      - name: Post or update the comment
+        continue-on-error: true    # a pull request from a fork gets a read-only token
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          jq -n --rawfile b "$RUNNER_TEMP/comment.md" '{body: $b}' > "$RUNNER_TEMP/payload.json"
+          id=$(gh api "repos/$REPO/issues/$PR/comments" --paginate \
+                 --jq '.[] | select(.body | contains("<!-- translation-estimate -->")) | .id' \
+               | head -1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" --input "$RUNNER_TEMP/payload.json" > /dev/null
+            echo "updated comment $id"
+          else
+            gh api -X POST "repos/$REPO/issues/$PR/comments" --input "$RUNNER_TEMP/payload.json" > /dev/null
+            echo "posted a new comment"
+          fi
+
+      - name: Fail when over budget
+        if: steps.estimate.outcome == 'failure'
+        run: |
+          echo "::error::This pull request would take the month past the free allowance."
+          exit 1
