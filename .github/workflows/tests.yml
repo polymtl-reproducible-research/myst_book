@@ -11,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
+      # The estimator's integration tests run against the real cache. Without
+      # this they skip, and a skip is invisible in a green check.
+      - uses: actions/checkout@v7
+        with:
+          ref: translation-cache
+          path: .tcache
+          fetch-depth: 0
+
       - uses: actions/setup-python@v7
         with:
           python-version: "3.14"

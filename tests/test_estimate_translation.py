@@ -124,13 +124,31 @@ def test_comment_explains_why_it_blocks():
 
 # --- integration against the real book -------------------------------------
 
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 def real_cache():
-    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    """The committed cache, from a checkout of the branch or from git.
+
+    Skipping is reasonable on a laptop that has never fetched the branch. It is
+    not reasonable on a runner, where it means the only tests exercising the
+    real pipeline quietly stopped running behind a green check -- so in CI the
+    absence is a failure.
+    """
+    checked_out = os.path.join(REPO_ROOT, ".tcache", "fr.cache.json")
+    if os.path.exists(checked_out):
+        with open(checked_out, encoding="utf-8") as handle:
+            return json.load(handle)
+
     result = subprocess.run(["git", "show", "origin/translation-cache:fr.cache.json"],
-                            cwd=root, capture_output=True, text=True)
-    if result.returncode != 0:
-        pytest.skip("translation-cache branch not fetched")
-    return json.loads(result.stdout)
+                            cwd=REPO_ROOT, capture_output=True, text=True)
+    if result.returncode == 0:
+        return json.loads(result.stdout)
+
+    if os.environ.get("CI"):
+        pytest.fail("translation-cache is not checked out; these tests must not "
+                    "skip in CI, which is how they went unrun after #71")
+    pytest.skip("translation-cache not available locally")
 
 
 def test_pending_strings_are_exactly_the_ones_the_cache_lacks(tmp_path):
