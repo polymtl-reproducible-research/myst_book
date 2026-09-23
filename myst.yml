@@ -18,6 +18,7 @@ project:
   abbreviations:
     # Add abbreviations here, e.g.:
     # MRI: Magnetic resonance imaging
+    PR: pull request
   exclude:
     - README.md
     - LICENSE
