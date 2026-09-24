@@ -9,7 +9,9 @@ numbering:
 # Introduction
 
 :::{important}
-**Submission deadline: September 29th 2026 
+
+**Submission deadline**: October 5 2026
+
 **Team composition:** You must complete this laboratory in a team of two students.
 :::
 
@@ -48,23 +50,30 @@ https://openalex.org/works
 
 OpenAlex is a database that you can use to identify research outputs, including datasets and dataset-associated publications.
 
-```{figure} ../images/lab2/open_alex.png
-:label: open_alex
-:alt: Open Alex interface
-:align: center
-
-```
 
 You should:
 
 1. Go to https://openalex.org/works
-2. Use keywords related to your domain (e.g., "neuroimaging", "climate", "microscopy", etc.)
-3. In the "Type" field, select "Dataset"
-4. In the "License" field, select "CC0" or "CC-BY".
-5. Use additional fields that you consider important.
-6. Select a result that corresponds to a dataset in your domain that you'd like to use for Lab 2.
-7. Ensure that the dataset is accessible and comes from a reliable source. We also suggest to pick a dataset that not too large (<1GB). Example of a "small" dataset is one that is smaller than 100 MB.
-8. Identify if there are any publications (articles, data papers, conference papers, etc.) or code repositories associated with the dataset and download a copy.
+2. In the "Type" field, select "Dataset"
+
+---
+
+<img src="../images/lab2/20260924_ing8100_OA_1.png">
+
+---
+
+3. In the "License" field, select "CC0" or "CC-BY".
+
+---
+
+<img src="../images/lab2/20260924_ing8100_OA_2.png">
+
+---
+
+4. Use additional fields that you consider important.
+5. Select a result that corresponds to a dataset in your domain that you'd like to use for Lab 2.
+6. Ensure that the dataset is accessible and comes from a reliable source. We also suggest to pick a dataset that not too large (<1GB). Example of a "small" dataset is one that is smaller than 100 MB.
+7. Identify if there are any publications (articles, data papers, conference papers, etc.) or code repositories associated with the dataset and download a copy.
 
 :::{warning}
 When preparing your dataset for upload, ensure that it respects the following limits:
@@ -72,7 +81,7 @@ When preparing your dataset for upload, ensure that it respects the following li
 - Maximum individual file size: 5 GB per file.
 - Maximum total dataset size: 20 GB.
 
-Keep in mind that larger datasets require more time to upload to Borealis and that you will transfer this dataset to GitHub in Lab 3. It is recommended that you select a dataset that is well below the forementioned limits.
+Keep in mind that larger datasets require more time to upload to Borealis and that you will transfer this dataset to GitHub in Lab 3. It is recommended that you select a dataset that is well below the aforementioned limits.
 :::
 
 ---
@@ -182,6 +191,12 @@ You must publish your dataset in Borealis following these steps:
 ### Create Dataset
 Inside `ING8100 - Fall 2026`, create a new dataset via **Add Data → New Dataset**.
 
+---
+
+<img src="../images/lab2/20260924_ing8100_borealis_1.png">
+
+---
+
 ### Metadata Entry
 
 Complete **all** of the following required metadata fields before publishing your dataset:
@@ -207,10 +222,14 @@ Ensure that your files and folders are properly structured *before* uploading th
 
 ### License Definition
 Assign a license appropriate to your dataset:
-- ensure compatibility with the license associated with the original dataset;
+- ensure that it is the same as the license associated with the original dataset;
 
 ### Save Dataset
 Once you have completed added the metadata and license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** version of your dataset, visible only to you and the course evaluators. Make any further modifications to the dataset by choosing **Edit Dataset**.
+
+---
+
+<img src="../images/lab2/20260924_ing8100_borealis_2.png">
 
 ---
 
@@ -220,14 +239,21 @@ So that both you and your teammate have access to the dataset, you will need to 
 
 ---
 
+<img src="../images/lab2/20260924_ing8100_borealis_3.png">
+
+---
+
 ## File-level editing
 Add embargoes, tags, or descriptions for specific files by following these steps;
 1. In the "Files" tab, select all files that you wish to add edits to.
 2. With the files selected, click on **Edit Files** and choose one of the following options
-   - Metadata : to add a description for the selected files
+   - Metadata : to add a description for the selected files, or to add the "Documentation", "Data" or "Code" tags to the file(s) to describe its contents.
    - Restrict : to require users to request access in order to download the file
-   - Tags : to add a "Documentation", "Data" or "Code" tag to the file to describe its contents.
    - Embargo : to restrict access to the file until a certain date has passed.
+
+---
+
+<img src="../images/lab2/20260924_ing8100_borealis_4.png">
 
 ---
 ## Submit for Review
