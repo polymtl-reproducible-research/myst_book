@@ -59,7 +59,7 @@ jobs:
           RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           BODY="The deploy failed again on [this run]($RUN_URL). This blocks the whole site from updating (English included) until it's fixed.
 
-          The usual cause is the French build hitting a Google Translate rate limit on the free endpoint -- re-running the workflow once it clears often fixes it. If specific strings keep failing, pin them in \`translations/fr.overrides.json\` (see \`scripts/TRANSLATION.md\` for how)."
+          If specific strings keep failing, pin them in \`translations/fr.overrides.json\` (see \`scripts/TRANSLATION.md\` for how)."
           EXISTING=$(gh issue list --repo "${{ github.repository }}" --state open --search "in:title \"$TITLE\"" --json number --jq '.[0].number // empty')
           if [ -n "$EXISTING" ]; then
             gh issue comment "$EXISTING" --repo "${{ github.repository }}" --body "$BODY"
