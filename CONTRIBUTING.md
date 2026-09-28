@@ -17,7 +17,7 @@ Install the required tools:
 
 ```bash
 npm install -g mystmd
-pip install deep-translator pyyaml
+pip install pyyaml
 ```
 
 ## Workflow

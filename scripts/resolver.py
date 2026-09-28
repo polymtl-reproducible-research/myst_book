@@ -1,8 +1,10 @@
 """Resolve English strings to French: overrides, then cache, then translation.
 
-The resolver never raises on a translation failure. It records the offending
-string in `unresolved` and returns the English original, so the caller can
-report every failure at once and exit non-zero.
+The resolver does not raise on an ordinary translation failure. It logs the
+cause, records the offending string in `unresolved` and returns the English
+original, so the caller can report every failure at once and exit non-zero.
+An error marked `permanent` is re-raised instead: it will fail identically for
+every remaining string, so reporting it once beats burying it in a list.
 """
 
 import json
@@ -78,11 +80,24 @@ class Resolver:
 
         try:
             result = self.translate_fn(protected)
-        except Exception:
+        except Exception as error:
+            # A permanent failure (bad key, disabled API) is the same for every
+            # string, so surface it once instead of several hundred times.
+            if getattr(error, "permanent", False):
+                raise
+            print("  Translation failed for %r: %s: %s"
+                  % (protected[:60], type(error).__name__, error), file=sys.stderr)
             result = None
 
         if result:
             result = repair_placeholder_spacing(result)
+
+        if result and not validate(protected, result):
+            # The translator answered, but the answer lost a bracket, a bold
+            # marker or a shielded target. Say so: "could not be translated"
+            # alone sent three weeks of debugging down the wrong path.
+            print("  Translation rejected, structure changed:\n"
+                  "    en: %s\n    fr: %s" % (protected, result), file=sys.stderr)
 
         if not result or not validate(protected, result):
             self.unresolved.append(stripped)

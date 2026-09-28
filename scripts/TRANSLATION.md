@@ -32,7 +32,9 @@ Reads `myst.yml` to discover all source files from the table of contents, then f
 - **Jupyter notebooks (`.ipynb`)**: Translates markdown cells only; code cells and outputs are untouched.
 - **Other assets**: Copies `figures/` and `bibliography/` directories as-is.
 
-Translation uses `deep-translator` (GoogleTranslator), which calls Google Translate for free with no API key. Calls are rate-limited with 300ms delays to avoid throttling.
+Translation uses the official Cloud Translation API (v2), reached with the standard library. The key comes from the `GOOGLE_TRANSLATE_API_KEY` secret, and is only needed when a string is missing from the cache -- a build the cache already covers makes no network call at all.
+
+The earlier backend scraped `translate.google.com/m` through `deep-translator`. Google gated that endpoint in September 2026; it now answers every request with a CAPTCHA and HTTP 429, whatever the caller's volume or address.
 
 Output goes to `_translated/fr/`, mirroring the original directory structure.
 
@@ -80,9 +82,11 @@ Add these steps to your `.github/workflows/deploy.yml` **after** `myst build --h
 
 ```yaml
 - name: Install Python dependencies
-  run: pip install deep-translator pyyaml
+  run: pip install pyyaml
 
 - name: Translate and build French site
+  env:
+    GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
   run: python3 scripts/build-french.py
 
 - name: Inject Language Switcher
@@ -100,9 +104,9 @@ _translated/
 ### Requirements
 
 - Python 3 (available by default on `ubuntu-latest` GitHub Actions runners)
-- `deep-translator` and `pyyaml` Python packages (installed in the workflow)
+- `pyyaml` (installed in the workflow); the translator itself uses only the standard library
 - `mystmd` (already required for any MyST book)
-- No API keys or secrets needed
+- A `GOOGLE_TRANSLATE_API_KEY` repository secret, needed only to translate strings the cache does not already cover
 
 ### Customization
 
