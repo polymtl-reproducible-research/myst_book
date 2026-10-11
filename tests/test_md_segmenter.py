@@ -169,3 +169,16 @@ def test_indented_line_after_a_paragraph_is_not_absorbed_into_a_list():
     out = translate_body(body, UP).split("\n")
     assert out[0] == "- AN ITEM"
     assert "SOME PARAGRAPH CONTINUED HERE." in out
+
+
+def test_list_item_preserves_an_indented_code_block():
+    body = "1. Clone the repository:\n\n   ```bash\n   git clone <repo>\n   ```"
+    assert "   git clone <repo>" in translate_body(body, UP)
+    assert "GIT CLONE" not in translate_body(body, UP)
+
+
+def test_indented_code_block_is_preserved_verbatim():
+    body = "Run this command now:\n\n    git clone <repo>\n    cd repo\n\nProse after the block."
+    out = translate_body(body, UP).split("\n")
+    assert "    git clone <repo>" in out
+    assert "    cd repo" in out
