@@ -86,7 +86,10 @@ def to_html(protected):
     # Empty-text links ([](#label)) have nothing to translate; keep them whole.
     text = re.sub(r"\[\]XPHX(\d+)XPHX", r'<span translate="no">[]XPHX\1XPHX</span>', text)
     text = re.sub(r"\[([^\[\]]+)\]XPHX(\d+)XPHX", r'<a id="\2">\1</a>', text)
-    text = re.sub(r"(?<!\])XPHX(\d+)XPHX", r'<span translate="no">XPHX\1XPHX</span>', text)
+    # A sentence-ending period rides inside the span: Google drops a period that
+    # follows one ("en pratique XPHX0XPHX Les articles").
+    text = re.sub(r"(?<!\])XPHX(\d+)XPHX(\.(?=\s|$))?",
+                  r'<span translate="no">XPHX\1XPHX\2</span>', text)
     text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
     text = re.sub(r"(?<![*\w])\*(?=\S)([^*]+?)(?<=\S)\*(?![*\w])", r"<i>\1</i>", text)
     return text
@@ -95,20 +98,30 @@ def to_html(protected):
 def from_html(translated):
     """Turn a format=html translation back into shielded markdown.
 
-    Whitespace the translator moves inside a bold or italic tag is pushed back
-    outside it, since `** gras**` is not bold in markdown.
+    Google spaces tags as if they were words: it writes `l' <b>`, `</a> ,` and
+    `<b>, texte</b>`. Those spaces and leading punctuation are moved back out
+    of the markup, since `** gras**` is not bold in markdown and `[arXiv] )`
+    reads as a typo.
     """
-    def _wrap(marker):
-        def _sub(match):
-            lead, inner, trail = match.group(1), match.group(2), match.group(3)
-            return lead + marker + inner + marker + trail
-        return _sub
-
-    text = re.sub(r'<span translate="no">(.*?)</span>', r"\1", translated)
-    text = re.sub(r"<b>(\s*)(.*?)(\s*)</b>", _wrap("**"), text)
-    text = re.sub(r"<i>(\s*)(.*?)(\s*)</i>", _wrap("*"), text)
-    text = re.sub(r'<a id="(\d+)">(.*?)</a>', r"[\2]XPHX\1XPHX", text)
+    text = re.sub(r"([’'])\s+(?=<(?:a|b|i|span)\b)", r"\1", translated)
+    text = re.sub(r"(</(?:a|b|i|span)>)\s+(?=[,.)])", r"\1", text)
+    text = re.sub(r'<span translate="no">(.*?)</span>', r"\1", text)
+    text = _unwrap(text, "<b>", "</b>", lambda m: "**%s**" % m.group("inner"))
+    text = _unwrap(text, "<i>", "</i>", lambda m: "*%s*" % m.group("inner"))
+    text = _unwrap(text, r'<a id="(?P<id>\d+)">', "</a>",
+                   lambda m: "[%s]XPHX%sXPHX" % (m.group("inner"), m.group("id")))
     return html.unescape(text)
+
+
+_TAG_RE = r"(?P<before>\s*){}(?P<punct>[,;:]?)(?P<lead>\s*)(?P<inner>.*?)(?P<trail>\s*){}"
+
+
+def _unwrap(text, open_tag, close_tag, render):
+    """Replace one tag pair with markdown, keeping spaces and punctuation outside it."""
+    def _sub(match):
+        gap = " " if match.group("before") or match.group("lead") or match.group("punct") else ""
+        return match.group("punct") + gap + render(match) + match.group("trail")
+    return re.sub(_TAG_RE.format(open_tag, close_tag), _sub, text)
 
 
 def validate(source_protected, translated_protected):

@@ -126,3 +126,27 @@ def test_to_html_escapes_literal_angle_brackets():
 
 def test_from_html_moves_whitespace_out_of_emphasis():
     assert from_html("la<b> PI </b>et <i>quoi</i>") == "la **PI** et *quoi*"
+
+
+# Spacing Google gives tags in format=html (staging replay of #77).
+
+def test_from_html_drops_space_between_closing_tag_and_punctuation():
+    assert from_html('(par exemple, <a id="0">arXiv</a> ), <a id="1">MIT</a> , BSD') == \
+        "(par exemple, [arXiv]XPHX0XPHX), [MIT]XPHX1XPHX, BSD"
+    assert from_html('cité <span translate="no">XPHX0XPHX</span> .') == "cité XPHX0XPHX."
+
+
+def test_from_html_drops_space_after_apostrophe():
+    assert from_html("protège l' <b>expression concrète</b>") == "protège l'**expression concrète**"
+    assert from_html("l’ <i>œuvre</i>") == "l’*œuvre*"
+
+
+def test_from_html_moves_leading_punctuation_out_of_emphasis():
+    assert from_html("par conséquent <b>, le code</b> n'est") == "par conséquent, **le code** n'est"
+
+
+def test_to_html_keeps_a_sentence_period_with_its_placeholder():
+    assert to_html("in practice XPHX0XPHX. Articles") == \
+        'in practice <span translate="no">XPHX0XPHX.</span> Articles'
+    assert from_html(to_html("in practice XPHX0XPHX. Articles")) == "in practice XPHX0XPHX. Articles"
+    assert to_html("see XPHX0XPHX.md") == 'see <span translate="no">XPHX0XPHX</span>.md'
