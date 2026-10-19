@@ -34,6 +34,8 @@ Reads `myst.yml` to discover all source files from the table of contents, then f
 
 Translation uses the official Cloud Translation API (v2), reached with the standard library. The key comes from the `GOOGLE_TRANSLATE_API_KEY` secret, and is only needed when a string is missing from the cache -- a build the cache already covers makes no network call at all.
 
+Requests use `format=html`: bold, italics and links travel as `<b>`, `<i>` and `<a>` tags and every other shielded span as `<span translate="no">`, because in plain-text mode Google drops placeholders and `**` markers from long, markup-heavy sentences. The cache and overrides keep the markdown-with-placeholders form, so the change is invisible outside `translator_backend.py`.
+
 The earlier backend scraped `translate.google.com/m` through `deep-translator`. Google gated that endpoint in September 2026; it now answers every request with a CAPTCHA and HTTP 429, whatever the caller's volume or address.
 
 Output goes to `_translated/fr/`, mirroring the original directory structure.
