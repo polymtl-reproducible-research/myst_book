@@ -13,7 +13,6 @@ The key is read from GOOGLE_TRANSLATE_API_KEY only when a string actually needs
 translating, so a build whose cache already covers the site needs no secret.
 """
 
-import html
 import json
 import os
 import random
@@ -21,6 +20,8 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+
+from shielding import from_html, to_html
 
 ENDPOINT = "https://translation.googleapis.com/language/translate/v2"
 API_KEY_ENV = "GOOGLE_TRANSLATE_API_KEY"
@@ -64,10 +65,10 @@ class CloudTranslator:
     def translate(self, text):
         payload = urllib.parse.urlencode({
             "key": self.api_key,
-            "q": text,
+            "q": to_html(text),
             "source": self.source,
             "target": self.target,
-            "format": "text",
+            "format": "html",
         }).encode("utf-8")
         request = urllib.request.Request(ENDPOINT, data=payload)
         try:
@@ -85,9 +86,9 @@ class CloudTranslator:
         translations = body.get("data", {}).get("translations") or []
         if not translations:
             raise RuntimeError("Cloud Translation returned nothing for: " + text)
-        # v2 HTML-escapes its output even with format=text, so entities such as
-        # &#39; have to be unwound or they reach the page verbatim.
-        return html.unescape(translations[0].get("translatedText", ""))
+        # The markup travels as tags (see shielding.to_html); from_html turns them
+        # back into placeholders and unwinds entities such as &#39;.
+        return from_html(translations[0].get("translatedText", ""))
 
 
 def _require_api_key():

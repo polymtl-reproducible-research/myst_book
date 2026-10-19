@@ -5,6 +5,7 @@ inline code, link targets) are replaced with XPHX<n>XPHX placeholders before
 the text is sent out, and substituted back afterwards.
 """
 
+import html
 import re
 
 PLACEHOLDER = "XPHX{}XPHX"
@@ -71,6 +72,43 @@ def repair_placeholder_spacing(text):
     perfectly good translation.
     """
     return re.sub(r"\]\s+(XPHX\d+XPHX)", r"]\1", text)
+
+
+def to_html(protected):
+    """Render shielded text as HTML for a translator called with format=html.
+
+    In plain text, Google treats placeholders and `**` as noise and drops them
+    from long, markup-heavy sentences. Tags are preserved, so links, bold and
+    italics become tags and every other placeholder is marked translate="no".
+    Cache and override keys stay in placeholder form; only the request changes.
+    """
+    text = html.escape(protected, quote=False)
+    # Empty-text links ([](#label)) have nothing to translate; keep them whole.
+    text = re.sub(r"\[\]XPHX(\d+)XPHX", r'<span translate="no">[]XPHX\1XPHX</span>', text)
+    text = re.sub(r"\[([^\[\]]+)\]XPHX(\d+)XPHX", r'<a id="\2">\1</a>', text)
+    text = re.sub(r"(?<!\])XPHX(\d+)XPHX", r'<span translate="no">XPHX\1XPHX</span>', text)
+    text = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", text)
+    text = re.sub(r"(?<![*\w])\*(?=\S)([^*]+?)(?<=\S)\*(?![*\w])", r"<i>\1</i>", text)
+    return text
+
+
+def from_html(translated):
+    """Turn a format=html translation back into shielded markdown.
+
+    Whitespace the translator moves inside a bold or italic tag is pushed back
+    outside it, since `** gras**` is not bold in markdown.
+    """
+    def _wrap(marker):
+        def _sub(match):
+            lead, inner, trail = match.group(1), match.group(2), match.group(3)
+            return lead + marker + inner + marker + trail
+        return _sub
+
+    text = re.sub(r'<span translate="no">(.*?)</span>', r"\1", translated)
+    text = re.sub(r"<b>(\s*)(.*?)(\s*)</b>", _wrap("**"), text)
+    text = re.sub(r"<i>(\s*)(.*?)(\s*)</i>", _wrap("*"), text)
+    text = re.sub(r'<a id="(\d+)">(.*?)</a>', r"[\2]XPHX\1XPHX", text)
+    return html.unescape(text)
 
 
 def validate(source_protected, translated_protected):

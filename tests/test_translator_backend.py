@@ -100,6 +100,7 @@ def test_modules_import_with_no_third_party_packages():
 import io
 import json
 import urllib.error
+import urllib.parse
 
 from translator_backend import (
     API_KEY_ENV,
@@ -161,11 +162,26 @@ def test_request_carries_key_and_language_pair():
     body = opener.calls[0].data.decode("utf-8")
     assert "key=SEKRIT" in body
     assert "source=en" in body and "target=fr" in body
-    assert "format=text" in body
+    assert "format=html" in body
+
+
+def test_request_sends_markup_as_tags():
+    opener = opener_returning(translation_payload("x"))
+    CloudTranslator("KEY", opener=opener).translate("See **[the guide]XPHX0XPHX** now.")
+    q = urllib.parse.parse_qs(opener.calls[0].data.decode("utf-8"))["q"][0]
+    assert q == 'See <b><a id="0">the guide</a></b> now.'
+
+
+def test_response_tags_come_back_as_markdown():
+    opener = opener_returning(translation_payload(
+        'Voir <b><a id="0">le guide</a></b> &amp; <span translate="no">XPHX1XPHX</span>.'))
+    client = CloudTranslator("KEY", opener=opener)
+    assert client.translate("See **[the guide]XPHX0XPHX** & XPHX1XPHX.") == \
+        "Voir **[le guide]XPHX0XPHX** & XPHX1XPHX."
 
 
 def test_unescapes_html_entities_in_the_response():
-    """v2 escapes its output even with format=text; &#39; must not reach the page."""
+    """v2 returns entities such as &#39;; they must not reach the page."""
     opener = opener_returning(translation_payload("l&#39;environnement &amp; R&#39;D"))
     client = CloudTranslator("KEY", opener=opener)
     assert client.translate("the environment") == "l'environnement & R'D"
