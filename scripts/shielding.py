@@ -103,14 +103,14 @@ def from_html(translated):
     of the markup, since `** gras**` is not bold in markdown and `[arXiv] )`
     reads as a typo.
     """
-    text = re.sub(r"([’'])\s+(?=<(?:a|b|i|span)\b)", r"\1", translated)
-    text = re.sub(r"(</(?:a|b|i|span)>)\s+(?=[,.)])", r"\1", text)
+    text = re.sub(r"(</(?:a|b|i|span)>)\s+(?=[,.)])", r"\1", translated)
     text = re.sub(r'<span translate="no">(.*?)</span>', r"\1", text)
     text = _unwrap(text, "<b>", "</b>", lambda m: "**%s**" % m.group("inner"))
     text = _unwrap(text, "<i>", "</i>", lambda m: "*%s*" % m.group("inner"))
     text = _unwrap(text, r'<a id="(?P<id>\d+)">', "</a>",
                    lambda m: "[%s]XPHX%sXPHX" % (m.group("inner"), m.group("id")))
-    return html.unescape(text)
+    # After unescaping, since the apostrophe usually arrives as &#39;.
+    return re.sub(r"([’'])\s+(?=\*|\[)", r"\1", html.unescape(text))
 
 
 _TAG_RE = r"(?P<before>\s*){}(?P<punct>[,;:]?)(?P<lead>\s*)(?P<inner>.*?)(?P<trail>\s*){}"

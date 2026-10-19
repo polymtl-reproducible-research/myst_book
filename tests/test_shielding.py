@@ -139,6 +139,9 @@ def test_from_html_drops_space_between_closing_tag_and_punctuation():
 def test_from_html_drops_space_after_apostrophe():
     assert from_html("protège l' <b>expression concrète</b>") == "protège l'**expression concrète**"
     assert from_html("l’ <i>œuvre</i>") == "l’*œuvre*"
+    # As Google actually sends it: an entity, with the space inside the tag.
+    assert from_html("l&#39;<b> expression</b>") == "l'**expression**"
+    assert from_html("à l&#39; <i>expertise</i>") == "à l'*expertise*"
 
 
 def test_from_html_moves_leading_punctuation_out_of_emphasis():
