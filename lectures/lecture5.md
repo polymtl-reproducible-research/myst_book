@@ -1,5 +1,5 @@
 ---
-title: Licenses, Intellectual Property, and Publication
+title: Licences, Intellectual Property, and Publication
 date: 2026-10-19
 label: lecture5
 ---
@@ -16,7 +16,7 @@ label: lecture5
 
 This lecture covers the legal and publishing side of open research: what
 intellectual property (IP) protects in a research project, who owns it, how
-licenses make a protected work open, and what publishers and funders now
+licences make a protected work open, and what publishers and funders now
 expect when it comes to sharing articles, data, and code. It complements
 two other Polytechnique courses: CAP7210 (IP and patents) and CAP7005
 (copyright and open access).
@@ -25,8 +25,8 @@ two other Polytechnique courses: CAP7210 (IP and patents) and CAP7005
 
 - The forms of IP relevant to research, and what copyright does (and doesn't) protect
 - How to figure out who owns a research output
-- What a license is, and how to read one
-- Creative Commons licenses for text, figures, and data; open-source licenses for code
+- What a licence is, and how to read one
+- Creative Commons licences for text, figures, and data; open-source licences for code
 - How openness and valorization can coexist
 - Data availability statements, ORCID, and open access requirements
 
@@ -35,7 +35,7 @@ two other Polytechnique courses: CAP7210 (IP and patents) and CAP7005
 Four ideas are easy to mix up: **IP** (what rights protect what?),
 **ownership** (who holds them?), **open dissemination** (on what terms can
 others reuse the work?), and **valorization** (how is value created from
-research?). The *what* determines the *how*: before choosing a license or a
+research?). The *what* determines the *how*: before choosing a licence or a
 valorization path, you need to know what you hold, whether it's protected,
 and who owns it.
 
@@ -73,7 +73,7 @@ can change that, and it's worth checking them in this order: (1) **the
 law** — is there employment, or several authors? (2) **funding and
 partnership contracts**; (3) **your institution's IP policies**, which often
 differ for students and employees; (4) **specific agreements** with your
-supervisor or collaborators; and (5) the **licenses of third-party
+supervisor or collaborators; and (5) the **licences of third-party
 components** you build on (libraries, datasets, pre-trained models).
 
 :::{admonition} Case study: GéoCrue
@@ -88,36 +88,36 @@ licensed under the GPLv3. The project is funded by NSERC and an MRC.
 Who owns the results? What does the GPLv3 library imply for the student's
 own code? Which data can be opened? Working through the five layers above,
 the student and supervisor turn out to own the code and can choose an open
-license — but the MRC's data on buildings and damage claims cannot be
+licence — but the MRC's data on buildings and damage claims cannot be
 opened, because it contains personal and confidential information.
 :::
 
-# Licenses
+# Licences
 
-A license is written permission from the owner, with conditions. It does
+A licence is written permission from the owner, with conditions. It does
 **not** transfer ownership — you remain the owner of code you release
-under an open license.
+under an open licence.
 
-:::{admonition} No license = all rights reserved
+:::{admonition} No licence = all rights reserved
 :class: important
-A public GitHub repository without a license can be read, but not legally
-copied, modified, or redistributed. Rights granted by a license generally
+A public GitHub repository without a licence can be read, but not legally
+copied, modified, or redistributed. Rights granted by a licence generally
 can't be taken back, so choose one *before* publishing.
 :::
 
-When reading a license, ask: **who** grants the rights, **what** is allowed
+When reading a licence, ask: **who** grants the rights, **what** is allowed
 (use, modify, distribute, commercial use), **on what conditions**
 (attribution, share-alike), **what warranties** (usually none, "as is"), and
-**for how long**. A license also doesn't cover trademarks: a project's name
+**for how long**. A licence also doesn't cover trademarks: a project's name
 and logo stay protected unless stated otherwise.
 
-## Creative Commons Licenses
+## Creative Commons Licences
 
-[Creative Commons](https://creativecommons.org/) (CC) licenses suit
+[Creative Commons](https://creativecommons.org/) (CC) licences suit
 publications, figures, videos, and datasets — not code. They combine
 building blocks: **BY** (attribution), **SA** (share-alike), **NC**
 (non-commercial), and **ND** (no derivatives). **CC0** waives all rights,
-including attribution. Use the current version (4.0) and state the license
+including attribution. Use the current version (4.0) and state the licence
 clearly on the work itself. The FRQ's open access policy strongly
 encourages **CC BY 4.0**, with CC0 also accepted.
 
@@ -131,18 +131,18 @@ legal one — it gives provenance, credits the people who shared the data,
 and not citing is plagiarism even when copyright doesn't apply. Cite the
 dataset's DOI and version, share the code that made the changes, document
 them (README, CHANGELOG — as in [Lab 2](../labs/lab2.md)), and choose a
-license for the new dataset.
+licence for the new dataset.
 :::
 
-## Licenses for Code
+## Licences for Code
 
-Code licenses fall into three families: **proprietary** (no reuse without
+Code licences fall into three families: **proprietary** (no reuse without
 permission), **copyleft** (e.g., [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html):
 modification and redistribution allowed, but distributed derivatives must
-keep the same license), and **permissive** (e.g.,
+keep the same licence), and **permissive** (e.g.,
 [MIT](https://opensource.org/license/mit), BSD,
 [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0): few
-restrictions). When you **reuse** code, check whether its license
+restrictions). When you **reuse** code, check whether its licence
 constrains yours — the GPLv3 library in the GéoCrue case does. When you
 **wrote** it, you choose. For maximum reuse, MIT for code and CC BY for
 everything else is a simple, widely understood combination. Also note that
@@ -152,7 +152,7 @@ some platforms automatically license what you post (e.g.,
 # Openness and Valorization
 
 Opening your work doesn't prevent creating value from it — it changes where
-the value lies. "Open" is about permissions, not price: open licenses
+the value lies. "Open" is about permissions, not price: open licences
 usually allow commercial use. Valorizing doesn't only mean patenting —
 much of it happens through services, expertise, contracts, and trademarks.
 And publishing means losing what you disclosed (e.g., patentability), not
@@ -172,7 +172,7 @@ demand in the first place.
 1. Document who contributed what, when, and in what context.
 2. Read your funding and partnership contracts before publishing.
 3. Disclose inventions to your institution before making them public.
-4. Inventory third-party components and their licenses.
+4. Inventory third-party components and their licences.
 5. Before signing anything, talk to the right people: supervisor,
    technology transfer office, legal services, ethics board, library.
 :::
@@ -183,7 +183,7 @@ demand in the first place.
 
 Since the mid-2010s, most publishers require or strongly encourage a **data
 availability statement** (DAS). At a minimum, it says where the data and
-code are, and under what license — e.g., *"Data and code associated with
+code are, and under what licence — e.g., *"Data and code associated with
 this article are available at `https://doi.org/...` under CC BY 4.0 (data)
 and MIT (code)."* Prefer a DOI over a Google Drive link, and avoid
 "available upon request," which rarely works in practice {cite:p}`graf2020`.
@@ -226,7 +226,7 @@ reproducible by design. Examples include the
 [qMRLab MOOC](https://qmrlab.org/mooc/), [NeuroLibre](https://neurolibre.org/)
 preprints, [Aperture Neuro](https://apertureneuro.org/), and this course book
 itself. What gets reviewed, cited, and licensed is no longer just text, and
-each component may carry its own license.
+each component may carry its own licence.
 
 :::{admonition} Discussion
 :class: note
@@ -239,7 +239,7 @@ research contribution?
 
 ## Further Resources
 
-- [Choose a License](https://choosealicense.com/) — Plain-language guide to picking an open-source license
-- [Creative Commons license chooser](https://creativecommons.org/chooser/) — Interactive tool for CC licenses
+- [Choose a License](https://choosealicense.com/) — Plain-language guide to picking an open-source licence
+- [Creative Commons licence chooser](https://creativecommons.org/chooser/) — Interactive tool for CC licences
 - [Tri-Agency Open Access Policy on Publications](https://cihr-irsc.gc.ca/e/32005.html) — Federal open access requirements
 - [Open Policy Finder](https://openpolicyfinder.jisc.ac.uk/) — Publishers' self-archiving and embargo policies
