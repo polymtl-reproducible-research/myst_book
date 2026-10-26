@@ -42,7 +42,7 @@ A [`CONTRIBUTING.md`](https://docs.github.com/en/communities/setting-up-your-pro
 
 ## AI_Prompts file
 
-Create an `AI_Prompts.md` file that documents any prompts used during this assignment. Recording your prompts promotes transparency and allows others to better understand how AI was used throughout the project.
+Create an `AI_Prompts.md` file that documents the AI model used during the assignment and the most useful prompt you used. Sharing an effective prompt can help others learn from your experience and apply similar techniques in their own work.
 
 When writing your prompts, pay particular attention to the **Description** component of the [4D Framework](https://www-cdn.anthropic.com/334975cdec18f744b4fa511dc8518bd8d119d29d.pdf), as providing clear context is essential for obtaining useful and reproducible results. To learn more about effective prompting, you are encouraged to explore Anthropic's free [AI Fluency Framework Foundations](https://anthropic.skilljar.com/ai-fluency-framework-foundations) course.
 
