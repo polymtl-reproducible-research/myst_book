@@ -173,6 +173,10 @@ The `.gitignore` file specifies which files and directories should not be tracke
 
 You may use the GitHub `.gitignore` template as a starting point. As your project evolves, remember to update your `.gitignore` and other repository files as needed to reflect changes to your project structure and workflow.
 
+:::{hint}
+Do not commit your dataset directly to GitHub. Since your data was published on Borealis in Lab 2, use the dataset's persistent identifier or download link to retrieve it in your project. Keeping data separate from code avoids unnecessarily increasing repository size and helps preserve data provenance and reproducibility.
+:::
+
 ## Collaborative Git workflow
 
 Follow the collaborative Git workflow introduced in the first lab. Develop your work on separate branches, write meaningful commit messages, and integrate changes through pull requests. This workflow improves traceability, facilitates code review, and helps maintain a stable project history.
