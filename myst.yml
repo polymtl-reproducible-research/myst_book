@@ -23,8 +23,10 @@ project:
     DOI: Digital Object Identifier
     CC0: Creative Commons Zero
     CC-BY: Creative Commons Attribution
+    CI: Continuous Integration
     OME-TIFF: Open Microscopy Environment TIFF
     PR: pull request
+    VS Code: Visual Studio Code
   exclude:
     - README.md
     - LICENSE
