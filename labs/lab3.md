@@ -72,6 +72,12 @@ You need:
 - At least one assigned to each member,
 - At least one closed via PR.
 
+## Collaborative Git workflow
+
+Throughout the lab, use the collaborative Git workflow introduced in Lab 1. Organize your work into issues, develop changes on appropriately named branches, write meaningful commit messages, and submit pull requests for review before merging them into `main`.
+
+Keep your repository documentation up to date as the project evolves, and ensure that your commit history reflects the progression of your work.
+
 ---
 
 # Code environment
@@ -102,6 +108,11 @@ project-root/
 ## Virtual environment
 
 Create a virtual environment to isolate project dependencies and ensure a reproducible computational setup. This prevents conflicts with other projects and avoids polluting your global environment.
+
+Choose **one** of the following options to create your virtual environment:
+
+- [Isolating programming environments for Python using Conda](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/environment-instructions/python.md) to create a virtual environment using Conda, as introduced in Lab 1.
+- [Virtual Environments and Packages with venv](https://docs.python.org/3/tutorial/venv.html) to create a lightweight virtual environment using Python's built-in `venv` module.
 
 ## Download the data
 
@@ -162,11 +173,6 @@ Depending on your chosen environment management tool, export your dependencies u
 - For Conda environments, use an `environment.yml` file.
 - For Python `venv` environments, use a `requirements.txt` file.
 
-For examples:
-
-- [Isolating programming environments for Python using Conda](https://github.com/worldbank/wb-reproducible-research-repository/blob/main/resources/environment-instructions/python.md)
-- [Virtual Environments and Packages with venv](https://docs.python.org/3/tutorial/venv.html)
-
 ## `.gitignore` file
 
 The `.gitignore` file specifies which files and directories should not be tracked by Git. It is commonly used to exclude temporary files, caches, virtual environments, and large or generated data files that should not be stored in the repository. Keeping these files out of version control helps maintain a clean and reproducible project.
@@ -174,12 +180,8 @@ The `.gitignore` file specifies which files and directories should not be tracke
 You may use the GitHub `.gitignore` template as a starting point. As your project evolves, remember to update your `.gitignore` and other repository files as needed to reflect changes to your project structure and workflow.
 
 :::{hint}
-Do not commit your dataset directly to GitHub. Since your data was published on Borealis in Lab 2, use the dataset's persistent identifier or download link to retrieve it in your project. Keeping data separate from code avoids unnecessarily increasing repository size and helps preserve data provenance and reproducibility.
+Do not commit your dataset directly to GitHub. Since your data was published on Borealis in Lab 2, use the dataset's download link to retrieve it in your project. Keeping data separate from code avoids unnecessarily increasing repository size and helps preserve data provenance and reproducibility.
 :::
-
-## Collaborative Git workflow
-
-Follow the collaborative Git workflow introduced in the first lab. Develop your work on separate branches, write meaningful commit messages, and integrate changes through pull requests. This workflow improves traceability, facilitates code review, and helps maintain a stable project history.
 
 ---
 
