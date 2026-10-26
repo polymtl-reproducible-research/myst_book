@@ -187,6 +187,23 @@ def copy_site_option_assets(config):
         print(f"  Copied {rel} (site.options.{key})")
 
 
+def translate_all(source_files, resolve):
+    """Translate every source file into TRANSLATED_DIR."""
+    for rel_path in source_files:
+        src = os.path.join(ROOT_DIR, rel_path)
+        dst = os.path.join(TRANSLATED_DIR, rel_path)
+        if not os.path.exists(src):
+            print("  Skipping %s (not found)" % rel_path)
+            continue
+        if rel_path.endswith(".ipynb"):
+            translate_notebook(src, dst, resolve)
+        elif rel_path.endswith(".md"):
+            translate_md_file(src, dst, resolve)
+        else:
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(src, dst)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Translate MyST sources to French.")
     parser.add_argument("--cache", default=DEFAULT_CACHE, help="path to the machine cache JSON")
@@ -212,19 +229,19 @@ def main(argv=None):
     source_files = collect_source_files(config)
     print("Found %d source files to translate" % len(source_files))
 
-    for rel_path in source_files:
-        src = os.path.join(ROOT_DIR, rel_path)
-        dst = os.path.join(TRANSLATED_DIR, rel_path)
-        if not os.path.exists(src):
-            print("  Skipping %s (not found)" % rel_path)
-            continue
-        if rel_path.endswith(".ipynb"):
-            translate_notebook(src, dst, resolve)
-        elif rel_path.endswith(".md"):
-            translate_md_file(src, dst, resolve)
-        else:
-            os.makedirs(os.path.dirname(dst), exist_ok=True)
-            shutil.copy2(src, dst)
+    source_files = collect_source_files(config)
+    print("Found %d source files to translate" % len(source_files))
+
+    try:
+        translate_all(source_files, resolve)
+    except Exception as error:
+        # A permanent failure is identical for every remaining string, so stop
+        # and name it rather than listing hundreds of downstream symptoms.
+        if not getattr(error, "permanent", False):
+            raise
+        print("\n=== Translation cannot proceed ===\n  %s\n" % error,
+              file=sys.stderr)
+        return 1
 
     for name in ("images", "bibliography"):
         source = os.path.join(ROOT_DIR, name)

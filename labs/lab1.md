@@ -132,7 +132,7 @@ Select the option **Create a new branch and start a pull request**.
 :align: center
 ```
 
-This promote cleaner merge.
+This promotes cleaner merges.
 
 For more guidelines about branches, refer to [Comparing Git workflows: What you should know](https://www.atlassian.com/git/tutorials/comparing-workflows).
 
@@ -175,7 +175,7 @@ The `-c` option creates a new branch. Use a meaningful and descriptive branch na
 
 Use a short, descriptive branch name that reflects your work. Use lowercase letters and hyphens (-) to separate words. Optionally, prefix the name with a category such as feature/, bugfix/, or docs/.
 
-Refer to [conventional branch](https://conventionalbranch.org/#summary) for more informations.
+Refer to [conventional branch](https://conventionalbranch.org/#summary) for more information.
 :::
 
 :::{hint}
