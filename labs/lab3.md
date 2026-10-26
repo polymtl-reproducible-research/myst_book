@@ -171,7 +171,7 @@ For examples:
 
 The `.gitignore` file specifies which files and directories should not be tracked by Git. It is commonly used to exclude temporary files, caches, virtual environments, and large or generated data files that should not be stored in the repository. Keeping these files out of version control helps maintain a clean and reproducible project.
 
-You may use the GitHub `.gitignore` template as a starting point.
+You may use the GitHub `.gitignore` template as a starting point. As your project evolves, remember to update your `.gitignore` and other repository files as needed to reflect changes to your project structure and workflow.
 
 ## Collaborative Git workflow
 
