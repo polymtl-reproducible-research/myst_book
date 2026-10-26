@@ -8,7 +8,7 @@ numbering:
 
 # Introduction
 
-This laboratory introduces the principles of reproducible research through the development of a complete open science project. You will organize a repository following community best practices, manage a reproducible computational environment, and build a documented data analysis workflow using Git and GitHub.
+This laboratory introduces the principles of reproducible research through the development of an open science project based on the dataset selected and published on Borealis in Lab 2. You will organize a repository following community best practices, manage a reproducible computational environment, and build a documented data analysis workflow using Git and GitHub.
 
 ---
 
