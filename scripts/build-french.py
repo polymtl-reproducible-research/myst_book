@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Build the French version of the MyST book.
 
-1. Translates source files using translate-sources.py
+1. Translates source files using translate_sources.py
 2. Runs myst build --html in the translated directory
 3. Copies the French build output into _build/html/fr/
 """
 
+import argparse
 import os
 import shutil
 import subprocess
@@ -30,10 +31,23 @@ def run(cmd, cwd=None):
     return result
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Build the French version of the book.")
+    parser.add_argument("--cache", help="path to the machine cache JSON")
+    parser.add_argument("--attempts", type=int, help="translation attempts per string")
+    args = parser.parse_args(argv)
+
+    forwarded = []
+    if args.cache:
+        forwarded += ["--cache", args.cache]
+    if args.attempts is not None:
+        forwarded += ["--attempts", str(args.attempts)]
+
     # Step 1: Translate sources
     print("=== Step 1: Translating source files ===")
-    run([sys.executable, os.path.join(ROOT_DIR, "scripts", "translate-sources.py")])
+    cmd = [sys.executable, os.path.join(ROOT_DIR, "scripts", "translate_sources.py")]
+    cmd += forwarded
+    run(cmd)
 
     # Step 2: Build French site with myst
     print("\n=== Step 2: Building French HTML ===")
@@ -77,4 +91,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
