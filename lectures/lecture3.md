@@ -19,7 +19,7 @@ label: lecture3
 :width: 400px
 :align: center
 
-["Final".doc](https://phdcomics.com/comics/archive.php?comicid=1531), Jorge Cham, PHD Comics
+["Final".doc](https://phdcomics.com/comics/archive.php?comicid=1531), "Piled Higher and Deeper" by Jorge Cham, <www.phdcomics.com>
 :::
 
 If you've ever ended up with `Final.doc`, then `Final_v2.doc`, then
