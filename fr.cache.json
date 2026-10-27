@@ -350,7 +350,7 @@
   "Maximum individual file size: 5 GB per file.": "Taille maximale par fichier : 5 Go.",
   "Maximum number of files: 999 files per dataset.": "Nombre maximal de fichiers : 999 fichiers par jeu de données.",
   "Maximum total dataset size: 20 GB.": "Taille maximale totale de l'ensemble de données : 20 Go.",
-  "Mean": "Signifier",
+  "Mean": "Moyenne",
   "Merge the pull request": "Fusionnez la demande de fusion",
   "Metadata": "Métadonnées",
   "Metadata : to add a description for the selected files, or to add the \"Documentation\", \"Data\" or \"Code\" tags to the file(s) to describe its contents.": "Métadonnées : pour ajouter une description aux fichiers sélectionnés, ou pour ajouter les balises « Documentation », « Données » ou « Code » au(x) fichier(s) afin de décrire leur contenu.",
