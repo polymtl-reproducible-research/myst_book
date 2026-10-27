@@ -8,6 +8,11 @@ numbering:
 
 # Introduction
 
+:::{important}
+**Submission deadline:** November 2nd, 2026  
+**Team formation:** This laboratory must be completed in teams of two students.
+:::
+
 This laboratory introduces the principles of reproducible research through the development of an open science project based on the dataset selected and published on Borealis in Lab 2. You will organize a repository following community best practices, manage a reproducible computational environment, and build a documented data analysis workflow using Git and GitHub.
 
 ---
