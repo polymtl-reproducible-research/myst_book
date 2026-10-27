@@ -9,8 +9,6 @@ numbering:
 # Introduction
 
 :::{important}
-
-:::{important}
 **Submission deadline:** October 5th, 2026  
 **Team formation:** This laboratory must be completed in teams of two students.
 :::
