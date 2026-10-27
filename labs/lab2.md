@@ -10,9 +10,9 @@ numbering:
 
 :::{important}
 
-**Submission deadline**: October 5 2026
-
-**Team composition:** You must complete this laboratory in a team of two students.
+:::{important}
+**Submission deadline:** October 5th, 2026  
+**Team formation:** This laboratory must be completed in teams of two students.
 :::
 
 This laboratory introduces research data management practices in the context of open and reproducible science. Students will work through the final steps of the lifecycle of a research dataset, from organization and documentation to publication and dissemination. **Please be aware that the dataset you select for this lab will be used in Lab 3.**
@@ -50,7 +50,6 @@ https://openalex.org/works
 
 OpenAlex is a database that you can use to identify research outputs, including datasets and dataset-associated publications.
 
-
 You should:
 
 1. Go to https://openalex.org/works
@@ -77,6 +76,7 @@ You should:
 
 :::{warning}
 When preparing your dataset for upload, ensure that it respects the following limits:
+
 - Maximum number of files: 999 files per dataset.
 - Maximum individual file size: 5 GB per file.
 - Maximum total dataset size: 20 GB.
@@ -104,6 +104,7 @@ Creative Commons Attribution — reuse permitted with credit.
 These licenses are commonly used in open science and ensure compatibility with redistribution in Borealis.
 
 You must verify the license explicitly by checking:
+
 - the dataset repository page (preferred);
 - the authors' data availability statement;
 
@@ -116,13 +117,16 @@ You must verify the license explicitly by checking:
 Try to identify identify whether a community standard applies to your data.
 
 Examples include:
+
 - BIDS (neuroimaging);
 - OME-TIFF (microscopy);
 
 ---
+
 ## Preparing the dataset for upload
 
 Modify the dataset as you see fit so that it follows best practices discussed in class. Including
+
 - clear naming conventions;
 - consistent structure;
 - minimal unnecessary compression.
@@ -160,7 +164,7 @@ Prepare a brief report (3-4 sentences) describing the rationale behind your data
 
 This section describes the publication workflow for research datasets using the Borealis platform (demo environment). The dissemination process is a key component of FAIR data practices (Findable, Accessible, Interoperable, Reusable).
 
-The workflow is divided into:  data deposit, data publication and versioning of the dataset.
+The workflow is divided into: data deposit, data publication and versioning of the dataset.
 
 ---
 
@@ -189,6 +193,7 @@ This serves as the parent container for all student submissions.
 You must publish your dataset in Borealis following these steps:
 
 ### Create Dataset
+
 Inside `ING8100 - Fall 2026`, create a new dataset via **Add Data → New Dataset**.
 
 ---
@@ -211,20 +216,25 @@ Complete **all** of the following required metadata fields before publishing you
 - Data Source
 
 ### Upload Data
+
 Upload all dataset files ensuring:
+
 - clear naming conventions;
 - consistent structure;
 - minimal unnecessary compression.
 
-:::{note} 
-Ensure that your files and folders are properly structured *before* uploading them into Borealis. Borealis automatically unzips all '.zip' files. To preserve your dataset's folder structure, please zip your dataset before depositing it on Borealis.
+:::{note}
+Ensure that your files and folders are properly structured _before_ uploading them into Borealis. Borealis automatically unzips all '.zip' files. To preserve your dataset's folder structure, please zip your dataset before depositing it on Borealis.
 :::
 
 ### License Definition
+
 Assign a license appropriate to your dataset:
+
 - ensure that it is the same as the license associated with the original dataset;
 
 ### Save Dataset
+
 Once you have completed added the metadata and license and uploaded the data, select **Save Dataset**. This will create a **draft (unpublished)** version of your dataset, visible only to you and the course evaluators. Make any further modifications to the dataset by choosing **Edit Dataset**.
 
 ---
@@ -234,7 +244,9 @@ Once you have completed added the metadata and license and uploaded the data, se
 ---
 
 ### Add your collaborator
-So that both you and your teammate have access to the dataset, you will need to add them as a collaborator. 
+
+So that both you and your teammate have access to the dataset, you will need to add them as a collaborator.
+
 - to do this select **Modify dataset → Permissions → Dataset → Assign roles to users/groups**. Select their account and give them the role **Contributor**, then click on **Save changes**.
 
 ---
@@ -244,7 +256,9 @@ So that both you and your teammate have access to the dataset, you will need to 
 ---
 
 ## File-level editing
+
 Add embargoes, tags, or descriptions for specific files by following these steps;
+
 1. In the "Files" tab, select all files that you wish to add edits to.
 2. With the files selected, click on **Edit Files** and choose one of the following options
    - Metadata : to add a description for the selected files, or to add the "Documentation", "Data" or "Code" tags to the file(s) to describe its contents.
@@ -256,10 +270,12 @@ Add embargoes, tags, or descriptions for specific files by following these steps
 <img src="../images/lab2/20260924_ing8100_borealis_4.png">
 
 ---
+
 ## Submit for Review
+
 Submit your dataset to change its status to **draft (in review)** so that the course evaluators can review it before publication.
 
-:::{note} 
+:::{note}
 Ensure that the dataset is as complete as possible before submitting it for review. **Once the dataset is published, it can be edited, but cannot be removed.** Borealis' linear versioning system ensures that all previous versions of a dataset remain accessible to all users. Once your dataset has been accepted by the course evaluators, it will be published and you can proceed with the versioning module of the lab.
 :::
 
@@ -280,18 +296,19 @@ You must apply at least one modification to the dataset you already uploaded on 
 - correcting an error in the dataset;
 - updating metadata or file structure;
 - modifying preprocessing decisions.
+
 ---
 
 # Evaluation
 
 The evaluation emphasizes the application of research data management best practices, including documentation, metadata, versioning, and organization.
 
-| Criterion | Weight | Description |
-|---|---:|---|
-| Version Control | 20% | Version history is coherent, commit messages are meaningful, semantic versioning is used appropriately. |
-| License | 10% | An appropriate open-source license is included and is compatible with the selected dataset. |
-| README.md | 20% | The README clearly documents the dataset. For example: repository structure, variables, preprocessing steps, software requirements, usage instructions, and citation information. |
-| Metadata | 20% | Metadata is complete, accurate, and sufficient for another researcher to discover, understand, and reuse the dataset. |
-| Folder Structure | 10% | The repository is organized using a clear structure. Example: raw data, processed data, code, and documentation are separated and clearly identified.Folder and file names are consistent, descriptive, and meaningful. |
-| Dataset Report | 15% | The report clearly justifies the dataset selection by describing its source, authorship, associated publication (if applicable), and relevance to the laboratory objectives. |
-| File-Level Editing | 5% | Appropriate use of Borealis file-level editing features to improve the organization and management of the dataset. |
+| Criterion          | Weight | Description                                                                                                                                                                                                             |
+| ------------------ | -----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version Control    |    20% | Version history is coherent, commit messages are meaningful, semantic versioning is used appropriately.                                                                                                                 |
+| License            |    10% | An appropriate open-source license is included and is compatible with the selected dataset.                                                                                                                             |
+| README.md          |    20% | The README clearly documents the dataset. For example: repository structure, variables, preprocessing steps, software requirements, usage instructions, and citation information.                                       |
+| Metadata           |    20% | Metadata is complete, accurate, and sufficient for another researcher to discover, understand, and reuse the dataset.                                                                                                   |
+| Folder Structure   |    10% | The repository is organized using a clear structure. Example: raw data, processed data, code, and documentation are separated and clearly identified.Folder and file names are consistent, descriptive, and meaningful. |
+| Dataset Report     |    15% | The report clearly justifies the dataset selection by describing its source, authorship, associated publication (if applicable), and relevance to the laboratory objectives.                                            |
+| File-Level Editing |     5% | Appropriate use of Borealis file-level editing features to improve the organization and management of the dataset.                                                                                                      |
