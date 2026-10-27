@@ -14,7 +14,7 @@ label: lecture3
 
 ## Why Version Control
 
-:::{figure} https://phdcomics.com/comics/archive/phd101212s.gif
+:::{figure} ../images/lecture3/phd101212s.gif
 :alt: PhD Comics strip "FINAL".doc — a grad student's file goes through FINAL.doc, FINAL_rev.2.doc, FINAL_rev.6.COMMENTS.doc, FINAL_rev.8.comments5.CORRECTIONS.doc, FINAL_rev.18.comments7.corrections9.MORE.30.doc, and finally FINAL_rev.22.comments49.corrections.10.#@$%WHYDIDICOMETOGRADSCHOOL????.doc
 :width: 400px
 :align: center
