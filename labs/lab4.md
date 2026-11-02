@@ -9,12 +9,13 @@ numbering:
 # Introduction
 
 :::{important}
-**Submission deadline:** *To be determined*  
+**Submission deadline:** November 9nd, 2026  
+**Team formation:** This laboratory must be completed in teams of two students.
 :::
 
 This laboratory places students in the role of external reviewers and contributors to an open science project developed by another team in the course.
 
-The objective is to evaluate the reproducibility of another team's research repository, assess the quality of its documentation and research artifacts, and contribute to its improvement through established collaborative development practices.
+The objective is to assess the reproducibility of another team's research repository, evaluate the quality of its documentation and research artifacts, and contribute to its improvement through established collaborative development practices. Reviewers will evaluate the repository created by another team during Lab 3.
 
 This exercise simulates real-world scientific software and open-source development workflows, where reproducibility, transparency, communication, and collaborative maintenance are essential components of research quality.
 
@@ -49,7 +50,7 @@ This ensures that every team experiences both perspectives of collaborative open
 
 ## Repository Evaluation
 
-A review checklist is provided with the laboratory materials. The reviewers must complete the checklist and submit it through a Pull Request to the repository under review.  
+A review checklist is provided with the laboratory materials. The reviewers must complete the checklist and submit it through a Pull Request to the repository under review.
 
 ## Reproducibility Attempt
 
@@ -136,13 +137,13 @@ Teams will be evaluated on both their reviewer and maintainer roles.
 
 The assessment will consider:
 
-| Criterion | Weight | Description |
-|------------|--------|-------------|
-| Repository Evaluation | 10% | Thoroughness of the reproducibility review and quality assessment of the repository |
-| Issue Reporting | 20% | Clarity, professionalism, and usefulness of GitHub Issues |
-| Pull Request | 20% | Technical appropriateness and justification of proposed changes |
-| Pull Request Review | 20% | Constructiveness and rigor of code and documentation reviews |
-| Development Workflow | 15% | Appropriate use of branches, commits, Pull Requests, and repository maintenance practices |
-| Communication | 15% | Professional interactions between reviewers and maintainers, including timeliness |
+| Criterion             | Weight | Description                                                                               |
+| --------------------- | ------ | ----------------------------------------------------------------------------------------- |
+| Repository Evaluation | 10%    | Thoroughness of the reproducibility review and quality assessment of the repository       |
+| Issue Reporting       | 20%    | Clarity, professionalism, and usefulness of GitHub Issues                                 |
+| Pull Request          | 20%    | Technical appropriateness and justification of proposed changes                           |
+| Pull Request Review   | 20%    | Constructiveness and rigor of code and documentation reviews                              |
+| Development Workflow  | 15%    | Appropriate use of branches, commits, Pull Requests, and repository maintenance practices |
+| Communication         | 15%    | Professional interactions between reviewers and maintainers, including timeliness         |
 
 The emphasis of this laboratory is not solely on identifying defects, but on demonstrating effective open science practices and collaborative maintenance workflows.
