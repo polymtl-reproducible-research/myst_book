@@ -32,7 +32,11 @@ Reads `myst.yml` to discover all source files from the table of contents, then f
 - **Jupyter notebooks (`.ipynb`)**: Translates markdown cells only; code cells and outputs are untouched.
 - **Other assets**: Copies `figures/` and `bibliography/` directories as-is.
 
-Translation uses `deep-translator` (GoogleTranslator), which calls Google Translate for free with no API key. Calls are rate-limited with 300ms delays to avoid throttling.
+Translation uses the official Cloud Translation API (v2), reached with the standard library. The key comes from the `GOOGLE_TRANSLATE_API_KEY` secret, and is only needed when a string is missing from the cache -- a build the cache already covers makes no network call at all.
+
+Requests use `format=html`: bold, italics and links travel as `<b>`, `<i>` and `<a>` tags and every other shielded span as `<span translate="no">`, because in plain-text mode Google drops placeholders and `**` markers from long, markup-heavy sentences. The cache and overrides keep the markdown-with-placeholders form, so the change is invisible outside `translator_backend.py`.
+
+The earlier backend scraped `translate.google.com/m` through `deep-translator`. Google gated that endpoint in September 2026; it now answers every request with a CAPTCHA and HTTP 429, whatever the caller's volume or address.
 
 Output goes to `_translated/fr/`, mirroring the original directory structure.
 
@@ -80,9 +84,11 @@ Add these steps to your `.github/workflows/deploy.yml` **after** `myst build --h
 
 ```yaml
 - name: Install Python dependencies
-  run: pip install deep-translator pyyaml
+  run: pip install pyyaml
 
 - name: Translate and build French site
+  env:
+    GOOGLE_TRANSLATE_API_KEY: ${{ secrets.GOOGLE_TRANSLATE_API_KEY }}
   run: python3 scripts/build-french.py
 
 - name: Inject Language Switcher
@@ -100,9 +106,9 @@ _translated/
 ### Requirements
 
 - Python 3 (available by default on `ubuntu-latest` GitHub Actions runners)
-- `deep-translator` and `pyyaml` Python packages (installed in the workflow)
+- `pyyaml` (installed in the workflow); the translator itself uses only the standard library
 - `mystmd` (already required for any MyST book)
-- No API keys or secrets needed
+- A `GOOGLE_TRANSLATE_API_KEY` repository secret, needed only to translate strings the cache does not already cover
 
 ### Customization
 
@@ -127,3 +133,17 @@ makes the build deterministic and immune to the translation endpoint failing.
 The same deployment also demonstrates the failure policy: an earlier run with an
 empty cache exited non-zero and refused to publish, rather than shipping a
 half-English site.
+
+`translate_sources.py` refuses to write a half-translated site if any string
+is unresolved, and the deploy workflow deliberately does not soften that:
+a French build failure fails the whole deploy, English included. The
+alternative — deploying English while skipping French — was considered and
+rejected, because GitHub Pages deployments fully replace the live site with
+the uploaded artifact rather than patching it. There's no way to publish
+just the English update without `/fr/` disappearing from the live site
+until a later successful run (worse than merely being stale).
+
+To keep failures from going unnoticed — as happened for about a week after
+one run hit a Google Translate rate limit — a failure opens (or updates, if
+one is already open) a "Deploy is failing" issue with a link to the run, and
+a later successful run closes it automatically.

@@ -92,3 +92,64 @@ def test_round_trip_survives_literal_placeholder_shaped_content():
     original = "Code `XPHX0XPHX` and [l](#r)."
     protected, ph = shield(original)
     assert restore(protected, ph) == original
+
+
+# --- HTML transport (format=html) -------------------------------------------
+
+from shielding import from_html, to_html
+
+
+@pytest.mark.parametrize("protected", [
+    # Shapes Cloud Translation mangled in format=text (lecture 5, run 39262914357).
+    "Four ideas: **IP** (what?), **ownership** (who?). The *what* determines the *how*.",
+    "[Creative Commons]XPHX0XPHX (CC) licences: **BY** (attribution), **CC0** waives all.",
+    "**copyleft** (e.g., [GPLv3]XPHX0XPHX: ...) and **permissive** (e.g., [MIT]XPHX1XPHX, BSD).",
+    'e.g., *"available at XPHX2XPHX under CC BY 4.0."* in practice XPHX0XPHX, [DORA]XPHX3XPHX.',
+    "**[DataLad]XPHX0XPHX** — a friendlier wrapper.",
+    "See []XPHX0XPHX and **bold**XPHX1XPHX.",
+    "Plain text with a literal <tag> & an ampersand, 5 * 3 * 2, and a lone ** marker.",
+    "[XPHX0XPHX]XPHX1XPHX is a link whose text is code.",
+])
+def test_html_round_trip_is_identity(protected):
+    assert from_html(to_html(protected)) == protected
+
+
+def test_to_html_turns_markup_into_tags():
+    assert to_html("**[Git LFS]XPHX0XPHX** and *it* at XPHX1XPHX") == (
+        '<b><a id="0">Git LFS</a></b> and <i>it</i> at <span translate="no">XPHX1XPHX</span>')
+
+
+def test_to_html_escapes_literal_angle_brackets():
+    assert to_html("a <b> tag & more") == "a &lt;b&gt; tag &amp; more"
+    assert from_html(to_html("a <b> tag & more")) == "a <b> tag & more"
+
+
+def test_from_html_moves_whitespace_out_of_emphasis():
+    assert from_html("la<b> PI </b>et <i>quoi</i>") == "la **PI** et *quoi*"
+
+
+# Spacing Google gives tags in format=html (staging replay of #77).
+
+def test_from_html_drops_space_between_closing_tag_and_punctuation():
+    assert from_html('(par exemple, <a id="0">arXiv</a> ), <a id="1">MIT</a> , BSD') == \
+        "(par exemple, [arXiv]XPHX0XPHX), [MIT]XPHX1XPHX, BSD"
+    assert from_html('cité <span translate="no">XPHX0XPHX</span> .') == "cité XPHX0XPHX."
+
+
+def test_from_html_drops_space_after_apostrophe():
+    assert from_html("protège l' <b>expression concrète</b>") == "protège l'**expression concrète**"
+    assert from_html("l’ <i>œuvre</i>") == "l’*œuvre*"
+    # As Google actually sends it: an entity, with the space inside the tag.
+    assert from_html("l&#39;<b> expression</b>") == "l'**expression**"
+    assert from_html("à l&#39; <i>expertise</i>") == "à l'*expertise*"
+
+
+def test_from_html_moves_leading_punctuation_out_of_emphasis():
+    assert from_html("par conséquent <b>, le code</b> n'est") == "par conséquent, **le code** n'est"
+
+
+def test_to_html_keeps_a_sentence_period_with_its_placeholder():
+    assert to_html("in practice XPHX0XPHX. Articles") == \
+        'in practice <span translate="no">XPHX0XPHX.</span> Articles'
+    assert from_html(to_html("in practice XPHX0XPHX. Articles")) == "in practice XPHX0XPHX. Articles"
+    assert to_html("see XPHX0XPHX.md") == 'see <span translate="no">XPHX0XPHX</span>.md'

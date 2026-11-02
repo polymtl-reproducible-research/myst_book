@@ -115,7 +115,9 @@ def untranslated_prose(original, translated):
     trusts the same block boundaries the segmenter produced would inherit the very
     bug it is meant to catch. Prose is identified purely by content: three or more
     lowercase words. Equations, paths, options and table rules do not qualify.
+    Frontmatter is skipped: only its title and description are translated.
     """
+    original = ts.split_frontmatter(original)[1]
     out = set(translated.split("\n"))
     suspects = []
     fence = "closed"
@@ -154,6 +156,18 @@ def test_golden_real_sources_translate_all_their_prose(tmp_path, path):
     original = open(src, encoding="utf-8").read()
     missed = untranslated_prose(original, dst.read_text(encoding="utf-8"))
     assert missed == [], "prose never reached the translator: %r" % missed[:3]
+
+
+def test_coverage_check_ignores_untranslated_frontmatter_keys(tmp_path):
+    """Only title and description are translated in frontmatter, on purpose.
+    A key like `label: getting-started` reads as three words of prose."""
+    src = tmp_path / "a.md"
+    src.write_text("---\ntitle: Getting started\nlabel: getting-started\n---\n\n"
+                   "Some prose here.\n", encoding="utf-8")
+    dst = tmp_path / "out.md"
+    ts.translate_md_file(str(src), str(dst), UP)
+    original = src.read_text(encoding="utf-8")
+    assert untranslated_prose(original, dst.read_text(encoding="utf-8")) == []
 
 
 def test_main_exits_nonzero_when_a_string_is_unresolved(tmp_path, monkeypatch):
