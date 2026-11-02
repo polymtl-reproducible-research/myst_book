@@ -2,16 +2,14 @@
 version: 1
 
 project:
-  title: My Book Title
-  subtitle: A short description of this book
-  copyright: '2026'
+  title: Open Science and Reproducible Research
+  subtitle: Tools and Practices
+  copyright: "2026"
   keywords:
     - keyword1
     - keyword2
   github: https://github.com/polymtl-reproducible-research/myst_book
   subject: Book
-  numbering:
-    headings: true
   open_access: true
   license: MIT
   date: 2026-03-27
@@ -20,6 +18,15 @@ project:
   abbreviations:
     # Add abbreviations here, e.g.:
     # MRI: Magnetic resonance imaging
+    FAIR: Findable, Accessible, Interoperable, Reusable
+    BIDS: Brain Imaging Data Structure
+    DOI: Digital Object Identifier
+    CC0: Creative Commons Zero
+    CC-BY: Creative Commons Attribution
+    CI: Continuous Integration
+    OME-TIFF: Open Microscopy Environment TIFF
+    PR: pull request
+    VS Code: Visual Studio Code
   exclude:
     - README.md
     - LICENSE
@@ -42,6 +49,7 @@ project:
         - file: labs/lab3.md
         - file: labs/lab4.md
         - file: labs/lab5.md
+    - file: CODE_OF_CONDUCT.md
 
 site:
   template: book-theme
@@ -50,7 +58,7 @@ site:
     logo: ./images/site_logo.png
     logo_dark: ./images/site_logo_dark.png
     style: poly.css
-    logo_text: My Book
+    logo_text: Open Science and Reproducible Research
   actions:
     - title: GitHub
       url: https://github.com/polymtl-reproducible-research/myst_book
