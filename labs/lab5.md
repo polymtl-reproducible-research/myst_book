@@ -50,7 +50,7 @@ This presentation is a reflection, not a demo of tools. Explain *why* you made y
 - **Analysis of one major dependency of your project** (e.g. numpy, pytorch): activity level, maintainer responsiveness, robustness of your code to future versions.
 - **Long-term maintainability of your project**: governance, bus factor, required expertise, potential for community contributions.
 
-### 4. Reproducing and being reproduced (Lab 4, ~3 min)
+### 4. Reproducing another study (Lab 4, ~3 min)
 
 - What worked and what broke when you reproduced the other team's study.
 - What the review of your own project revealed: strengths, weaknesses, suggestions for improvement.
